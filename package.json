@@ -1,7 +1,7 @@
 {
   "name": "@open-tech-world/react-form",
   "version": "0.8.0",
-  "description": "React form state manager",
+  "description": "State Manager for React Forms",
   "source": "src/index.tsx",
   "main": "dist/main.js",
   "module": "dist/module.js",
@@ -10,6 +10,7 @@
     "dist/"
   ],
   "scripts": {
+    "start": "parcel examples/index.html --port 3000",
     "watch": "parcel watch",
     "build": "parcel build"
   },
@@ -18,12 +19,19 @@
   "license": "MIT",
   "packageManager": "yarn@3.2.0",
   "devDependencies": {
+    "@emotion/react": "^11.8.1",
+    "@emotion/styled": "^11.8.1",
+    "@mui/material": "^5.4.3",
     "@parcel/packager-ts": "2.3.2",
     "@parcel/transformer-typescript-types": "2.3.2",
+    "@storybook/react": "^6.4.19",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
+    "add": "^2.0.6",
     "parcel": "^2.3.2",
-    "typescript": "4.5.5"
+    "react-router-dom": "6",
+    "typescript": "4.5.5",
+    "yarn": "^1.22.17"
   },
   "dependencies": {
     "@parcel/transformer-react-refresh-wrap": "^2.3.2",
