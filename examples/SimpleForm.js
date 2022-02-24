@@ -3,8 +3,8 @@ import { Box } from "@mui/system";
 import { Form, Field, useForm } from "../src/index";
 
 function Values() {
-  const { formValues } = useForm();
-  return <pre>{JSON.stringify(formValues, null, 4)}</pre>;
+  const { values } = useForm();
+  return <pre>{JSON.stringify(values, null, 4)}</pre>;
 }
 
 export default function SimpleForm() {
@@ -12,19 +12,20 @@ export default function SimpleForm() {
     <>
       <Typography variant="h6">Simple Form:</Typography>
       <Box mt={5}>
-        <Form initialState={{ name: "ganapathy" }}>
-          <div>
-            <label>Name: </label>
-            <Field name="name" component="input" type="text" required />
-          </div>
+        <Form onSubmit={(values) => console.log(values)}>
+          <Box mt={2}>
+            <Box>Name: </Box>
+            <Field name="name" component="input" type="text" />
+          </Box>
 
-          <div>
-            <label>Email: </label>
+          <Box mt={2}>
+            <Box>Email: </Box>
             <Field name="email" component="input" type="email" />
-          </div>
-          <div>
+          </Box>
+
+          <Box mt={2}>
             <button type="submit">Submit</button>
-          </div>
+          </Box>
 
           <Values />
         </Form>

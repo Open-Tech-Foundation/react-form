@@ -16,7 +16,7 @@ interface Props {
 export default function Field(props: Props): JSX.Element {
   const { name, type, component, ...otherProps } = props;
   const { state, dispatch } = useContext<FormContextVal>(FormContext);
-  const value = state[name] || "";
+  const value = state.values[name] || "";
 
   useEffect(() => {
     dispatch({ type: "REGISTER_FIELD", payload: { name: name, value } });
