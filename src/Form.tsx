@@ -8,7 +8,7 @@ function reducer(state, action) {
       return {
         ...state,
         values: setInObj(
-          { ...state.values },
+          state.values,
           action.payload.name,
           action.payload.value
         ),
@@ -17,7 +17,7 @@ function reducer(state, action) {
       return {
         ...state,
         values: setInObj(
-          { ...state.values },
+          state.values,
           action.payload.name,
           action.payload.value
         ),
@@ -35,7 +35,7 @@ function reducer(state, action) {
 interface Props {
   initialState: Record<string, unknown>;
   onSubmit: (values: Record<string, unknown>) => void;
-  validate?: (state: Record<string, unknown>) => Record<string, unknown>;
+  validate?: (values: Record<string, unknown>) => Record<string, unknown>;
   children: JSX.Element;
 }
 

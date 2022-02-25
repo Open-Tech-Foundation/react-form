@@ -2,6 +2,7 @@ import { Box } from "@mui/system";
 import { Typography, Divider } from "@mui/material";
 import { Field, Form } from "../src";
 import Values from "./Values";
+import ErrorMsg from "./ErrorMsg";
 
 export default function NestedFields() {
   return (
@@ -9,6 +10,14 @@ export default function NestedFields() {
       <Form
         onSubmit={(values) => console.log(values)}
         initialState={{ address: { city: "Chennai" } }}
+        validate={(values) => {
+          const errors = {};
+          if (!values.address.line1) {
+            errors.address = {};
+            errors.address.line1 = "Line 1 is required!";
+          }
+          return errors;
+        }}
       >
         <Box mt={2}>
           <Box>Name</Box>
@@ -28,6 +37,7 @@ export default function NestedFields() {
         <Box mt={2}>
           <Box>Line 1</Box>
           <Field name="address.line1" component="input" type="text" />
+          <ErrorMsg path="address.line1" />
         </Box>
 
         <Box mt={2}>
@@ -37,12 +47,18 @@ export default function NestedFields() {
 
         <Box mt={2}>
           <Box>City</Box>
-          <Field name="address.city" component="input" type="text" />
-        </Box>
-
-        <Box mt={2}>
-          <Box>State</Box>
-          <Field name="address.state" component="input" type="text" />
+          <Field
+            name="address.city"
+            component={
+              <select>
+                <option value="">Select</option>
+                <option value="Chennai">Chennai</option>
+                <option value="New York">New York</option>
+                <option value="London">London</option>
+              </select>
+            }
+            type="text"
+          />
         </Box>
 
         <Box mt={2}>

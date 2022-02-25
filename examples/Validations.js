@@ -1,17 +1,8 @@
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import { Form, Field, useForm } from "../src/index";
+import { Form, Field } from "../src/index";
+import ErrorMsg from "./ErrorMsg";
 import Values from "./Values";
-
-function ErrorMsg({ path }) {
-  const { errors } = useForm();
-
-  if (errors[path]) {
-    return <Box sx={{ color: "error.main" }}>{errors[path]}</Box>;
-  }
-
-  return null;
-}
 
 export default function Validations() {
   return (
