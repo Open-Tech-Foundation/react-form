@@ -1,11 +1,7 @@
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { Form, Field, useForm } from "../src/index";
-
-function Values() {
-  const { values } = useForm();
-  return <pre>{JSON.stringify(values, null, 4)}</pre>;
-}
+import Values from "./Values";
 
 function ErrorMsg({ path }) {
   const { errors } = useForm();

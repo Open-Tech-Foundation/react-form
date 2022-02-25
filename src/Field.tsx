@@ -1,3 +1,4 @@
+import { getInObj } from "@open-tech-world/es-utils";
 import {
   createElement,
   FormEvent,
@@ -16,7 +17,7 @@ interface Props {
 export default function Field(props: Props): JSX.Element {
   const { name, type, component, ...otherProps } = props;
   const { state, dispatch } = useContext<FormContextVal>(FormContext);
-  const value = state.values[name] || "";
+  const value = getInObj(state.values, name) || "";
 
   useEffect(() => {
     dispatch({ type: "REGISTER_FIELD", payload: { name: name, value } });

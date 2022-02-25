@@ -11,6 +11,7 @@ import Sidebar from "./Sidebar";
 import { Route, Routes } from "react-router-dom";
 import SimpleForm from "./SimpleForm";
 import Validations from "./Validations";
+import NestedFields from "./NestedFields";
 
 const drawerWidth = 240;
 
@@ -63,6 +64,7 @@ export function App() {
           <Routes>
             <Route path="/" element={<SimpleForm />} />
             <Route path="/validations" element={<Validations />} />
+            <Route path="/nested-fields" element={<NestedFields />} />
           </Routes>
         </Box>
       </Box>

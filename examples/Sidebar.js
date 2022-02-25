@@ -13,6 +13,9 @@ export default function Sidebar() {
         <ListItem>
           <Link to="/validations">Validations</Link>
         </ListItem>
+        <ListItem>
+          <Link to="/nested-fields">Nested Fields</Link>
+        </ListItem>
       </List>
     </div>
   );

@@ -1,3 +1,4 @@
+import { setInObj } from "@open-tech-world/es-utils";
 import { FormEvent, useReducer } from "react";
 import { FormContext, FormContextVal } from "./formContext";
 
@@ -6,18 +7,20 @@ function reducer(state, action) {
     case "REGISTER_FIELD":
       return {
         ...state,
-        values: {
-          ...state.values,
-          [action.payload.name]: action.payload.value,
-        },
+        values: setInObj(
+          { ...state.values },
+          action.payload.name,
+          action.payload.value
+        ),
       };
     case "UPDATE_FIELD_VALUE":
       return {
         ...state,
-        values: {
-          ...state.values,
-          [action.payload.name]: action.payload.value,
-        },
+        values: setInObj(
+          { ...state.values },
+          action.payload.name,
+          action.payload.value
+        ),
       };
     case "SET_ERRORS":
       return {

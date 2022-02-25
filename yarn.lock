@@ -2085,6 +2085,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@open-tech-world/es-utils@npm:^0.12.0":
+  version: 0.12.0
+  resolution: "@open-tech-world/es-utils@npm:0.12.0"
+  checksum: 3594f76e3d73b274c324b9c825c8fd1c7200a6b653dcf7f95fa1cdb82847e7b438777dc6c608279a43c97b9df77a65643e3033760ad3e5c2f7057a5711ddcd9a
+  languageName: node
+  linkType: hard
+
 "@open-tech-world/react-form@workspace:.":
   version: 0.0.0-use.local
   resolution: "@open-tech-world/react-form@workspace:."
@@ -2092,6 +2099,7 @@ __metadata:
     "@emotion/react": ^11.8.1
     "@emotion/styled": ^11.8.1
     "@mui/material": ^5.4.3
+    "@open-tech-world/es-utils": ^0.12.0
     "@parcel/packager-ts": 2.3.2
     "@parcel/transformer-react-refresh-wrap": ^2.3.2
     "@parcel/transformer-typescript-types": 2.3.2
