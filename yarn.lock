@@ -2085,10 +2085,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@open-tech-world/es-utils@npm:^0.12.0":
-  version: 0.12.0
-  resolution: "@open-tech-world/es-utils@npm:0.12.0"
-  checksum: 3594f76e3d73b274c324b9c825c8fd1c7200a6b653dcf7f95fa1cdb82847e7b438777dc6c608279a43c97b9df77a65643e3033760ad3e5c2f7057a5711ddcd9a
+"@open-tech-world/es-utils@npm:^0.13.0":
+  version: 0.13.0
+  resolution: "@open-tech-world/es-utils@npm:0.13.0"
+  checksum: a7a587f8108b94adb542b74d15cdb476f4343ffdb84661073c94d56a8b4693380e608f78165f3241df1d021760d8bac6df90a5f7b4cae1e3b9afcb0fd939f0cf
   languageName: node
   linkType: hard
 
@@ -2099,7 +2099,7 @@ __metadata:
     "@emotion/react": ^11.8.1
     "@emotion/styled": ^11.8.1
     "@mui/material": ^5.4.3
-    "@open-tech-world/es-utils": ^0.12.0
+    "@open-tech-world/es-utils": ^0.13.0
     "@parcel/packager-ts": 2.3.2
     "@parcel/transformer-react-refresh-wrap": ^2.3.2
     "@parcel/transformer-typescript-types": 2.3.2
@@ -2110,7 +2110,7 @@ __metadata:
     parcel: ^2.3.2
     react: ^17.0.2
     react-dom: ^17.0.2
-    react-router-dom: 6
+    react-router-dom: 6.2.1
     typescript: 4.5.5
     yarn: ^1.22.17
   languageName: unknown
@@ -11262,7 +11262,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-router-dom@npm:6, react-router-dom@npm:^6.0.0":
+"react-router-dom@npm:6.2.1, react-router-dom@npm:^6.0.0":
   version: 6.2.1
   resolution: "react-router-dom@npm:6.2.1"
   dependencies:

@@ -1,4 +1,5 @@
-import { setInObj } from "@open-tech-world/es-utils";
+import { cloneObj, setInObj } from "@open-tech-world/es-utils";
+import { ObjType } from "@open-tech-world/es-utils/lib/ObjType";
 import { FormEvent, useReducer } from "react";
 import { FormContext, FormContextVal } from "./formContext";
 
@@ -8,7 +9,7 @@ function reducer(state, action) {
       return {
         ...state,
         values: setInObj(
-          state.values,
+          cloneObj(state.values) as ObjType,
           action.payload.name,
           action.payload.value
         ),
@@ -17,7 +18,7 @@ function reducer(state, action) {
       return {
         ...state,
         values: setInObj(
-          state.values,
+          cloneObj(state.values) as ObjType,
           action.payload.name,
           action.payload.value
         ),
@@ -25,7 +26,7 @@ function reducer(state, action) {
     case "SET_ERRORS":
       return {
         ...state,
-        errors: action.payload,
+        errors: cloneObj(action.payload),
       };
     default:
       throw new Error();
@@ -41,9 +42,11 @@ interface Props {
 
 export default function Form(props: Props) {
   const { initialState, children, validate, onSubmit } = props;
+  const clonedInitialState = cloneObj(initialState);
   const [state, dispatch] = useReducer(reducer, {
-    values: initialState || {},
+    values: clonedInitialState || {},
     errors: {},
+    initialState: clonedInitialState,
   });
   const formContextVal: FormContextVal = { state, dispatch };
 

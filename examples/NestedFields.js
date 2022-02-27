@@ -3,13 +3,16 @@ import { Typography, Divider } from "@mui/material";
 import { Field, Form } from "../src";
 import Values from "./Values";
 import ErrorMsg from "./ErrorMsg";
+import { useEffect } from "react";
 
 export default function NestedFields() {
+  const initialState = { address: { city: "Chennai" } };
+
   return (
     <Box>
       <Form
         onSubmit={(values) => console.log(values)}
-        initialState={{ address: { city: "Chennai" } }}
+        initialState={initialState}
         validate={(values) => {
           const errors = {};
           if (!values.address.line1) {
