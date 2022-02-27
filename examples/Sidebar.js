@@ -16,6 +16,9 @@ export default function Sidebar() {
         <ListItem>
           <Link to="/nested-fields">Nested Fields</Link>
         </ListItem>
+        <ListItem>
+          <Link to="/field-array-form">FieldArray Form</Link>
+        </ListItem>
       </List>
     </div>
   );

@@ -12,6 +12,7 @@ import { Route, Routes } from "react-router-dom";
 import SimpleForm from "./SimpleForm";
 import Validations from "./Validations";
 import NestedFields from "./NestedFields";
+import FieldArrayForm from "./FieldArrayForm";
 
 const drawerWidth = 240;
 
@@ -65,6 +66,7 @@ export function App() {
             <Route path="/" element={<SimpleForm />} />
             <Route path="/validations" element={<Validations />} />
             <Route path="/nested-fields" element={<NestedFields />} />
+            <Route path="/field-array-form" element={<FieldArrayForm />} />
           </Routes>
         </Box>
       </Box>
