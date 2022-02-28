@@ -51,6 +51,7 @@ export default function FieldArrayForm() {
               <Box mt={2}>
                 <Typography variant="body1">Tasks:</Typography>
                 {tasks}
+                <ErrorMsg path="_tasks" />
                 <Box mt={2}>
                   <button type="button" onClick={() => push("")}>
                     Add Task
@@ -60,8 +61,6 @@ export default function FieldArrayForm() {
             );
           }}
         />
-
-        <ErrorMsg path="_tasks" />
 
         <FieldArray
           name="members"

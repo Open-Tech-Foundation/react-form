@@ -19,6 +19,9 @@ export default function Sidebar() {
         <ListItem>
           <Link to="/field-array-form">FieldArray Form</Link>
         </ListItem>
+        <ListItem>
+          <Link to="/checkbox-form">Checkbox Form</Link>
+        </ListItem>
       </List>
     </div>
   );

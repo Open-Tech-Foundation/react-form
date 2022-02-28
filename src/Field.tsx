@@ -1,7 +1,7 @@
 import { getInObj } from "@open-tech-world/es-utils";
 import {
+  ChangeEvent,
   createElement,
-  FormEvent,
   useContext,
   useEffect,
   useMemo,
@@ -23,7 +23,7 @@ export default function Field(props: Props): JSX.Element {
     dispatch({ type: "REGISTER_FIELD", payload: { name: name, value } });
   }, []);
 
-  const handleChange = (e: FormEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: "UPDATE_FIELD_VALUE",
       payload: { name, value: e.currentTarget.value },
