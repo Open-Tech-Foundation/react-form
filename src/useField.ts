@@ -1,13 +1,29 @@
 import { getInObj } from "@open-tech-world/es-utils";
-import { useContext } from "react";
+import { ChangeEvent, useContext, useEffect } from "react";
 import { FormContext, FormContextVal } from "./formContext";
 
-export default function useField() {
-  const formContextVal: FormContextVal = useContext(FormContext);
+export default function useField(name: string) {
+  const { state, dispatch } = useContext<FormContextVal>(FormContext);
+  const value = (getInObj(state.values, name) as string | number) || "";
+
+  useEffect(() => {
+    dispatch({ type: "REGISTER_FIELD", payload: { name: name, value } });
+  }, []);
+
+  const onChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    dispatch({
+      type: "UPDATE_FIELD_VALUE",
+      payload: { name, value: e.currentTarget.value },
+    });
+  };
 
   return {
-    error: (path) => {
-      return getInObj(formContextVal.state.errors, path);
+    field: {
+      value,
+      onChange,
     },
+    error: getInObj(state.errors, name),
   };
 }

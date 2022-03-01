@@ -6,7 +6,7 @@ import Values from "./Values";
 export default function RadioGroupForm() {
   return (
     <>
-      <Typography variant="h6">Checkbox Form:</Typography>
+      <Typography variant="h6">Radio Group Form:</Typography>
       <Box mt={5}>
         <Form
           onSubmit={(values) => console.log(values)}

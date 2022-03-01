@@ -15,6 +15,7 @@ import NestedFields from "./NestedFields";
 import FieldArrayForm from "./FieldArrayForm";
 import CheckboxForm from "./CheckboxForm";
 import RadioGroupForm from "./RadioGroupForm";
+import MuiForm from "./MuiForm";
 
 const drawerWidth = 240;
 
@@ -71,6 +72,7 @@ export function App() {
             <Route path="/field-array-form" element={<FieldArrayForm />} />
             <Route path="/checkbox-form" element={<CheckboxForm />} />
             <Route path="/radio-group-form" element={<RadioGroupForm />} />
+            <Route path="/mui-form" element={<MuiForm />} />
           </Routes>
         </Box>
       </Box>

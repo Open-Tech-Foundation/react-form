@@ -25,6 +25,9 @@ export default function Sidebar() {
         <ListItem>
           <Link to="/radio-group-form">Radio Group</Link>
         </ListItem>
+        <ListItem>
+          <Link to="/mui-form">Material UI</Link>
+        </ListItem>
       </List>
     </div>
   );

@@ -1,12 +1,5 @@
-import { getInObj } from "@open-tech-world/es-utils";
-import {
-  ChangeEvent,
-  createElement,
-  useContext,
-  useEffect,
-  useMemo,
-} from "react";
-import { FormContext, FormContextVal } from "./formContext";
+import { useMemo } from "react";
+import { useField } from ".";
 
 interface Props {
   name: string;
@@ -16,21 +9,7 @@ interface Props {
 
 export default function Field(props: Props): JSX.Element {
   const { name, type, component, ...otherProps } = props;
-  const { state, dispatch } = useContext<FormContextVal>(FormContext);
-  const value = (getInObj(state.values, name) as string | number) || "";
-
-  useEffect(() => {
-    dispatch({ type: "REGISTER_FIELD", payload: { name: name, value } });
-  }, []);
-
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    dispatch({
-      type: "UPDATE_FIELD_VALUE",
-      payload: { name, value: e.currentTarget.value },
-    });
-  };
+  const { field } = useField(name);
 
   if (typeof component === "string" && component === "input") {
     return useMemo(
@@ -38,12 +17,12 @@ export default function Field(props: Props): JSX.Element {
         <input
           type={type}
           name={name}
-          value={value}
-          onChange={handleChange}
+          value={field.value}
+          onChange={field.onChange}
           {...otherProps}
         />
       ),
-      [value]
+      [field.value]
     );
   }
 
@@ -52,24 +31,24 @@ export default function Field(props: Props): JSX.Element {
       () => (
         <textarea
           name={name}
-          value={value}
-          onChange={handleChange}
+          value={field.value}
+          onChange={field.onChange}
           {...otherProps}
         />
       ),
-      [value]
+      [field.value]
     );
   }
 
   const compProps = {
     name,
-    value,
-    onChange: handleChange,
+    value: field.value,
+    onChange: field.onChange,
     ...otherProps,
   };
 
   return useMemo(
     () => <component.type {...component.props} {...compProps} />,
-    [value]
+    [field.value]
   );
 }
