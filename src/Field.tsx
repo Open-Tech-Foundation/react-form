@@ -17,7 +17,7 @@ interface Props {
 export default function Field(props: Props): JSX.Element {
   const { name, type, component, ...otherProps } = props;
   const { state, dispatch } = useContext<FormContextVal>(FormContext);
-  const value = getInObj(state.values, name) || "";
+  const value = (getInObj(state.values, name) as string | number) || "";
 
   useEffect(() => {
     dispatch({ type: "REGISTER_FIELD", payload: { name: name, value } });
@@ -32,14 +32,15 @@ export default function Field(props: Props): JSX.Element {
 
   if (typeof component === "string") {
     return useMemo(
-      () =>
-        createElement(component, {
-          name,
-          type,
-          value,
-          onChange: handleChange,
-          ...otherProps,
-        }),
+      () => (
+        <input
+          type={type}
+          name={name}
+          value={value}
+          onChange={handleChange}
+          {...otherProps}
+        />
+      ),
       [value]
     );
   }

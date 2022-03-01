@@ -10,8 +10,23 @@ export default function CheckboxForm() {
       <Box mt={5}>
         <Form
           onSubmit={(values) => console.log(values)}
-          initialState={{ newsletter: true }}
+          initialState={{ newsletter: true, interests: ['art'] }}
         >
+          <Box mt={2}>
+            <fieldset>
+              <legend>Choose your interests</legend>
+              <Box p={1}>
+                <CheckboxField name="interests" label="Art" value="art" />
+              </Box>
+              <Box p={1}>
+                <CheckboxField name="interests" label="Coding" value="coding" />
+              </Box>
+              <Box p={1}>
+                <CheckboxField name="interests" label="Music" value="music" />
+              </Box>
+            </fieldset>
+          </Box>
+
           <Box mt={2}>
             <CheckboxField name="newsletter" label="Send newsletter" />
           </Box>
