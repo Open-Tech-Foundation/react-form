@@ -22,6 +22,9 @@ export default function Sidebar() {
         <ListItem>
           <Link to="/checkbox-form">Checkbox Form</Link>
         </ListItem>
+        <ListItem>
+          <Link to="/radio-group-form">Radio Group</Link>
+        </ListItem>
       </List>
     </div>
   );
