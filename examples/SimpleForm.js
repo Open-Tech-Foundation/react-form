@@ -20,6 +20,11 @@ export default function SimpleForm() {
           </Box>
 
           <Box mt={2}>
+            <Box>Feedback: </Box>
+            <Field name="feedback" component="textarea" rows="10" cols="50" />
+          </Box>
+
+          <Box mt={2}>
             <button type="submit">Submit</button>
           </Box>
 

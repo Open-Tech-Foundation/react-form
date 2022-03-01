@@ -10,7 +10,7 @@ import { FormContext, FormContextVal } from "./formContext";
 
 interface Props {
   name: string;
-  component: string | JSX.Element;
+  component: ("input" | "textarea") | JSX.Element;
   type: string;
 }
 
@@ -23,18 +23,34 @@ export default function Field(props: Props): JSX.Element {
     dispatch({ type: "REGISTER_FIELD", payload: { name: name, value } });
   }, []);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     dispatch({
       type: "UPDATE_FIELD_VALUE",
       payload: { name, value: e.currentTarget.value },
     });
   };
 
-  if (typeof component === "string") {
+  if (typeof component === "string" && component === "input") {
     return useMemo(
       () => (
         <input
           type={type}
+          name={name}
+          value={value}
+          onChange={handleChange}
+          {...otherProps}
+        />
+      ),
+      [value]
+    );
+  }
+
+  if (typeof component === "string" && component === "textarea") {
+    return useMemo(
+      () => (
+        <textarea
           name={name}
           value={value}
           onChange={handleChange}
