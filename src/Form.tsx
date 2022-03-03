@@ -67,7 +67,7 @@ export default function Form(props: Props) {
 
   return (
     <FormContext.Provider value={formContextVal}>
-      <form onSubmit={handleSubmit}>{children}</form>
+      <form role="form" onSubmit={handleSubmit}>{children}</form>
     </FormContext.Provider>
   );
 }

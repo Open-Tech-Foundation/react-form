@@ -30,6 +30,11 @@ export default function SimpleForm() {
 
           <Values />
         </Form>
+
+        <Form>
+          <label htmlFor="username-input">Username</label>
+          <input id="username-input" type="text" value="abc" />
+        </Form>
       </Box>
     </>
   );
