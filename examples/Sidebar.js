@@ -14,6 +14,9 @@ export default function Sidebar() {
           <Link to="/validations">Validations</Link>
         </ListItem>
         <ListItem>
+          <Link to="/yup-validations">Yup Validations</Link>
+        </ListItem>
+        <ListItem>
           <Link to="/nested-fields">Nested Fields</Link>
         </ListItem>
         <ListItem>

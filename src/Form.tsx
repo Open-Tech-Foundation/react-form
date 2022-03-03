@@ -50,10 +50,10 @@ export default function Form(props: Props) {
   });
   const formContextVal: FormContextVal = { state, dispatch };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (validate) {
-      const errors = validate(state.values);
+      const errors = await validate(state.values);
       if (errors && Object.keys(errors).length > 0) {
         dispatch({ type: "SET_ERRORS", payload: errors });
         return;

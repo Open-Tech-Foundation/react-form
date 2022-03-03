@@ -16,6 +16,7 @@ import FieldArrayForm from "./FieldArrayForm";
 import CheckboxForm from "./CheckboxForm";
 import RadioGroupForm from "./RadioGroupForm";
 import MuiForm from "./MuiForm";
+import YupValidations from "./YupValidations";
 
 const drawerWidth = 240;
 
@@ -68,6 +69,7 @@ export function App() {
           <Routes>
             <Route path="/" element={<SimpleForm />} />
             <Route path="/validations" element={<Validations />} />
+            <Route path="/yup-validations" element={<YupValidations />} />
             <Route path="/nested-fields" element={<NestedFields />} />
             <Route path="/field-array-form" element={<FieldArrayForm />} />
             <Route path="/checkbox-form" element={<CheckboxForm />} />
