@@ -34,19 +34,19 @@ function reducer(state, action) {
 }
 
 interface Props {
-  initialState: Record<string, unknown>;
+  initialValues?: Record<string, unknown>;
   onSubmit: (values: Record<string, unknown>) => void;
   validate?: (values: Record<string, unknown>) => Record<string, unknown>;
   children: JSX.Element;
 }
 
 export default function Form(props: Props) {
-  const { initialState, children, validate, onSubmit } = props;
-  const clonedInitialState = cloneObj(initialState);
+  const { initialValues, children, validate, onSubmit } = props;
+  const clonedInitialValues = cloneObj(initialValues);
   const [state, dispatch] = useReducer(reducer, {
-    values: clonedInitialState || {},
+    values: clonedInitialValues || {},
     errors: {},
-    initialState: clonedInitialState,
+    initialValues: clonedInitialValues,
   });
   const formContextVal: FormContextVal = { state, dispatch };
 
