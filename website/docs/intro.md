@@ -1,48 +1,18 @@
 ---
 sidebar_position: 1
 slug: /
-sidebar_label: Getting Started
-title: Getting Started
+sidebar_label: Introduction
+title: Introduction
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 # @open-tech-world/react-form
 
 > State Manager for React Forms.
 
-## Installation
+## Features
 
-<Tabs
-defaultValue="npm"
-values={[
-{label: 'npm', value: 'npm'},
-{label: 'Yarn', value: 'yarn'},
-]}>
-<TabItem value="npm">
+- Simple APIs to use.
 
-```shell
-npm install @open-tech-world/react-form
-```
+- It supports nested and array fields.
 
-</TabItem>
-  <TabItem value="yarn">
-
-```shell
-yarn add @open-tech-world/react-form
-```
-
-  </TabItem>
-</Tabs>
-
-## Usage
-
-```ts
-import { Form, Field } from '@open-tech-world/react-form';
-
-<Form onSubmit={(values) => {}}>
-  <Field />
-  ...
-</Form>
-```
+- It supports form validation.
