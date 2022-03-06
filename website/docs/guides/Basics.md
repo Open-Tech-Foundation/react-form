@@ -4,13 +4,13 @@ The root component for all the input fields in a form.
 
 The required `onSubmit` prop is used to receive the values of the form when submitted.
 
-The `initialValues` prop is used to set initial values for the form.
+The `initialValues` prop can be used to set initial values for the form.
 
 ### `<Field />`
 
 It renders an input component and binds its value to the form state.
 
-It supports HTML input (excluding checkbox and radio), Textarea or a custom `React` input component.
+It supports HTML input (excluding checkbox and radio), select, textarea, and custom React input components.
 
 It uses the `name` prop to map the input value.
 
