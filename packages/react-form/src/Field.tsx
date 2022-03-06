@@ -1,9 +1,9 @@
-import { useMemo } from "react";
-import { useField } from ".";
+import { useMemo } from 'react';
+import { useField } from '.';
 
 interface Props {
   name: string;
-  component: ("input" | "textarea") | JSX.Element;
+  component: ('input' | 'textarea') | JSX.Element;
   type: string;
 }
 
@@ -11,7 +11,7 @@ export default function Field(props: Props): JSX.Element {
   const { name, type, component, ...otherProps } = props;
   const { field } = useField(name);
 
-  if (typeof component === "string" && component === "input") {
+  if (typeof component === 'string' && component === 'input') {
     return useMemo(
       () => (
         <input
@@ -26,7 +26,7 @@ export default function Field(props: Props): JSX.Element {
     );
   }
 
-  if (typeof component === "string" && component === "textarea") {
+  if (typeof component === 'string' && component === 'textarea') {
     return useMemo(
       () => (
         <textarea

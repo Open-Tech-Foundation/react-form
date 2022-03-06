@@ -78,7 +78,7 @@ describe('Form', () => {
     expect(formValues).toEqual({
       name: 'abc',
       email: 'abc@example.com',
-      age: '25',
+      age: 25,
     });
     expect(screen.getByLabelText('Age').getAttribute('type')).toBe('number');
   });
