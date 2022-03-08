@@ -24,7 +24,7 @@ describe('Simple Forms', () => {
     let formValues;
     render(
       <Form onSubmit={(values) => (formValues = values)}>
-        <Field component="input" name="userName" type="text" />
+        <Field name="userName" />
         <button type="submit" />
       </Form>
     );
@@ -39,7 +39,7 @@ describe('Simple Forms', () => {
   test('Email Field input type', () => {
     render(
       <Form>
-        <Field component="input" name="email" type="email" />
+        <Field name="email" type="email" />
       </Form>
     );
     expect(screen.getByRole('textbox')).toBeInTheDocument();
@@ -51,13 +51,12 @@ describe('Simple Forms', () => {
     render(
       <Form onSubmit={(values) => (formValues = values)}>
         <label htmlFor="name-input">Name</label>
-        <Field id="name-input" component="input" name="name" type="text" />
+        <Field id="name-input" name="name" />
         <label htmlFor="email-input">Email</label>
-        <Field id="email-input" component="input" name="email" type="email" />
+        <Field id="email-input" name="email" type="email" />
         <label htmlFor="age-input">Age</label>
         <Field
           id="age-input"
-          component="input"
           name="age"
           type="number"
           max="20"
@@ -88,7 +87,7 @@ describe('Simple Forms', () => {
     render(
       <Form initialValues={{}} onSubmit={(values) => (formValues = values)}>
         <label htmlFor="name-input">Name</label>
-        <Field id="name-input" component="input" name="name" type="text" />
+        <Field id="name-input" name="name" />
         <label htmlFor="email-input">Email</label>
         <button type="submit" />
       </Form>
@@ -102,7 +101,7 @@ describe('Simple Forms', () => {
     render(
       <Form initialValues={{name: 'abc', age: 25}} onSubmit={(values) => (formValues = values)}>
         <label htmlFor="name-input">Name</label>
-        <Field id="name-input" component="input" name="name" type="text" />
+        <Field id="name-input"name="name" />
         <label htmlFor="email-input">Email</label>
         <button type="submit" />
       </Form>
@@ -116,7 +115,7 @@ describe('Simple Forms', () => {
     render(
       <Form initialValues={{name: 'abc', age: 25}} onSubmit={(values) => (formValues = values)}>
         <label htmlFor="name-input">Name</label>
-        <Field id="name-input" component="input" name="name" type="text" />
+        <Field id="name-input" name="name" />
         <label htmlFor="email-input">Email</label>
         <button type="submit" />
       </Form>
