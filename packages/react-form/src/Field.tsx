@@ -1,32 +1,32 @@
 import { useMemo } from 'react';
 import { useField } from '.';
 
+type FieldType =
+  | 'color'
+  | 'date'
+  | 'datetime-local'
+  | 'email'
+  | 'file'
+  | 'month'
+  | 'number'
+  | 'password'
+  | 'range'
+  | 'tel'
+  | 'text'
+  | 'textarea'
+  | 'time'
+  | 'week';
+
 interface Props {
   name: string;
-  component: ('input' | 'textarea') | JSX.Element;
-  type: string;
+  type: FieldType;
 }
 
 export default function Field(props: Props): JSX.Element {
-  const { name, type, component, ...otherProps } = props;
+  const { name, type, ...otherProps } = props;
   const { field } = useField(name);
 
-  if (typeof component === 'string' && component === 'input') {
-    return useMemo(
-      () => (
-        <input
-          type={type}
-          name={name}
-          value={field.value}
-          onChange={field.onChange}
-          {...otherProps}
-        />
-      ),
-      [field.value]
-    );
-  }
-
-  if (typeof component === 'string' && component === 'textarea') {
+  if (type === 'textarea') {
     return useMemo(
       () => (
         <textarea
@@ -40,15 +40,16 @@ export default function Field(props: Props): JSX.Element {
     );
   }
 
-  const compProps = {
-    name,
-    value: field.value,
-    onChange: field.onChange,
-    ...otherProps,
-  };
-
   return useMemo(
-    () => <component.type {...component.props} {...compProps} />,
+    () => (
+      <input
+        type={type || 'text'}
+        name={name}
+        value={field.value}
+        onChange={field.onChange}
+        {...otherProps}
+      />
+    ),
     [field.value]
   );
 }

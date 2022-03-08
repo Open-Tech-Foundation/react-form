@@ -19,7 +19,7 @@ function reducer(state: FormState, action: DispatchAction): FormState {
           (action.payload as ObjType).value
         ),
       };
-    case 'UPDATE_FIELD_VALUE':
+    case 'SET_FIELD_VALUE':
       return {
         ...state,
         values: setInObj(
