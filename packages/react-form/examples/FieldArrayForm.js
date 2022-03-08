@@ -9,7 +9,7 @@ export default function FieldArrayForm() {
     <Box>
       <Typography variant="h6">Field Array Form:</Typography>
       <Form
-        initialState={{ tasks: ["Task1"] }}
+        initialValues={{ tasks: ["Task1"] }}
         onSubmit={(values) => console.log(values)}
         validate={(values) => {
           const errors = {};

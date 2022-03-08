@@ -1,18 +1,23 @@
-import { createContext } from "react";
+import { createContext } from 'react';
+import { ObjType } from './ObjType';
 
-export type FormDispatch = { type: string; payload: Record<string, unknown> };
+export type DispatchAction = {
+  type: string;
+  payload: unknown;
+};
 
 export interface FormState {
-  values: Record<string, unknown>;
-  errors: Record<string, unknown>;
+  values: ObjType;
+  errors: ObjType;
+  initialValues: ObjType;
 }
 
 export interface FormContextVal {
   state: FormState;
-  dispatch: React.Dispatch<FormDispatch>;
+  dispatch: React.Dispatch<DispatchAction>;
 }
 
 export const FormContext = createContext<FormContextVal>({
-  state: { values: {}, errors: {} },
-  dispatch: null,
+  state: { values: {}, errors: {}, initialValues: {} },
+  dispatch: () => {},
 });

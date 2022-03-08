@@ -1,9 +1,9 @@
-import { render, fireEvent, waitFor, screen } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 import { Field, Form } from '../src';
 
-describe('Form', () => {
+describe('Simple Forms', () => {
   it('Creates an empty form with a role', () => {
     render(<Form />);
     expect(screen.getByRole('form')).toBeInTheDocument();

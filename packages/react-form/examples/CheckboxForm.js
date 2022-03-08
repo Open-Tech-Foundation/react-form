@@ -10,7 +10,7 @@ export default function CheckboxForm() {
       <Box mt={5}>
         <Form
           onSubmit={(values) => console.log(values)}
-          initialState={{ newsletter: true, interests: ['art'] }}
+          initialValues={{ newsletter: true, interests: ['art'] }}
         >
           <Box mt={2}>
             <fieldset>

@@ -12,7 +12,7 @@ export default function NestedFields() {
     <Box>
       <Form
         onSubmit={(values) => console.log(values)}
-        initialState={initialState}
+        initialValues={initialState}
         validate={(values) => {
           const errors = {};
           if (!values.address.line1) {

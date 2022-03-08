@@ -10,7 +10,7 @@ export default function RadioGroupForm() {
       <Box mt={5}>
         <Form
           onSubmit={(values) => console.log(values)}
-          initialState={{ contact: 'email' }}
+          initialValues={{ contact: 'email' }}
         >
           <Box mt={2}>
             <fieldset>
