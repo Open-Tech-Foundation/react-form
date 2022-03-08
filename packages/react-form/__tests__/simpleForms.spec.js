@@ -82,4 +82,47 @@ describe('Simple Forms', () => {
     });
     expect(screen.getByLabelText('Age').getAttribute('type')).toBe('number');
   });
+
+  test('empty initial values form', () => {
+    let formValues;
+    render(
+      <Form initialValues={{}} onSubmit={(values) => (formValues = values)}>
+        <label htmlFor="name-input">Name</label>
+        <Field id="name-input" component="input" name="name" type="text" />
+        <label htmlFor="email-input">Email</label>
+        <button type="submit" />
+      </Form>
+    );
+    fireEvent.click(screen.getByRole('button'));
+    expect(formValues).toEqual({name: ''});
+  });
+
+  it('returns the same initial values passed to the form', () => {
+    let formValues;
+    render(
+      <Form initialValues={{name: 'abc', age: 25}} onSubmit={(values) => (formValues = values)}>
+        <label htmlFor="name-input">Name</label>
+        <Field id="name-input" component="input" name="name" type="text" />
+        <label htmlFor="email-input">Email</label>
+        <button type="submit" />
+      </Form>
+    );
+    fireEvent.click(screen.getByRole('button'));
+    expect(formValues).toEqual({name: 'abc', age: 25});
+  });
+
+  it('returns the initial values merged with the changed values', () => {
+    let formValues;
+    render(
+      <Form initialValues={{name: 'abc', age: 25}} onSubmit={(values) => (formValues = values)}>
+        <label htmlFor="name-input">Name</label>
+        <Field id="name-input" component="input" name="name" type="text" />
+        <label htmlFor="email-input">Email</label>
+        <button type="submit" />
+      </Form>
+    );
+    fireEvent.change(screen.getByLabelText('Name'), { target: {value: 'xyz'}})
+    fireEvent.click(screen.getByRole('button'));
+    expect(formValues).toEqual({name: 'xyz', age: 25});
+  });
 });
