@@ -1,6 +1,5 @@
-import { getInObj } from "@open-tech-world/es-utils";
-import { ChangeEvent, useContext, useEffect, useMemo } from "react";
-import { FormContext, FormContextVal } from "./formContext";
+import { ChangeEvent, useMemo } from 'react';
+import useField from './useField';
 
 interface Props {
   name: string;
@@ -10,39 +9,30 @@ interface Props {
 
 export default function CheckboxField(props: Props): React.ReactNode {
   const { name, label, value, ...otherProps } = props;
-  const { state, dispatch } = useContext<FormContextVal>(FormContext);
-  const sValue: boolean | string[] = getInObj(state.values, name) as
-    | boolean
-    | string[];
+  const { field, setValue } = useField(name, { multiple: Boolean(value) });
 
   // @ts-ignore
   const id = crypto.randomUUID();
 
-  useEffect(() => {
-    const v = value ? sValue || [] : sValue || false;
-    dispatch({ type: "REGISTER_FIELD", payload: { name: name, value: v } });
-  }, []);
-
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     let v: boolean | string[];
+
     if (value) {
-      v = e.target.checked
-        ? [...(sValue as string[]), value]
-        : (sValue as string[]).filter((i) => i !== value);
+      if (e.target.checked) {
+        v = [...(field.value as string[]), value];
+      } else {
+        v = (field.value as string[]).filter((i) => i !== value);
+      }
     } else {
       v = e.target.checked;
     }
 
-    dispatch({
-      type: "UPDATE_FIELD_VALUE",
-      payload: { name, value: v },
-    });
+    setValue(v);
   };
 
   const isChecked = () => {
-    if (!sValue) return false;
-    if (typeof sValue === "boolean") return sValue;
-    return sValue.includes(value);
+    if (typeof field.value === 'boolean') return field.value;
+    return (field.value as string[]).includes(value as string);
   };
 
   return useMemo(
@@ -59,6 +49,6 @@ export default function CheckboxField(props: Props): React.ReactNode {
         <label htmlFor={id}>{label}</label>
       </>
     ),
-    [sValue]
+    [field.value]
   );
 }
