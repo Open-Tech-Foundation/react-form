@@ -8,6 +8,7 @@ export type DispatchAction = {
 
 export interface FormState {
   values: ObjType;
+  fieldValues: ObjType;
   errors: ObjType;
   initialValues: ObjType;
 }
@@ -18,6 +19,6 @@ export interface FormContextVal {
 }
 
 export const FormContext = createContext<FormContextVal>({
-  state: { values: {}, errors: {}, initialValues: {} },
+  state: { values: {}, fieldValues: {}, errors: {}, initialValues: {} },
   dispatch: () => {},
 });

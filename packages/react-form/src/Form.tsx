@@ -1,6 +1,6 @@
 import { cloneObj, setInObj } from '@open-tech-world/es-utils';
 import { ObjType } from '@open-tech-world/es-utils/lib/ObjType';
-import { FormEvent, useEffect, useReducer } from 'react';
+import { FormEvent, useReducer } from 'react';
 import {
   DispatchAction,
   FormContext,
@@ -22,12 +22,22 @@ function reducer(state: FormState, action: DispatchAction): FormState {
     case 'SET_FIELD_VALUE':
       return {
         ...state,
+        fieldValues: setInObj(
+          cloneObj(state.fieldValues) as ObjType,
+          (action.payload as ObjType).name as string,
+          (action.payload as ObjType).value
+        ),
+      };
+    case 'SET_VALUES':
+      return {
+        ...state,
         values: setInObj(
           cloneObj(state.values) as ObjType,
           (action.payload as ObjType).name as string,
           (action.payload as ObjType).value
         ),
       };
+
     case 'SET_ERRORS':
       return {
         ...state,
@@ -50,6 +60,7 @@ export default function Form(props: Props) {
   const clonedInitialValues = cloneObj(initialValues) as ObjType;
   const initialFormState: FormState = {
     values: clonedInitialValues || {},
+    fieldValues: clonedInitialValues || {},
     errors: {},
     initialValues: clonedInitialValues,
   };

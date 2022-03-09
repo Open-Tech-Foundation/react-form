@@ -1,19 +1,22 @@
 import { getInObj } from '@open-tech-world/es-utils';
-import { ChangeEvent, useContext, useEffect, useState } from 'react';
+import { ChangeEvent, useContext, useEffect } from 'react';
 import { FormContext, FormContextVal } from './formContext';
 
-export default function useField(name: string, multiple?: boolean) {
+interface OptionsProps {
+  multiple?: boolean;
+}
+
+export default function useField(name: string, options?: Partial<OptionsProps>) {
   const { state, dispatch } = useContext<FormContextVal>(FormContext);
-  const initialFormStateValue = getInObj(state.values, name);
-  let initialValue: unknown = multiple ? [] : '';
+  const initialFormStateValue = getInObj(state.fieldValues, name);
+  let value: unknown = options?.multiple ? [] : '';
   if (initialFormStateValue) {
-    if (multiple && !Array.isArray(initialFormStateValue)) {
-      initialValue = [initialFormStateValue];
+    if (options?.multiple && !Array.isArray(initialFormStateValue)) {
+      value = [initialFormStateValue];
     } else {
-      initialValue = initialFormStateValue;
+      value = initialFormStateValue;
     }
   }
-  const [value, setValue] = useState(initialValue);
 
   useEffect(() => {
     dispatch({ type: 'REGISTER_FIELD', payload: { name: name, value } });
@@ -33,8 +36,14 @@ export default function useField(name: string, multiple?: boolean) {
     return e.currentTarget.value;
   };
 
-  const setFieldValue = (v: unknown) => {
-    setValue(v);
+  const setValue = (v: unknown) => {
+    dispatch({
+      type: 'SET_VALUES',
+      payload: {
+        name,
+        value: v,
+      },
+    });
     dispatch({
       type: 'SET_FIELD_VALUE',
       payload: {
@@ -47,14 +56,18 @@ export default function useField(name: string, multiple?: boolean) {
   const onChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
-    console.log('Use field called');
-
-    setValue(e.currentTarget.value);
+    dispatch({
+      type: 'SET_VALUES',
+      payload: {
+        name,
+        value: getValue(e),
+      },
+    });
     dispatch({
       type: 'SET_FIELD_VALUE',
       payload: {
         name,
-        value: getValue(e),
+        value: e.currentTarget.value,
       },
     });
   };
@@ -65,6 +78,6 @@ export default function useField(name: string, multiple?: boolean) {
       onChange,
     },
     error: getInObj(state.errors, name),
-    setFieldValue,
+    setValue,
   };
 }
