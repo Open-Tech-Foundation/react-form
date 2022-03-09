@@ -2,7 +2,7 @@ import { render, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 
-import { Field, Form, CheckboxField, DatalistField, SelectField } from '../src';
+import { Field, Form, CheckboxField, DatalistField, SelectField, RadioGroupField } from '../src';
 
 describe('Multiple Input Types', () => {
   test('Checkbox', () => {
@@ -41,6 +41,26 @@ describe('Multiple Input Types', () => {
     fireEvent.click(screen.getByLabelText('Music'));
     fireEvent.click(screen.getByRole('button'));
     expect(formValues).toEqual({ interests: ['art', 'music'] });
+  });
+
+  test('Radio group field', () => {
+    let formValues;
+    render(
+      <Form onSubmit={(values) => (formValues = values)}>
+        <RadioGroupField name="contact" label="Email" value="email" />
+        <RadioGroupField name="contact" label="Phone" value="phone" />
+        <RadioGroupField name="contact" label="Mail" value="mail" />
+        <button type="submit" />
+      </Form>
+    );
+    fireEvent.click(screen.getByRole('button'));
+    expect(formValues).toEqual({ contact: '' });
+    fireEvent.click(screen.getByLabelText('Email'));
+    fireEvent.click(screen.getByRole('button'));
+    expect(formValues).toEqual({ contact: 'email' });
+    fireEvent.click(screen.getByLabelText('Phone'));
+    fireEvent.click(screen.getByRole('button'));
+    expect(formValues).toEqual({ contact: 'phone' });
   });
 
   test('Date input', () => {
