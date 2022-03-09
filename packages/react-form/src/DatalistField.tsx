@@ -4,11 +4,10 @@ import { useField } from '.';
 interface Props {
   name: string;
   options: string[];
-  children: React.ReactNode;
 }
 
 export default function DatalistField(props: Props): React.ReactNode {
-  const { name, options, children, ...otherProps } = props;
+  const { name, options, ...otherProps } = props;
   const { field } = useField(name);
   const listId = crypto.randomUUID();
 
