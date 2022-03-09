@@ -1,6 +1,5 @@
-import { getInObj } from "@open-tech-world/es-utils";
-import { ChangeEvent, useContext, useEffect, useMemo } from "react";
-import { FormContext, FormContextVal } from "./formContext";
+import { ChangeEvent, useMemo } from 'react';
+import useField from './useField';
 
 interface Props {
   name: string;
@@ -8,26 +7,15 @@ interface Props {
   value?: string;
 }
 
-export default function CheckboxField(props: Props): React.ReactNode {
+export default function RadioGroupField(props: Props): React.ReactNode {
   const { name, label, value, ...otherProps } = props;
-  const { state, dispatch } = useContext<FormContextVal>(FormContext);
-  const sValue: string = getInObj(state.values, name) as string;
+  const { field, setValue } = useField(name);
 
   // @ts-ignore
   const id = crypto.randomUUID();
 
-  useEffect(() => {
-    dispatch({
-      type: "REGISTER_FIELD",
-      payload: { name: name, value: sValue || "" },
-    });
-  }, []);
-
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    dispatch({
-      type: "UPDATE_FIELD_VALUE",
-      payload: { name, value },
-    });
+    setValue(value);
   };
 
   return useMemo(
@@ -37,13 +25,13 @@ export default function CheckboxField(props: Props): React.ReactNode {
           type="radio"
           id={id}
           name={name}
-          checked={sValue === value}
+          checked={field.value === value}
           onChange={handleChange}
           {...otherProps}
         />
         <label htmlFor={id}>{label}</label>
       </>
     ),
-    [sValue]
+    [field.value]
   );
 }
