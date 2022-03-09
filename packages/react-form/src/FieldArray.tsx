@@ -1,4 +1,4 @@
-import { useContext, useEffect, useMemo } from "react";
+import { useContext, useMemo } from "react";
 import { getInObj } from "@open-tech-world/es-utils";
 import { FormContext, FormContextVal } from "./formContext";
 
@@ -22,14 +22,22 @@ export default function FieldArray(props: Props) {
 
   const push = (obj: unknown) => {
     dispatch({
-      type: "UPDATE_FIELD_VALUE",
+      type: "SET_FIELD_VALUE",
+      payload: { name, value: [...value, obj] },
+    });
+    dispatch({
+      type: "SET_VALUES",
       payload: { name, value: [...value, obj] },
     });
   };
 
   const remove = (index: number) => {
     dispatch({
-      type: "UPDATE_FIELD_VALUE",
+      type: "SET_FIELD_VALUE",
+      payload: { name, value: value.filter((_, i) => index !== i) },
+    });
+    dispatch({
+      type: "SET_VALUES",
       payload: { name, value: value.filter((_, i) => index !== i) },
     });
   };
