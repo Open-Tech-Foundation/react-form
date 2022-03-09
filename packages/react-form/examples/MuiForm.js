@@ -1,16 +1,20 @@
-import { TextField, Typography } from "@mui/material";
-import { Box } from "@mui/system";
-import { Form, useField } from "../src/index";
-import Values from "./Values";
+import { TextField, Typography } from '@mui/material';
+import { Box } from '@mui/system';
+import { Form, useField } from '../src/index';
+import Values from './Values';
 
 const MuiTextField = ({ name }) => {
   const { field, error } = useField(name);
   return (
     <TextField
+      {...field}
       error={Boolean(error)}
       label="Name"
       helperText={error}
-      {...field}
+      onChange={(v) => {
+        console.log('The value is ', v);
+        field.onChange(v);
+      }}
     />
   );
 };
@@ -25,7 +29,7 @@ export default function MuiForm() {
           validate={(values) => {
             const errors = {};
             if (!values.name) {
-              errors.name = "Required!";
+              errors.name = 'Required!';
             }
             return errors;
           }}

@@ -11,17 +11,23 @@ export default function SimpleForm() {
         <Form onSubmit={(values) => console.log(values)}>
           <Box mt={2}>
             <Box>Name: </Box>
-            <Field name="name" component="input" type="text" />
+            <Field name="name" />
           </Box>
 
           <Box mt={2}>
             <Box>Email: </Box>
-            <Field name="email" component="input" type="email" />
+            <Field name="email" type="email" />
           </Box>
 
           <Box mt={2}>
             <Box>Feedback: </Box>
-            <Field name="feedback" component="textarea" rows="10" cols="50" />
+            <Field name="feedback" type="textarea" rows="10" cols="50" />
+          </Box>
+
+
+          <Box mt={2}>
+            <Box>File: </Box>
+            <Field name="file" type="file" />
           </Box>
 
           <Box mt={2}>

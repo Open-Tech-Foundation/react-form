@@ -26,24 +26,24 @@ export default function Validations() {
         >
           <Box mt={2}>
             <Box>Name: </Box>
-            <Field name="name" component="input" type="text" />
+            <Field name="name" type="text" />
             <ErrorMsg path="name" />
           </Box>
 
           <Box mt={2}>
             <Box>Email: </Box>
-            <Field name="email" component="input" type="email" />
+            <Field name="email" type="email" />
             <ErrorMsg path="email" />
           </Box>
 
           <Box mt={2}>
             <Box>Password: </Box>
-            <Field name="password" component="input" type="password" />
+            <Field name="password" type="password" />
           </Box>
 
           <Box mt={2}>
             <Box>Confirm Password: </Box>
-            <Field name="passwordConfirm" component="input" type="password" />
+            <Field name="passwordConfirm" type="password" />
           </Box>
 
           <Box mt={2}>

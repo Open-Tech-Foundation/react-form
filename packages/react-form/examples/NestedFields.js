@@ -1,12 +1,12 @@
-import { Box } from "@mui/system";
-import { Typography, Divider } from "@mui/material";
-import { Field, Form } from "../src";
-import Values from "./Values";
-import ErrorMsg from "./ErrorMsg";
-import { useEffect } from "react";
+import { Box } from '@mui/system';
+import { Typography, Divider } from '@mui/material';
+import { Field, Form, SelectField } from '../src';
+import Values from './Values';
+import ErrorMsg from './ErrorMsg';
+import { useEffect } from 'react';
 
 export default function NestedFields() {
-  const initialState = { address: { city: "Chennai" } };
+  const initialState = { address: { city: 'Chennai' } };
 
   return (
     <Box>
@@ -17,19 +17,19 @@ export default function NestedFields() {
           const errors = {};
           if (!values.address.line1) {
             errors.address = {};
-            errors.address.line1 = "Line 1 is required!";
+            errors.address.line1 = 'Line 1 is required!';
           }
           return errors;
         }}
       >
         <Box mt={2}>
           <Box>Name</Box>
-          <Field name="name" component="input" type="text" />
+          <Field name="name" />
         </Box>
 
         <Box mt={2}>
           <Box>Mobile</Box>
-          <Field name="mobile" component="input" type="text" />
+          <Field name="mobile" />
         </Box>
 
         <Box mt={2}>
@@ -39,34 +39,28 @@ export default function NestedFields() {
 
         <Box mt={2}>
           <Box>Line 1</Box>
-          <Field name="address.line1" component="input" type="text" />
+          <Field name="address.line1" />
           <ErrorMsg path="address.line1" />
         </Box>
 
         <Box mt={2}>
           <Box>Line 2</Box>
-          <Field name="address.line2" component="input" type="text" />
+          <Field name="address.line2" />
         </Box>
 
         <Box mt={2}>
           <Box>City</Box>
-          <Field
-            name="address.city"
-            component={
-              <select>
-                <option value="">Select</option>
-                <option value="Chennai">Chennai</option>
-                <option value="New York">New York</option>
-                <option value="London">London</option>
-              </select>
-            }
-            type="text"
-          />
+          <SelectField name="address.city">
+            <option value="">Select</option>
+            <option value="Chennai">Chennai</option>
+            <option value="New York">New York</option>
+            <option value="London">London</option>
+          </SelectField>
         </Box>
 
         <Box mt={2}>
           <Box>Pincode</Box>
-          <Field name="address.pincode" component="input" type="text" />
+          <Field name="address.pincode" />
         </Box>
 
         <Box mt={2}>
