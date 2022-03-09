@@ -1,7 +1,7 @@
 import { render, fireEvent, screen, getByRole } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-import { Field, Form, CheckboxField } from '../src';
+import { Field, Form, CheckboxField, DatalistField } from '../src';
 
 describe('Multiple Input Types', () => {
   test('Checkbox', () => {
@@ -57,5 +57,31 @@ describe('Multiple Input Types', () => {
     });
     fireEvent.click(screen.getByRole('button'));
     expect(formValues).toEqual({ today: '2020-01-01' });
+  });
+
+  test('Datalist type', () => {
+    let formValues;
+    render(
+      <Form onSubmit={(values) => (formValues = values)}>
+        <DatalistField
+          name="browser"
+          options={[
+            'Chrome',
+            'Firefox',
+            'Internet Explorer',
+            'Opera',
+            'Safari',
+            'Microsoft Edge',
+          ]}
+        />
+        <button type="submit" />
+      </Form>
+    );
+
+    fireEvent.change(screen.getByRole('combobox'), {
+      target: { value: 'Chrome' },
+    });
+    fireEvent.click(screen.getByRole('button'));
+    expect(formValues).toEqual({ browser: 'Chrome' });
   });
 });
