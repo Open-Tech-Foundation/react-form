@@ -1,7 +1,7 @@
-import { Typography } from "@mui/material";
-import { Box } from "@mui/system";
-import { Form, Field, useForm } from "../src/index";
-import Values from "./Values";
+import { Typography } from '@mui/material';
+import { Box } from '@mui/system';
+import { Form, Field } from '../src/index';
+import Values from './Values';
 
 export default function SimpleForm() {
   return (
@@ -22,12 +22,6 @@ export default function SimpleForm() {
           <Box mt={2}>
             <Box>Feedback: </Box>
             <Field name="feedback" type="textarea" rows="10" cols="50" />
-          </Box>
-
-
-          <Box mt={2}>
-            <Box>File: </Box>
-            <Field name="file" type="file" />
           </Box>
 
           <Box mt={2}>

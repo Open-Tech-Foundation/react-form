@@ -6,6 +6,7 @@ import FieldArray from './FieldArray';
 import CheckboxField from './CheckboxField';
 import RadioGroupField from './RadioGroupField';
 import SelectField from './SelectField';
+import DatalistField from './DatalistField';
 
 export {
   Form,
@@ -16,4 +17,5 @@ export {
   CheckboxField,
   RadioGroupField,
   SelectField,
+  DatalistField,
 };

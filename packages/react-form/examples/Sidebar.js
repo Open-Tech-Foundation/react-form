@@ -1,5 +1,5 @@
-import { Divider, List, ListItem, ListItemText, Toolbar } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Divider, List, ListItem, ListItemText, Toolbar } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 export default function Sidebar() {
   return (
@@ -30,6 +30,9 @@ export default function Sidebar() {
         </ListItem>
         <ListItem>
           <Link to="/mui-form">Material UI</Link>
+        </ListItem>
+        <ListItem>
+          <Link to="/other-fields-form">Other Fields Form</Link>
         </ListItem>
       </List>
     </div>

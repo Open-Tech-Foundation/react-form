@@ -6,24 +6,25 @@ import {
   IconButton,
   Toolbar,
   Typography,
-} from "@mui/material";
-import Sidebar from "./Sidebar";
-import { Route, Routes } from "react-router-dom";
-import SimpleForm from "./SimpleForm";
-import Validations from "./Validations";
-import NestedFields from "./NestedFields";
-import FieldArrayForm from "./FieldArrayForm";
-import CheckboxForm from "./CheckboxForm";
-import RadioGroupForm from "./RadioGroupForm";
-import MuiForm from "./MuiForm";
-import YupValidations from "./YupValidations";
+} from '@mui/material';
+import Sidebar from './Sidebar';
+import { Route, Routes } from 'react-router-dom';
+import SimpleForm from './SimpleForm';
+import Validations from './Validations';
+import NestedFields from './NestedFields';
+import FieldArrayForm from './FieldArrayForm';
+import CheckboxForm from './CheckboxForm';
+import RadioGroupForm from './RadioGroupForm';
+import MuiForm from './MuiForm';
+import YupValidations from './YupValidations';
+import OtherFieldsForm from './OtherFieldsForm';
 
 const drawerWidth = 240;
 
 export function App() {
   return (
     <>
-      <Box sx={{ display: "flex" }}>
+      <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <AppBar
           position="fixed"
@@ -46,9 +47,9 @@ export function App() {
           <Drawer
             variant="permanent"
             sx={{
-              display: { xs: "none", sm: "block" },
-              "& .MuiDrawer-paper": {
-                boxSizing: "border-box",
+              display: { xs: 'none', sm: 'block' },
+              '& .MuiDrawer-paper': {
+                boxSizing: 'border-box',
                 width: drawerWidth,
               },
             }}
@@ -75,6 +76,7 @@ export function App() {
             <Route path="/checkbox-form" element={<CheckboxForm />} />
             <Route path="/radio-group-form" element={<RadioGroupForm />} />
             <Route path="/mui-form" element={<MuiForm />} />
+            <Route path="/other-fields-form" element={<OtherFieldsForm />} />
           </Routes>
         </Box>
       </Box>
