@@ -4,12 +4,12 @@ import { useField } from '.';
 interface Props {
   name: string;
   multiple?: boolean;
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 export default function SelectField(props: Props): React.ReactNode {
   const { name, multiple, children, ...otherProps } = props;
-  const { field, setFieldValue } = useField(name, multiple);
+  const { field, setValue } = useField(name, { multiple });
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     let value;
@@ -24,7 +24,7 @@ export default function SelectField(props: Props): React.ReactNode {
     } else {
       value = e.currentTarget.value;
     }
-    setFieldValue(value);
+    setValue(value);
   };
 
   return useMemo(
