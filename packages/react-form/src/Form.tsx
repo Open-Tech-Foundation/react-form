@@ -42,7 +42,7 @@ interface Props {
   initialValues?: Record<string, unknown>;
   onSubmit: (values: Record<string, unknown>) => void;
   validate?: (values: Record<string, unknown>) => Record<string, unknown>;
-  children: JSX.Element;
+  children: React.ReactNode;
 }
 
 export default function Form(props: Props) {

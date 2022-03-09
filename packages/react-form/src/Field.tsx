@@ -22,7 +22,7 @@ interface Props {
   type: FieldType;
 }
 
-export default function Field(props: Props): JSX.Element {
+export default function Field(props: Props): React.ReactNode {
   const { name, type, ...otherProps } = props;
   const { field } = useField(name);
 
@@ -31,7 +31,7 @@ export default function Field(props: Props): JSX.Element {
       () => (
         <textarea
           name={name}
-          value={field.value}
+          value={field.value as string}
           onChange={field.onChange}
           {...otherProps}
         />
@@ -45,7 +45,7 @@ export default function Field(props: Props): JSX.Element {
       <input
         type={type || 'text'}
         name={name}
-        value={field.value}
+        value={field.value as string | number}
         onChange={field.onChange}
         {...otherProps}
       />

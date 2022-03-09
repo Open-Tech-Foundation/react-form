@@ -8,7 +8,7 @@ interface Props {
   value?: string;
 }
 
-export default function CheckboxField(props: Props): JSX.Element {
+export default function CheckboxField(props: Props): React.ReactNode {
   const { name, label, value, ...otherProps } = props;
   const { state, dispatch } = useContext<FormContextVal>(FormContext);
   const sValue: boolean | string[] = getInObj(state.values, name) as

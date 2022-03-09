@@ -10,7 +10,7 @@ interface ComponentProps {
 
 interface Props {
   name: string;
-  component: (props: ComponentProps) => JSX.Element;
+  component: (props: ComponentProps) => React.ReactNode;
 }
 
 export default function FieldArray(props: Props) {
