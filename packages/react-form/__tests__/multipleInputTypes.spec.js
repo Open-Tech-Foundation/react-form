@@ -125,4 +125,20 @@ describe('Multiple Input Types', () => {
     expect(screen.getAllByRole('option')).toHaveLength(3);
     expect(formValues).toEqual({ browser: ['chrome', 'firefox'] });
   });
+
+  test('Textarea type', () => {
+    let formValues;
+    render(
+      <Form onSubmit={(values) => (formValues = values)}>
+        <Field name="desc" type="textarea" />
+        <button type="submit" />
+      </Form>
+    );
+
+    fireEvent.change(screen.getByRole('textbox'), {
+      target: { value: 'abc \n xyz' },
+    });
+    fireEvent.click(screen.getByRole('button'));
+    expect(formValues).toEqual({ desc: 'abc \n xyz' });
+  });
 });
