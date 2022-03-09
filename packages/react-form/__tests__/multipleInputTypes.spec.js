@@ -1,7 +1,8 @@
-import { render, fireEvent, screen, getByRole } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import userEvent from '@testing-library/user-event';
 
-import { Field, Form, CheckboxField, DatalistField } from '../src';
+import { Field, Form, CheckboxField, DatalistField, SelectField } from '../src';
 
 describe('Multiple Input Types', () => {
   test('Checkbox', () => {
@@ -83,5 +84,45 @@ describe('Multiple Input Types', () => {
     });
     fireEvent.click(screen.getByRole('button'));
     expect(formValues).toEqual({ browser: 'Chrome' });
+  });
+
+  test('Select type', () => {
+    let formValues;
+    render(
+      <Form onSubmit={(values) => (formValues = values)}>
+        <SelectField name="browser">
+          <option value="chrome">Chrome</option>
+          <option value="firefox">Firefox</option>
+          <option value="opera">Opera</option>
+        </SelectField>
+        <button type="submit" />
+      </Form>
+    );
+
+    fireEvent.change(screen.getByRole('combobox'), {
+      target: { value: 'chrome' },
+    });
+    fireEvent.click(screen.getByRole('button'));
+    expect(screen.getAllByRole('option')).toHaveLength(3);
+    expect(formValues).toEqual({ browser: 'chrome' });
+  });
+
+  test('Multiple Select type', () => {
+    let formValues;
+    render(
+      <Form onSubmit={(values) => (formValues = values)}>
+        <SelectField name="browser" multiple>
+          <option value="chrome">Chrome</option>
+          <option value="firefox">Firefox</option>
+          <option value="opera">Opera</option>
+        </SelectField>
+        <button type="submit" />
+      </Form>
+    );
+
+    userEvent.selectOptions(screen.getByRole('listbox'), ['chrome', 'firefox']);
+    fireEvent.click(screen.getByRole('button'));
+    expect(screen.getAllByRole('option')).toHaveLength(3);
+    expect(formValues).toEqual({ browser: ['chrome', 'firefox'] });
   });
 });
