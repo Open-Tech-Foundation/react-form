@@ -17,7 +17,7 @@ describe('Validations', () => {
     let formValues;
     render(
       <Form onSubmit={(values) => (formValues = values)} validate={() => {}}>
-        <Field component="input" name="name" type="text" />
+        <Field name="name" />
         <button type="submit" />
       </Form>
     );
@@ -40,7 +40,7 @@ describe('Validations', () => {
           return errors;
         }}
       >
-        <Field component="input" name="name" type="text" />
+        <Field name="name" />
         <ErrorMsg path="name" />
         <button type="submit" />
       </Form>
@@ -72,13 +72,13 @@ describe('Validations', () => {
         }}
       >
         <label htmlFor="name-input">Name</label>
-        <Field id="name-input" component="input" name="name" type="text" />
+        <Field id="name-input" name="name" />
         <ErrorMsg path="name" />
         <label htmlFor="email-input">Email</label>
-        <Field id="email-input" component="input" name="email" type="email" />
+        <Field id="email-input" name="email" type="email" />
         <ErrorMsg path="email" />
         <label htmlFor="age-input">Age</label>
-        <Field id="age-input" component="input" name="age" type="number" />
+        <Field id="age-input" name="age" type="number" />
         <ErrorMsg path="age" />
         <button type="submit" />
       </Form>
@@ -96,7 +96,7 @@ describe('Validations', () => {
       target: { value: 'abc' },
     });
     fireEvent.click(screen.getByRole('button'));
-    await waitFor(async () => {
+    await waitFor(() => {
       expect(screen.queryByText('Invalid email address!')).toBeInTheDocument();
       expect(screen.queryByText('You must be a major')).toBeInTheDocument();
       expect(formValues).toBeUndefined();
@@ -106,7 +106,7 @@ describe('Validations', () => {
       target: { value: 'abc@example.com' },
     });
     fireEvent.click(screen.getByRole('button'));
-    await waitFor(async () => {
+    await waitFor(() => {
       expect(
         screen.queryByText('Invalid email address!')
       ).not.toBeInTheDocument();
@@ -118,7 +118,7 @@ describe('Validations', () => {
       target: { value: 15 },
     });
     fireEvent.click(screen.getByRole('button'));
-    await waitFor(async () => {
+    await waitFor(() => {
       expect(screen.queryByText('You must be a major')).toBeInTheDocument();
       expect(formValues).toBeUndefined();
     });
@@ -127,7 +127,7 @@ describe('Validations', () => {
       target: { value: 20 },
     });
     fireEvent.click(screen.getByRole('button'));
-    await waitFor(async () => {
+    await waitFor(() => {
       expect(screen.queryByText('You must be a major')).not.toBeInTheDocument();
       expect(formValues).toEqual({
         age: 20,
