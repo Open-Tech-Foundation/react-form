@@ -1,16 +1,8 @@
 import { render, fireEvent, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-import { Field, Form, useField } from '../src';
-
-function ErrorMsg({ path }) {
-  const { error } = useField(path);
-  if (error) {
-    return <p>{error}</p>;
-  }
-
-  return null;
-}
+import { Field, Form } from '../src';
+import ErrorMsg from './ErrorMsg';
 
 describe('Validations', () => {
   test('empty validate fn', async () => {

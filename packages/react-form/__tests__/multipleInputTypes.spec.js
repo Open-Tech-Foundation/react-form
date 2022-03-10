@@ -68,7 +68,7 @@ describe('Multiple Input Types', () => {
     render(
       <Form onSubmit={(values) => (formValues = values)}>
         <label htmlFor="date-input">Today</label>
-        <Field id="date-input" name="today" component="input" type="date" />
+        <Field id="date-input" name="today" type="date" />
         <button type="submit" />
       </Form>
     );
