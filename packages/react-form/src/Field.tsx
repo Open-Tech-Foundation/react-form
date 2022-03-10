@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import { useField } from '.';
 
 type FieldType =
@@ -27,29 +26,25 @@ export default function Field(props: Props): React.ReactNode {
   const { field } = useField(name);
 
   if (type === 'textarea') {
-    return useMemo(
-      () => (
-        <textarea
-          name={name}
-          value={field.value as string}
-          onChange={field.onChange}
-          {...otherProps}
-        />
-      ),
-      [field.value]
+    return (
+      <textarea
+        name={name}
+        value={field.value as string}
+        onChange={field.onChange}
+        onBlur={field.onBlur}
+        {...otherProps}
+      />
     );
   }
 
-  return useMemo(
-    () => (
-      <input
-        type={type || 'text'}
-        name={name}
-        value={field.value as string | number}
-        onChange={field.onChange}
-        {...otherProps}
-      />
-    ),
-    [field.value]
+  return (
+    <input
+      type={type || 'text'}
+      name={name}
+      value={field.value as string | number}
+      onChange={field.onChange}
+      onBlur={field.onBlur}
+      {...otherProps}
+    />
   );
 }

@@ -6,8 +6,12 @@ interface OptionsProps {
   multiple?: boolean;
 }
 
-export default function useField(name: string, options?: Partial<OptionsProps>) {
-  const { state, dispatch } = useContext<FormContextVal>(FormContext);
+export default function useField(
+  name: string,
+  options?: Partial<OptionsProps>
+) {
+  const { state, dispatch, runValidations } =
+    useContext<FormContextVal>(FormContext);
   const initialFormStateValue = getInObj(state.fieldValues, name);
   let value: unknown = options?.multiple ? [] : '';
   if (initialFormStateValue) {
@@ -72,12 +76,27 @@ export default function useField(name: string, options?: Partial<OptionsProps>) 
     });
   };
 
+  const onBlur = () => {
+    dispatch({
+      type: 'SET_VISITED',
+      payload: { name, value: true },
+    });
+    runValidations();
+  };
+
+  const getFieldError = () => {
+    if (getInObj(state.visited, name) as boolean) {
+      return getInObj(state.errors, name);
+    }
+  };
+
   return {
     field: {
       value,
       onChange,
+      onBlur,
     },
-    error: getInObj(state.errors, name),
+    error: getFieldError(),
     setValue,
   };
 }

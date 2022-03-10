@@ -1,4 +1,4 @@
-import { ChangeEvent, useMemo } from 'react';
+import { ChangeEvent } from 'react';
 import { useField } from '.';
 
 interface Props {
@@ -27,18 +27,16 @@ export default function SelectField(props: Props): React.ReactNode {
     setValue(value);
   };
 
-  return useMemo(
-    () => (
-      <select
-        multiple={multiple}
-        name={name}
-        value={field.value as string | string[]}
-        onChange={handleChange}
-        {...otherProps}
-      >
-        {children}
-      </select>
-    ),
-    [field.value]
+  return (
+    <select
+      multiple={multiple}
+      name={name}
+      value={field.value as string | string[]}
+      onChange={handleChange}
+      onBlur={field.onBlur}
+      {...otherProps}
+    >
+      {children}
+    </select>
   );
 }

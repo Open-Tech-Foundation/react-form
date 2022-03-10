@@ -1,4 +1,4 @@
-import { ChangeEvent, useMemo } from 'react';
+import { ChangeEvent } from 'react';
 import useField from './useField';
 
 interface Props {
@@ -18,20 +18,18 @@ export default function RadioGroupField(props: Props): React.ReactNode {
     setValue(value);
   };
 
-  return useMemo(
-    () => (
-      <>
-        <input
-          type="radio"
-          id={id}
-          name={name}
-          checked={field.value === value}
-          onChange={handleChange}
-          {...otherProps}
-        />
-        <label htmlFor={id}>{label}</label>
-      </>
-    ),
-    [field.value]
+  return (
+    <>
+      <input
+        type="radio"
+        id={id}
+        name={name}
+        checked={field.value === value}
+        onChange={handleChange}
+        onBlur={field.onBlur}
+        {...otherProps}
+      />
+      <label htmlFor={id}>{label}</label>
+    </>
   );
 }

@@ -40,7 +40,11 @@ export default function FieldArray(props: Props) {
       type: "SET_VALUES",
       payload: { name, value: value.filter((_, i) => index !== i) },
     });
+    dispatch({
+      type: "SET_VISITED",
+      payload: { name, value: value.filter((_, i) => index !== i) },
+    });
   };
 
-  return useMemo(() => component({ fields, push, remove }), [value]);
+  return component({ fields, push, remove });
 }

@@ -3,12 +3,16 @@ import { useContext } from 'react';
 import { FormContext, FormContextVal } from './formContext';
 
 export default function useForm() {
-  const formContextVal: FormContextVal = useContext(FormContext);
+  const { state }: FormContextVal = useContext(FormContext);
 
   return {
-    values: formContextVal.state.values,
-    errors: formContextVal.state.errors,
-    getFieldError: (path: string) =>
-      getInObj(formContextVal.state.errors, path),
+    values: state.values,
+    errors: state.errors,
+    getFieldError: (path: string) => {
+      const isVisited = getInObj(state.visited, path) as boolean
+      if (isVisited || path.startsWith('_')) {
+        return getInObj(state.errors, path);
+      }
+    },
   };
 }

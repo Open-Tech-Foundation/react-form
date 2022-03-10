@@ -8,6 +8,30 @@ import {
   FormState,
 } from './formContext';
 
+function cloneObjWithDefaultVal(obj: unknown, defVal: unknown): unknown {
+  let cloneObj;
+  if (Array.isArray(obj)) {
+    cloneObj = [];
+    for (const v of obj) {
+      if (typeof v !== 'object') {
+        cloneObj.push(defVal);
+      } else {
+        cloneObj.push(cloneObjWithDefaultVal(v, defVal));
+      }
+    }
+    return cloneObj;
+  }
+  cloneObj = {} as ObjType;
+  for (const key in obj as ObjType) {
+    if (typeof (obj as ObjType)[key] !== 'object') {
+      cloneObj[key] = defVal;
+    } else {
+      cloneObj[key] = cloneObjWithDefaultVal((obj as ObjType)[key], defVal);
+    }
+  }
+  return cloneObj;
+}
+
 function reducer(state: FormState, action: DispatchAction): FormState {
   switch (action.type) {
     case 'REGISTER_FIELD':
@@ -15,6 +39,11 @@ function reducer(state: FormState, action: DispatchAction): FormState {
         ...state,
         values: setInObj(
           cloneObj(state.values) as ObjType,
+          (action.payload as ObjType).name as string,
+          (action.payload as ObjType).value
+        ),
+        fieldValues: setInObj(
+          cloneObj(state.fieldValues) as ObjType,
           (action.payload as ObjType).name as string,
           (action.payload as ObjType).value
         ),
@@ -37,7 +66,20 @@ function reducer(state: FormState, action: DispatchAction): FormState {
           (action.payload as ObjType).value
         ),
       };
-
+    case 'SET_VISITED':
+      return {
+        ...state,
+        visited: setInObj(
+          cloneObj(state.visited) as ObjType,
+          (action.payload as ObjType).name as string,
+          (action.payload as ObjType).value
+        ),
+      };
+    case 'SET_ALL_VISITED':
+      return {
+        ...state,
+        visited: cloneObjWithDefaultVal(state.fieldValues, true) as ObjType,
+      };
     case 'SET_ERRORS':
       return {
         ...state,
@@ -49,37 +91,44 @@ function reducer(state: FormState, action: DispatchAction): FormState {
 }
 
 interface Props {
-  initialValues?: Record<string, unknown>;
-  onSubmit: (values: Record<string, unknown>) => void;
-  validate?: (values: Record<string, unknown>) => Record<string, unknown>;
+  initialValues?: ObjType;
+  onSubmit: (values: ObjType) => void;
+  validate?: (values: ObjType) => ObjType;
   children: React.ReactNode;
 }
 
 export default function Form(props: Props) {
   const { initialValues, children, validate, onSubmit } = props;
   const clonedInitialValues = cloneObj(initialValues) as ObjType;
+
+  const runValidations = async () => {
+    if (validate) {
+      const errors = await validate(state.values);
+      if (errors && Object.keys(errors).length > 0) {
+        dispatch({ type: 'SET_ERRORS', payload: errors });
+        return false;
+      }
+      dispatch({ type: 'SET_ERRORS', payload: {} });
+    }
+
+    return true;
+  };
+
   const initialFormState: FormState = {
     values: clonedInitialValues || {},
     fieldValues: clonedInitialValues || {},
     errors: {},
     initialValues: clonedInitialValues,
+    visited: {},
   };
   const [state, dispatch] = useReducer(reducer, initialFormState);
-  const formContextVal: FormContextVal = { state, dispatch };
+  const formContextVal: FormContextVal = { state, dispatch, runValidations };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (validate) {
-      const errors = await validate(state.values);
-      if (errors && Object.keys(errors).length > 0) {
-        dispatch({ type: 'SET_ERRORS', payload: errors });
-        return;
-      } else {
-        dispatch({ type: 'SET_ERRORS', payload: {} });
-      }
-    }
-
-    if (onSubmit) {
+    dispatch({ type: 'SET_ALL_VISITED', payload: null });
+    const validationResult = await runValidations();
+    if (validationResult && onSubmit) {
       onSubmit(state.values);
     }
   };

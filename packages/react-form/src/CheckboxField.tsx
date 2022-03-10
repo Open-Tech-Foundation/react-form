@@ -1,4 +1,4 @@
-import { ChangeEvent, useMemo } from 'react';
+import { ChangeEvent } from 'react';
 import useField from './useField';
 
 interface Props {
@@ -35,20 +35,18 @@ export default function CheckboxField(props: Props): React.ReactNode {
     return (field.value as string[]).includes(value as string);
   };
 
-  return useMemo(
-    () => (
-      <>
-        <input
-          type="checkbox"
-          id={id}
-          name={name}
-          checked={isChecked()}
-          onChange={handleChange}
-          {...otherProps}
-        />
-        <label htmlFor={id}>{label}</label>
-      </>
-    ),
-    [field.value]
+  return (
+    <>
+      <input
+        type="checkbox"
+        id={id}
+        name={name}
+        checked={isChecked()}
+        onChange={handleChange}
+        onBlur={field.onBlur}
+        {...otherProps}
+      />
+      <label htmlFor={id}>{label}</label>
+    </>
   );
 }

@@ -11,14 +11,23 @@ export interface FormState {
   fieldValues: ObjType;
   errors: ObjType;
   initialValues: ObjType;
+  visited: ObjType;
 }
 
 export interface FormContextVal {
   state: FormState;
   dispatch: React.Dispatch<DispatchAction>;
+  runValidations: () => Promise<boolean>;
 }
 
 export const FormContext = createContext<FormContextVal>({
-  state: { values: {}, fieldValues: {}, errors: {}, initialValues: {} },
+  state: {
+    values: {},
+    fieldValues: {},
+    errors: {},
+    initialValues: {},
+    visited: {},
+  },
   dispatch: () => {},
+  runValidations: async () => true,
 });
