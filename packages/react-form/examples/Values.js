@@ -1,6 +1,11 @@
-import { useForm } from "../src";
+import { Box } from '@mui/system';
+import { useForm } from '../src';
 
 export default function Values() {
   const { values } = useForm();
-  return <pre>{JSON.stringify(values, null, 4)}</pre>;
+  return (
+    <Box mt={3} sx={{ bgcolor: 'text.primary', color: 'background.paper', p: 2 }}>
+      <pre>{JSON.stringify(values, null, 4)}</pre>
+    </Box>
+  );
 }
