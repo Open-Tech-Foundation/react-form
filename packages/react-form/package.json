@@ -2,7 +2,7 @@
   "name": "@open-tech-world/react-form",
   "version": "0.8.0",
   "description": "State Manager for React Forms.",
-  "source": "src/index.tsx",
+  "source": "src/index.ts",
   "main": "lib/main.js",
   "module": "lib/module.js",
   "types": "lib/types.d.ts",

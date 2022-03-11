@@ -6,6 +6,7 @@
   "scripts": {
     "start": "yarn workspace @open-tech-world/react-form start",
     "test": "yarn workspace @open-tech-world/react-form test",
+    "build": "yarn workspace @open-tech-world/react-form build",
     "website": "yarn workspace website start",
     "build:website": "yarn workspace website build"
   }
