@@ -8,17 +8,24 @@ The `initialValues` prop can be used to set initial values for the form.
 
 ### `<Field />`
 
-It renders an input component and binds its value to the form state.
+It renders an input element and binds its value to the form state.
 
-It supports HTML input (excluding checkbox and radio), select, textarea, and custom React input components.
+It supports the HTML `<input>` element and the `textarea` element.
 
 It uses the `name` prop to map the input value.
+
+:::caution
+
+It does not support the `checkbox` and `radio` input types; instead, use the `<CheckboxField/>` and `<RadioGroupField/>` components.
+
+:::
 
 ### Example
 
 ```tsx
 <Form onSubmit={(values) => console.log(values)}>
-  <Field name="userName" component="input" type="text" />
+  <Field name="userName" />
+  <Field name="email" type="email" />
   <button type="submit">Submit</button>
 </Form>
 ```
@@ -27,6 +34,29 @@ Values:
 
 ```json
 {
-    "userName": ""
+  "userName": "",
+  "email": ""
+}
+```
+
+### Example (Initial values)
+
+```tsx
+<Form
+  initialValues={{ userName: 'abc' }}
+  onSubmit={(values) => console.log(values)}
+>
+  <Field name="userName" />
+  <Field name="email" type="email" />
+  <button type="submit">Submit</button>
+</Form>
+```
+
+Values:
+
+```json
+{
+  "userName": "abc",
+  "email": ""
 }
 ```
