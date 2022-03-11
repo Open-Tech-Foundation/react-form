@@ -1,11 +1,18 @@
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render, fireEvent, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 
-import { Field, Form, CheckboxField, DatalistField, SelectField, RadioGroupField } from '../src';
+import {
+  Field,
+  Form,
+  CheckboxField,
+  DatalistField,
+  SelectField,
+  RadioGroupField,
+} from '../src';
 
 describe('Multiple Input Types', () => {
-  test('Checkbox', () => {
+  test('Checkbox', async () => {
     let formValues;
     render(
       <Form onSubmit={(values) => (formValues = values)}>
@@ -14,16 +21,22 @@ describe('Multiple Input Types', () => {
       </Form>
     );
     fireEvent.click(screen.getByRole('button'));
-    expect(formValues).toEqual({ newsletter: '' });
+    await waitFor(() => {
+      expect(formValues).toEqual({ newsletter: '' });
+    });
     fireEvent.click(screen.getByLabelText('Send newsletter'));
     fireEvent.click(screen.getByRole('button'));
-    expect(formValues).toEqual({ newsletter: true });
+    await waitFor(() => {
+      expect(formValues).toEqual({ newsletter: true });
+    });
     fireEvent.click(screen.getByLabelText('Send newsletter'));
     fireEvent.click(screen.getByRole('button'));
-    expect(formValues).toEqual({ newsletter: false });
+    await waitFor(() => {
+      expect(formValues).toEqual({ newsletter: false });
+    });
   });
 
-  test('Checkbox group', () => {
+  test('Checkbox group', async () => {
     let formValues;
     render(
       <Form onSubmit={(values) => (formValues = values)}>
@@ -34,16 +47,22 @@ describe('Multiple Input Types', () => {
       </Form>
     );
     fireEvent.click(screen.getByRole('button'));
-    expect(formValues).toEqual({ interests: [] });
+    await waitFor(() => {
+      expect(formValues).toEqual({ interests: [] });
+    });
     fireEvent.click(screen.getByLabelText('Art'));
     fireEvent.click(screen.getByRole('button'));
-    expect(formValues).toEqual({ interests: ['art'] });
+    await waitFor(() => {
+      expect(formValues).toEqual({ interests: ['art'] });
+    });
     fireEvent.click(screen.getByLabelText('Music'));
     fireEvent.click(screen.getByRole('button'));
-    expect(formValues).toEqual({ interests: ['art', 'music'] });
+    await waitFor(() => {
+      expect(formValues).toEqual({ interests: ['art', 'music'] });
+    });
   });
 
-  test('Radio group field', () => {
+  test('Radio group field', async () => {
     let formValues;
     render(
       <Form onSubmit={(values) => (formValues = values)}>
@@ -54,16 +73,22 @@ describe('Multiple Input Types', () => {
       </Form>
     );
     fireEvent.click(screen.getByRole('button'));
-    expect(formValues).toEqual({ contact: '' });
+    await waitFor(() => {
+      expect(formValues).toEqual({ contact: '' });
+    })
     fireEvent.click(screen.getByLabelText('Email'));
     fireEvent.click(screen.getByRole('button'));
-    expect(formValues).toEqual({ contact: 'email' });
+    await waitFor(() => {
+      expect(formValues).toEqual({ contact: 'email' });
+    })
     fireEvent.click(screen.getByLabelText('Phone'));
     fireEvent.click(screen.getByRole('button'));
-    expect(formValues).toEqual({ contact: 'phone' });
+    await waitFor(() => {
+      expect(formValues).toEqual({ contact: 'phone' });
+    });
   });
 
-  test('Date input', () => {
+  test('Date input', async () => {
     let formValues;
     render(
       <Form onSubmit={(values) => (formValues = values)}>
@@ -77,10 +102,12 @@ describe('Multiple Input Types', () => {
       target: { value: '2020-01-01' },
     });
     fireEvent.click(screen.getByRole('button'));
-    expect(formValues).toEqual({ today: '2020-01-01' });
+    await waitFor(() => {
+      expect(formValues).toEqual({ today: '2020-01-01' });
+    });
   });
 
-  test('Datalist type', () => {
+  test('Datalist type', async () => {
     let formValues;
     render(
       <Form onSubmit={(values) => (formValues = values)}>
@@ -103,10 +130,12 @@ describe('Multiple Input Types', () => {
       target: { value: 'Chrome' },
     });
     fireEvent.click(screen.getByRole('button'));
-    expect(formValues).toEqual({ browser: 'Chrome' });
+    await waitFor(() => {
+      expect(formValues).toEqual({ browser: 'Chrome' });
+    });
   });
 
-  test('Select type', () => {
+  test('Select type', async () => {
     let formValues;
     render(
       <Form onSubmit={(values) => (formValues = values)}>
@@ -124,10 +153,12 @@ describe('Multiple Input Types', () => {
     });
     fireEvent.click(screen.getByRole('button'));
     expect(screen.getAllByRole('option')).toHaveLength(3);
-    expect(formValues).toEqual({ browser: 'chrome' });
+    await waitFor(() => {
+      expect(formValues).toEqual({ browser: 'chrome' });
+    });
   });
 
-  test('Multiple Select type', () => {
+  test('Multiple Select type', async () => {
     let formValues;
     render(
       <Form onSubmit={(values) => (formValues = values)}>
@@ -143,10 +174,12 @@ describe('Multiple Input Types', () => {
     userEvent.selectOptions(screen.getByRole('listbox'), ['chrome', 'firefox']);
     fireEvent.click(screen.getByRole('button'));
     expect(screen.getAllByRole('option')).toHaveLength(3);
-    expect(formValues).toEqual({ browser: ['chrome', 'firefox'] });
+    await waitFor(() => {
+      expect(formValues).toEqual({ browser: ['chrome', 'firefox'] });
+    });
   });
 
-  test('Textarea type', () => {
+  test('Textarea type', async () => {
     let formValues;
     render(
       <Form onSubmit={(values) => (formValues = values)}>
@@ -159,6 +192,8 @@ describe('Multiple Input Types', () => {
       target: { value: 'abc \n xyz' },
     });
     fireEvent.click(screen.getByRole('button'));
-    expect(formValues).toEqual({ desc: 'abc \n xyz' });
+    await waitFor(() => {
+      expect(formValues).toEqual({ desc: 'abc \n xyz' });
+    });
   });
 });

@@ -128,4 +128,68 @@ describe('Validations', () => {
       });
     });
   });
+
+  test('Blur the fields to show validation errors', async () => {
+    let formValues;
+    render(
+      <Form
+        onSubmit={(values) => (formValues = values)}
+        validate={(values) => {
+          const errors = {};
+          if (!values.name) {
+            errors.name = 'Name is required!';
+          }
+          if (!values.email.includes('@')) {
+            errors.email = 'Invalid email address!';
+          }
+          if (values.age < 18) {
+            errors.age = 'You must be a major';
+          }
+          return errors;
+        }}
+      >
+        <label htmlFor="name-input">Name</label>
+        <Field id="name-input" name="name" />
+        <ErrorMsg path="name" />
+        <label htmlFor="email-input">Email</label>
+        <Field id="email-input" name="email" type="email" />
+        <ErrorMsg path="email" />
+        <label htmlFor="age-input">Age</label>
+        <Field id="age-input" name="age" type="number" />
+        <ErrorMsg path="age" />
+        <button type="submit" />
+      </Form>
+    );
+
+    screen.getByLabelText('Name').focus();
+    screen.getByLabelText('Name').blur();
+    await waitFor(() => {
+      expect(screen.getByText('Name is required!')).toBeInTheDocument();
+    });
+
+    screen.getByLabelText('Email').focus();
+    screen.getByLabelText('Email').blur();
+    await waitFor(() => {
+      expect(screen.getByText('Name is required!')).toBeInTheDocument();
+      expect(screen.getByText('Invalid email address!')).toBeInTheDocument();
+    });
+    
+    screen.getByLabelText('Age').focus();
+    fireEvent.change(screen.getByLabelText('Age'), { target: { value: 17 } });
+    screen.getByLabelText('Age').blur();
+    await waitFor(() => {
+      expect(screen.getByText('Name is required!')).toBeInTheDocument();
+      expect(screen.getByText('Invalid email address!')).toBeInTheDocument();
+      expect(screen.getByText('You must be a major')).toBeInTheDocument();
+    });
+
+    screen.getByLabelText('Age').focus();
+    fireEvent.change(screen.getByLabelText('Age'), { target: { value: 20 } });
+    screen.getByLabelText('Age').blur();
+    await waitFor(() => {
+      expect(screen.getByText('Name is required!')).toBeInTheDocument();
+      expect(screen.getByText('Invalid email address!')).toBeInTheDocument();
+      expect(screen.queryByText('You must be a major')).not.toBeInTheDocument();
+    });
+  });
 });

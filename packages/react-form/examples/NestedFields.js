@@ -14,10 +14,15 @@ export default function NestedFields() {
         onSubmit={(values) => console.log(values)}
         initialValues={initialState}
         validate={(values) => {
-          const errors = {};
+          const errors = { address: {} };
           if (!values.address.line1) {
-            errors.address = {};
             errors.address.line1 = 'Line 1 is required!';
+          }
+          if (!values.address.city) {
+            errors.address.city = 'City is required!';
+          }
+          if (Object.keys(errors.address).length === 0) {
+            delete errors.address;
           }
           return errors;
         }}
@@ -56,6 +61,7 @@ export default function NestedFields() {
             <option value="New York">New York</option>
             <option value="London">London</option>
           </SelectField>
+          <ErrorMsg path="address.city" />
         </Box>
 
         <Box mt={2}>
