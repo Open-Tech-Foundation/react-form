@@ -1,3 +1,10 @@
+import CodeBlock from '@theme/CodeBlock';
+import BrowserWindow from '@site/src/components/BrowserWindow';
+import BasicForm from '@site/src/examples/BasicForm';
+import BasicFormSource from '!!raw-loader!@site/src/examples/BasicForm';
+import BasicForm2 from '@site/src/examples/BasicForm2';
+import BasicForm2Source from '!!raw-loader!@site/src/examples/BasicForm2';
+
 ### `<Form />`
 
 The root component for all the input fields in a form.
@@ -22,41 +29,16 @@ It does not support the `checkbox` and `radio` input types; instead, use the `<C
 
 ### Example
 
-```tsx
-<Form onSubmit={(values) => console.log(values)}>
-  <Field name="userName" />
-  <Field name="email" type="email" />
-  <button type="submit">Submit</button>
-</Form>
-```
+<CodeBlock className="language-jsx">{BasicFormSource}</CodeBlock>
 
-Values:
-
-```json
-{
-  "userName": "",
-  "email": ""
-}
-```
+<BrowserWindow>
+  <BasicForm />
+</BrowserWindow>
 
 ### Example (Initial values)
 
-```tsx
-<Form
-  initialValues={{ userName: 'abc' }}
-  onSubmit={(values) => console.log(values)}
->
-  <Field name="userName" />
-  <Field name="email" type="email" />
-  <button type="submit">Submit</button>
-</Form>
-```
+<CodeBlock className="language-jsx">{BasicForm2Source}</CodeBlock>
 
-Values:
-
-```json
-{
-  "userName": "abc",
-  "email": ""
-}
-```
+<BrowserWindow>
+  <BasicForm2 />
+</BrowserWindow>
