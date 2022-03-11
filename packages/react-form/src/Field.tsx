@@ -10,6 +10,7 @@ type FieldType =
   | 'number'
   | 'password'
   | 'range'
+  | 'search'
   | 'tel'
   | 'text'
   | 'textarea'
