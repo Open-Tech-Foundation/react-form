@@ -1,7 +1,7 @@
 import { Form, Field } from '@open-tech-world/react-form';
 import Values from './Values';
 
-export default function BasicForm2() {
+export default function BasicForm() {
   return (
     <>
       <Form initialValues={{name: 'xxx'}} onSubmit={(values) => console.log(values)}>
