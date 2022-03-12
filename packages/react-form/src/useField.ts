@@ -77,11 +77,13 @@ export default function useField(
   };
 
   const onBlur = () => {
-    dispatch({
-      type: 'SET_VISITED',
-      payload: { name, value: true },
-    });
-    runValidations();
+    setTimeout(() => {
+      dispatch({
+        type: 'SET_VISITED',
+        payload: { name, value: true },
+      });
+      runValidations();
+    }, 100);
   };
 
   const getFieldError = () => {
