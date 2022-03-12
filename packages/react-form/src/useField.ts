@@ -83,7 +83,7 @@ export default function useField(
         payload: { name, value: true },
       });
       runValidations();
-    }, 100);
+    }, 300);
   };
 
   const getFieldError = () => {
