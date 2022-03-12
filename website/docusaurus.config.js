@@ -23,7 +23,7 @@ const config = {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl: 'https://github.com/open-tech-world/create-form',
+          editUrl: 'https://github.com/open-tech-world/react-form',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

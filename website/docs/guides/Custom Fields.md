@@ -1,7 +1,11 @@
+---
+sidebar_position: 4
+---
+
 import CodeBlock from '@theme/CodeBlock';
 import BrowserWindow from '@site/src/components/BrowserWindow';
 import TweetForm from '@site/src/examples/TweetForm';
-import TweetFieldSource from '!!raw-loader!@site/src/examples/TweetForm';
+import TweetFormSource from '!!raw-loader!@site/src/examples/TweetForm';
 
 Other than the HTML `<input>` elements, you can use your `React` components as form fields using `useField` hook.
 
@@ -19,7 +23,7 @@ The `field` object contains `value`, `onChange`, and `onBlur` input props.
 
 The following example demonstrates the `custom` field for displaying input characters length.
 
-<CodeBlock className="language-jsx">{TweetFieldSource}</CodeBlock>
+<CodeBlock className="language-jsx">{TweetFormSource}</CodeBlock>
 
 <BrowserWindow>
   <TweetForm />

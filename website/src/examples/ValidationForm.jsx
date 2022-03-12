@@ -1,12 +1,21 @@
 import { Form, Field } from '@open-tech-world/react-form';
 import Values from './Values';
 
-export default function BasicForm() {
+export default function ValidationForm() {
   return (
     <>
       <Form
-        initialValues={{ name: 'xxx' }}
         onSubmit={(values) => alert(JSON.stringify(values, '', 4))}
+        validate={(values) => {
+          const errors = {};
+          if (!values.name) {
+            errors.name = 'Name is required!';
+          }
+          if (!values.email) {
+            errors.email = 'Email is required!';
+          }
+          return errors;
+        }}
       >
         <div>
           <label>Name: </label>

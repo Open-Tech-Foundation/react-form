@@ -4,7 +4,7 @@ import Values from './Values';
 export default function BasicForm() {
   return (
     <>
-      <Form onSubmit={(values) => console.log(values)}>
+      <Form onSubmit={(values) => alert(JSON.stringify(values, '', 4))}>
         <div>
           <label>Name: </label>
           <Field name="name" />
