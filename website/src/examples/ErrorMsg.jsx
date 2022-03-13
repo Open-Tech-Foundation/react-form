@@ -1,4 +1,3 @@
-import { Box } from '@mui/material';
 import { useForm } from '@open-tech-world/react-form';
 
 export default function ErrorMsg({ path }) {
@@ -6,7 +5,7 @@ export default function ErrorMsg({ path }) {
   const error = getFieldError(path);
 
   if (error) {
-    return <Box sx={{ color: 'error.main' }}>{error}</Box>;
+    return <div style={{ color: 'red' }}>{error}</div>;
   }
 
   return null;

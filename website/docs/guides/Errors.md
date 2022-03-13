@@ -10,7 +10,7 @@ import ErrorMsgSource from '!!raw-loader!@site/src/examples/ErrorMsg';
 
 The `errors` object returned from the validation function is used to display errors in the form.
 
-## `useForm`
+## useForm
 
 The form field's error message can be obtained from the `useForm` hook function.
 

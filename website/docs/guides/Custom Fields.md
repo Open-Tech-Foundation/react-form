@@ -7,6 +7,9 @@ import BrowserWindow from '@site/src/components/BrowserWindow';
 import TweetForm from '@site/src/examples/TweetForm';
 import TweetFormSource from '!!raw-loader!@site/src/examples/TweetForm';
 
+import CCForm from '@site/src/examples/CCForm';
+import CCFormSource from '!!raw-loader!@site/src/examples/CCForm';
+
 Other than the HTML `<input>` elements, you can use your `React` components as form fields using `useField` hook.
 
 ## `useField`
@@ -28,3 +31,12 @@ The following example demonstrates the `custom` field for displaying input char
 <BrowserWindow>
   <TweetForm />
 </BrowserWindow>
+
+### Example 2
+
+<CodeBlock className="language-jsx">{CCFormSource}</CodeBlock>
+
+<BrowserWindow>
+  <CCForm />
+</BrowserWindow>
+
