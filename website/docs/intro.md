@@ -7,7 +7,7 @@ title: Introduction
 
 # @open-tech-world/react-form
 
-> State Manager for React Forms.
+> Build & Manage the State of Forms in React.
 
 ## Features
 
