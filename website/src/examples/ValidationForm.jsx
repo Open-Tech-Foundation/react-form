@@ -20,11 +20,14 @@ export default function ValidationForm() {
         <label>Name: </label>
         <Field name="name" />
       </div>
+
       <div>
         <label>Email: </label>
         <Field name="email" type="email" />
       </div>
+      
       <button type="submit">Submit</button>
+      
       <Values />
     </Form>
   );

@@ -13,7 +13,6 @@ function CCNumberField({ name }) {
           const format = e.target.value
             .replace(/[^0-9]/g, '')
             .replace(/(.{4})/g, '$1-');
-
           setValue(format.slice(0, 19));
         }
       }}
@@ -30,7 +29,7 @@ function ExpiryDateField({ name }) {
       placeholder="MM / YY"
       maxLength="7"
       onChange={(e) => {
-        if (e.target.value.length < 8) {
+        if (e.target.value.length <= 7) {
           const format = e.target.value
             .replace(/[^0-9]/g, '')
             .replace(/(.{2})/g, '$1 / ');
@@ -69,10 +68,9 @@ export default function CCForm() {
         />
       </div>
 
-      <div>
-        <button type="submit">Submit</button>
-      </div>
-      
+      <br />
+      <button type="submit">Submit</button>
+
       <Values />
     </Form>
   );

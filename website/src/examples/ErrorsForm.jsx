@@ -29,6 +29,7 @@ export default function ErrorsForm() {
         <ErrorMsg path="email" />
       </div>
 
+      <br />
       <button type="submit">Submit</button>
 
       <Values />
