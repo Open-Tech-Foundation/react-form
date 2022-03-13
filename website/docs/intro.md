@@ -13,6 +13,6 @@ title: Introduction
 
 - Simple APIs to use.
 
-- It supports nested and array fields.
+- It supports nested & array fields.
 
 - It supports form validation.

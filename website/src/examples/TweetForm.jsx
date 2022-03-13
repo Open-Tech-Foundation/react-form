@@ -26,7 +26,9 @@ export default function TweetForm() {
   return (
     <Form onSubmit={(values) => alert(JSON.stringify(values, '', 4))}>
       <TweetField name="tweet" />
+
       <button type="submit">Tweet</button>
+      
       <Values />
     </Form>
   );
