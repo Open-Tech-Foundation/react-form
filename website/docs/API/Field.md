@@ -4,7 +4,7 @@ title: <Field />
 heading: <Field />
 ---
 
-It renders an HTML input element and binds its value to the form state.
+It renders an HTML `<input>` element and binds its value to the form state.
 
 ## Props:
 

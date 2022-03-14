@@ -4,7 +4,7 @@ title: <CheckboxField />
 heading: <CheckboxField />
 ---
 
-It renders an HTML input element of type `checkbox` and binds its value to the form state.
+It renders an HTML `<input>` element of type `checkbox` and binds its value to the form state.
 
 By default, the `value` of the `checkbox` field will be of the type `boolean`. 
 

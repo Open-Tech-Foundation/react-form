@@ -4,7 +4,7 @@ title: <RadioGroupField />
 heading: <RadioGroupField />
 ---
 
-It renders an HTML input element of type `radio` and binds its value to the form state.
+It renders an HTML `<input>` element of type `radio` and binds its value to the form state.
 
 ## Props:
 
