@@ -6,7 +6,7 @@ heading: <Form />
 
 The root component for all the input fields in a form.
 
-It renders an HTML form element.
+It renders an HTML `<form>` element.
 
 ## Props:
 
@@ -19,5 +19,5 @@ It renders an HTML form element.
 
 
 :::info
-Here, the `ObjType` refers to the JS plain object type (`{}`).
+Here, the `ObjType` refers to the Javascript plain object type (`{}`).
 :::
