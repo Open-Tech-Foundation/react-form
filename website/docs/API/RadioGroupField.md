@@ -17,3 +17,19 @@ It renders an HTML `<input>` element of type `radio` and binds its value to the 
 :::info
 Any additional props supplied to the component will be passed on to the input element.
 :::
+
+## Usage
+
+```jsx
+import { Form, RadioGroupField } from '@open-tech-world/react-form';
+
+function MyForm() {
+  return (
+      <Form onSubmit={(values) => {}}>
+        <RadioGroupField name="group" label="Value 1" value="value 1" />
+        <RadioGroupField name="group" label="Value 2" value="value 2" />
+        <RadioGroupField name="group" label="Value 3" value="value 3" />
+      </Form>;
+  )
+}
+```

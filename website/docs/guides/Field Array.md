@@ -17,11 +17,11 @@ It supports `arrays` and `arrays of objects`.
 
 It has two required props: `name` and `component`.
 
-It must be given an unique `name`, as well as a `component` function to render an array of fields.
+A `unique` name and a `component` function must be provided to render an array of fields.
 
-The `component` prop `function` will receive an object containing `fields`, `push` and `remove`.
+The `component` function will receive an object containing `fields`, `push` and `remove` props.
 
-The `fields` is an array of strings made up of component `name` appended with `indexes`, useful for naming form fields.
+The `fields` is an array of strings made up of array `name` appended with `indexes`, useful for naming form fields.
 
 The `push` and `remove` functions are used to add and delete fields from the array.
 

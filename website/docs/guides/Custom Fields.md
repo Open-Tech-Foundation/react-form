@@ -24,7 +24,7 @@ The `field` object contains `value`, `onChange`, and `onBlur` input props.
 
 ### Example
 
-The following example demonstrates the `custom` field for displaying input characters length.
+The following example shows the `custom` field for displaying input characters length.
 
 <CodeBlock className="language-jsx">{TweetFormSource}</CodeBlock>
 
@@ -33,6 +33,8 @@ The following example demonstrates the `custom` field for displaying input char
 </BrowserWindow>
 
 ### Example 2
+
+The following example shows the `custom` fields for the credit card form.
 
 <CodeBlock className="language-jsx">{CCFormSource}</CodeBlock>
 

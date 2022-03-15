@@ -17,7 +17,7 @@ Generally, forms do have two types of validation. They are:
 
 By default, form validation happens when an input field blurs or the form submission is attempted.
 
-The `<Form>` component `validate` prop is used to set the validate function.
+The `<Form>` component `validate` prop is used to set the validation function.
 
 The validating function can be either `sync` or `async`
 

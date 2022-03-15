@@ -20,3 +20,19 @@ Any additional props supplied to the component will be passed on to the input el
 :::caution
 It does not support the `checkbox` and `radio` input types; instead, use the [`<CheckboxField />`](/api/checkboxfield) and [`<RadioGroupField />`](/api/radiogroupfield) components.
 :::
+
+
+## Usage
+
+```jsx
+import { Form, Field } from '@open-tech-world/react-form';
+
+function MyForm() {
+  return (
+      <Form onSubmit={(values) => {}}>
+        <Field name="name" />
+        <Field name="email" type="email" />
+      </Form>;
+  )
+}
+```

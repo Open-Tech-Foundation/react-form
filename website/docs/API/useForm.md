@@ -2,11 +2,11 @@
 sidebar_position: 6
 ---
 
-The `useForm` is a custom React hook function.
+The `useForm` is a custom React `hook` function.
 
 It is used to get the form `context` objects.
 
-The function will return `values` & `errors` objects and a helper function `getFieldError`.
+The function will return `values` & `errors` objects and a helper function, `getFieldError`.
 
 ### values
 
@@ -20,6 +20,20 @@ The object contains `error` messages for the form fields, which are returned fro
 
 `getFieldError: (path: string) => string | undefined;`
 
-The function is used to get the field's `error` message. 
+The function is used to get the field's `error` message.
 
-The form field's name is given to the function as `path` argument. 
+The form field's name is given to the function as a `path` argument.
+
+## Usage
+
+```jsx
+import { useForm } from '@open-tech-world/react-form';
+
+function fn() {
+  const { values, errors, getFieldError } = useForm();
+  console.log(values);
+  console.log(errors);
+  const errorMsg = getFieldError('name');
+  console.log(errorMsg);
+}
+```
