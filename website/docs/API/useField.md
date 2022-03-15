@@ -43,7 +43,7 @@ function MyCustomField2({ name }) {
         onBlur={field.onBlur}
         value={field.value}
       />
-      <span>{error}</span>
+      <div style={{ color: 'red' }}>{error}</div>
     </>
   );
 }

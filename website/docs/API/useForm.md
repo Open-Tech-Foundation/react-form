@@ -31,9 +31,9 @@ import { useForm } from '@open-tech-world/react-form';
 
 function fn() {
   const { values, errors, getFieldError } = useForm();
+  const errorMsg = getFieldError('name');
   console.log(values);
   console.log(errors);
-  const errorMsg = getFieldError('name');
   console.log(errorMsg);
 }
 ```
