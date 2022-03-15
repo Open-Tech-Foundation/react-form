@@ -17,4 +17,4 @@ $ yarn add @open-tech-world/react-form
 
 ## License
 
-Copyright (c) [Thanga Ganapathy](https://github.com/Thanga-Ganapathy) ([MIT License](../../LICENSE)).
+Copyright (c) [Thanga Ganapathy](https://github.com/Thanga-Ganapathy) ([MIT License](./LICENSE)).
