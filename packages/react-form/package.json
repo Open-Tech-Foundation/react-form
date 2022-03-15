@@ -2,6 +2,7 @@
   "name": "@open-tech-world/react-form",
   "version": "0.8.0",
   "description": "Build & Manage the State of Forms in React.",
+  "homepage": "https://react-form.pages.dev/",
   "source": "src/index.ts",
   "main": "lib/main.js",
   "module": "lib/module.js",
