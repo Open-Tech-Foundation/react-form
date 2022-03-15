@@ -3,6 +3,7 @@
   "version": "0.9.0",
   "description": "Build & Manage the State of Forms in React.",
   "homepage": "https://react-form.pages.dev/",
+  "keywords": ["react", "form", "validation", "input", "state"],
   "source": "src/index.ts",
   "main": "lib/main.js",
   "module": "lib/module.js",
@@ -11,6 +12,9 @@
   "files": [
     "lib"
   ],
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "scripts": {
     "start": "parcel examples/index.html --port 3000",
     "watch": "parcel watch",
