@@ -1,6 +1,9 @@
-# @open-tech-world/react-form
+<div align="center">
 
-> Build & Manage the State of Forms in React.
+# @open-tech-world/react-form
+[![Build](https://github.com/open-tech-world/react-form/actions/workflows/build.yml/badge.svg)](https://github.com/open-tech-world/react-form/actions/workflows/build.yml)
+
+</div>
 
 ## Install
 
