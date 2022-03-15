@@ -5,6 +5,8 @@
 
 </div>
 
+> Build & Manage the State of Forms in React.
+
 ## Install
 
 ```bash
@@ -17,6 +19,7 @@ $ yarn add @open-tech-world/react-form
 
 ## Documentation
 
+[https://react-form.pages.dev/](https://react-form.pages.dev/)
 
 ## License
 
