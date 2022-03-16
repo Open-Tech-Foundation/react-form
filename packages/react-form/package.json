@@ -1,9 +1,15 @@
 {
   "name": "@open-tech-world/react-form",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "Build & Manage the State of Forms in React.",
   "homepage": "https://react-form.pages.dev/",
-  "keywords": ["react", "form", "validation", "input", "state"],
+  "keywords": [
+    "react",
+    "form",
+    "validation",
+    "input",
+    "state"
+  ],
   "source": "src/index.ts",
   "main": "lib/main.js",
   "module": "lib/module.js",
