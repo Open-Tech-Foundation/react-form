@@ -1,7 +1,12 @@
 import {
   Button,
   Checkbox,
+  FormControl,
   FormControlLabel,
+  FormHelperText,
+  InputLabel,
+  MenuItem,
+  Select,
   Switch,
   TextField,
   Typography,
@@ -57,12 +62,34 @@ const MuiSwitchField = ({ name }) => {
   );
 };
 
+
+const MUISelectField = ({ name }) => {
+  const { field, error } = useField(name);
+  return (
+    <FormControl fullWidth error={Boolean(error)}>
+      <InputLabel id="demo-simple-select-label">Age</InputLabel>
+      <Select
+        labelId="demo-simple-select-label"
+        id="demo-simple-select"
+        label="Age"
+        {...field}
+      >
+        <MenuItem value={10}>Ten</MenuItem>
+        <MenuItem value={20}>Twenty</MenuItem>
+        <MenuItem value={30}>Thirty</MenuItem>
+      </Select>
+      <FormHelperText>{error}</FormHelperText>
+    </FormControl>
+  );
+};
+
 export default function MuiForm() {
   return (
     <>
       <Typography variant="h6">MUI Form:</Typography>
       <Box mt={5}>
         <Form
+        initialValues={{select1: 20}}
           onSubmit={(values) => console.log(values)}
           validate={(values) => {
             const errors = {};
@@ -83,6 +110,10 @@ export default function MuiForm() {
           <Box mt={2}>
             <MuiSwitchField name="switch1" />
           </Box>
+
+          <Box mt={2}>
+          <MUISelectField name="select1" />
+        </Box>
 
           <Box mt={2}>
             <Button variant="contained" type="submit">

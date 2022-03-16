@@ -29,15 +29,17 @@ export default function useField(
   const getValue = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
-    if (e.currentTarget.type === 'number') {
-      return parseInt(e.currentTarget.value);
+    const target = e.currentTarget || e.target
+    
+    if (target.type === 'number') {
+      return parseInt(target.value);
     }
 
-    if (e.currentTarget.type === 'file') {
-      return (e.currentTarget as HTMLInputElement).files;
+    if (target.type === 'file') {
+      return (target as HTMLInputElement).files;
     }
 
-    return e.currentTarget.value;
+    return target.value;
   };
 
   const setValue = (v: unknown) => {
@@ -60,6 +62,8 @@ export default function useField(
   const onChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
+    const target = e.currentTarget || e.target
+
     dispatch({
       type: 'SET_VALUES',
       payload: {
@@ -71,7 +75,7 @@ export default function useField(
       type: 'SET_FIELD_VALUE',
       payload: {
         name,
-        value: e.currentTarget.value,
+        value: target.value,
       },
     });
   };
