@@ -1,4 +1,4 @@
-import { getInObj } from '@open-tech-world/es-utils';
+import { getInObj } from '@open-tech-world/js-utils';
 import { ChangeEvent, useContext, useEffect } from 'react';
 import { FormContext, FormContextVal } from './formContext';
 

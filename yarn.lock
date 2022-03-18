@@ -3132,10 +3132,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@open-tech-world/es-utils@npm:^0.13.0":
-  version: 0.13.0
-  resolution: "@open-tech-world/es-utils@npm:0.13.0"
-  checksum: a7a587f8108b94adb542b74d15cdb476f4343ffdb84661073c94d56a8b4693380e608f78165f3241df1d021760d8bac6df90a5f7b4cae1e3b9afcb0fd939f0cf
+"@open-tech-world/js-utils@npm:^0.13.1":
+  version: 0.13.1
+  resolution: "@open-tech-world/js-utils@npm:0.13.1"
+  checksum: 570548743019802253460fe01f254894e651edf74179d72a2a70287a9c3fbc28ace6847afd23881c8a250cafc88d9b816d962aed63e8dc23e20c26102c4fdbb4
   languageName: node
   linkType: hard
 
@@ -3150,7 +3150,7 @@ __metadata:
     "@emotion/react": ^11.8.2
     "@emotion/styled": ^11.8.1
     "@mui/material": ^5.5.1
-    "@open-tech-world/es-utils": ^0.13.0
+    "@open-tech-world/js-utils": ^0.13.1
     "@parcel/packager-ts": 2.3.2
     "@parcel/transformer-react-refresh-wrap": ^2.3.2
     "@parcel/transformer-typescript-types": 2.3.2
@@ -3160,7 +3160,6 @@ __metadata:
     "@testing-library/user-event": ^13.5.0
     "@types/react": ^17.0.40
     "@types/react-dom": ^17.0.13
-    add: ^2.0.6
     babel-jest: ^27.5.1
     jest: ^27.5.1
     parcel: ^2.3.2
@@ -3169,7 +3168,6 @@ __metadata:
     react-dom: ^17.0.2
     react-router-dom: 6.2.2
     typescript: 4.6.2
-    yarn: ^1.22.17
     yup: ^0.32.11
   peerDependencies:
     react: "*"
@@ -6065,13 +6063,6 @@ __metadata:
   bin:
     acorn: bin/acorn
   checksum: e0f79409d68923fbf1aa6d4166f3eedc47955320d25c89a20cc822e6ba7c48c5963d5bc657bc242d68f7a4ac9faf96eef033e8f73656da6c640d4219935fdfd0
-  languageName: node
-  linkType: hard
-
-"add@npm:^2.0.6":
-  version: 2.0.6
-  resolution: "add@npm:2.0.6"
-  checksum: e2d23d40494565dfed4acd65e478570c444db5ac6c053551ed429c39ea0f2c99d83df63e7befec936df601827d2254d06a2fb6f7dcfd2022e810b25eab818b8c
   languageName: node
   linkType: hard
 
@@ -20030,16 +20021,6 @@ __metadata:
     y18n: ^5.0.5
     yargs-parser: ^20.2.2
   checksum: b14afbb51e3251a204d81937c86a7e9d4bdbf9a2bcee38226c900d00f522969ab675703bee2a6f99f8e20103f608382936034e64d921b74df82b63c07c5e8f59
-  languageName: node
-  linkType: hard
-
-"yarn@npm:^1.22.17":
-  version: 1.22.17
-  resolution: "yarn@npm:1.22.17"
-  bin:
-    yarn: ./bin/yarn.js
-    yarnpkg: ./bin/yarn.js
-  checksum: 9d5211477d439a4d7b5632d7c290a3be36d2edc13599b64964bff520d3a3a480db85010f3262293981abb4e618ac92aaafa4c4c54bae50a7713c7b8ec431adac
   languageName: node
   linkType: hard
 

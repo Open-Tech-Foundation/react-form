@@ -1,5 +1,5 @@
-import { cloneObj, setInObj } from '@open-tech-world/es-utils';
-import { ObjType } from '@open-tech-world/es-utils/lib/ObjType';
+import { cloneObj, setInObj } from '@open-tech-world/js-utils';
+import { ObjType } from '@open-tech-world/js-utils/lib/ObjType';
 import { FormEvent, useReducer } from 'react';
 import {
   DispatchAction,

@@ -1,5 +1,5 @@
 import { useContext, useMemo } from "react";
-import { getInObj } from "@open-tech-world/es-utils";
+import { getInObj } from "@open-tech-world/js-utils";
 import { FormContext, FormContextVal } from "./formContext";
 
 interface ComponentProps {
