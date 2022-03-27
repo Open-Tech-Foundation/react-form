@@ -7,7 +7,7 @@
 
 > Build & Manage the State of Forms in React.
 
-## Install
+## Installation
 
 ```bash
 # With npm
