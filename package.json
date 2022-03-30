@@ -4,7 +4,8 @@
     "website"
   ],
   "scripts": {
-    "start": "yarn workspace website start",
+    "start": "yarn workspace @open-tech-world/react-form start",
+    "start:website": "yarn workspace website start",
     "test": "yarn workspace @open-tech-world/react-form test",
     "build": "yarn workspace @open-tech-world/react-form build",
     "build:website": "yarn build && yarn workspace website build",
