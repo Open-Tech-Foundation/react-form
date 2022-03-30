@@ -1,20 +1,19 @@
-import { ChangeEvent } from 'react';
+import { InputHTMLAttributes } from 'react';
 import useField from './useField';
 
-interface Props {
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   label: string;
   value?: string;
 }
 
-export default function RadioGroupField(props: Props): React.ReactNode {
+export default function RadioGroupField(props: Props) {
   const { name, label, value, ...otherProps } = props;
   const { field, setValue } = useField(name);
 
-  // @ts-ignore
   const id = crypto.randomUUID();
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = () => {
     setValue(value);
   };
 

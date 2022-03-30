@@ -1,140 +1,116 @@
-import { cloneObj, setInObj } from '@open-tech-world/js-utils';
-import { ObjType } from '@open-tech-world/js-utils/lib/ObjType';
+import { cloneObj, getInObj, setInObj } from '@open-tech-world/js-utils';
+import { createState } from '@open-tech-world/react-state';
 import { FormEvent, useReducer } from 'react';
-import {
-  DispatchAction,
-  FormContext,
-  FormContextVal,
-  FormState,
-} from './formContext';
+import cloneObjWithDefaultVal from './cloneObjWithDefaultVal';
+import { FormContext } from './formContext';
+import { ContextVal, FormState, InitialValues, Props } from './types';
 
-function cloneObjWithDefaultVal(obj: unknown, defVal: unknown): unknown {
-  let cloneObj;
-  if (Array.isArray(obj)) {
-    cloneObj = [];
-    for (const v of obj) {
-      if (typeof v !== 'object') {
-        cloneObj.push(defVal);
-      } else {
-        cloneObj.push(cloneObjWithDefaultVal(v, defVal));
-      }
-    }
-    return cloneObj;
-  }
-  cloneObj = {} as ObjType;
-  for (const key in obj as ObjType) {
-    if (typeof (obj as ObjType)[key] !== 'object') {
-      cloneObj[key] = defVal;
-    } else {
-      cloneObj[key] = cloneObjWithDefaultVal((obj as ObjType)[key], defVal);
-    }
-  }
-  return cloneObj;
-}
+// function reducer(state: FormState, action: DispatchAction): FormState {
+//   switch (action.type) {
+//     case 'REGISTER_FIELD':
+//       if (getInObj(state.fieldValues, action.payload.name) !== undefined) {
+//         return state;
+//       }
 
-function reducer(state: FormState, action: DispatchAction): FormState {
-  switch (action.type) {
-    case 'REGISTER_FIELD':
-      return {
-        ...state,
-        values: setInObj(
-          cloneObj(state.values) as ObjType,
-          (action.payload as ObjType).name as string,
-          (action.payload as ObjType).value
-        ),
-        fieldValues: setInObj(
-          cloneObj(state.fieldValues) as ObjType,
-          (action.payload as ObjType).name as string,
-          (action.payload as ObjType).value
-        ),
-      };
-    case 'SET_FIELD_VALUE':
-      return {
-        ...state,
-        fieldValues: setInObj(
-          cloneObj(state.fieldValues) as ObjType,
-          (action.payload as ObjType).name as string,
-          (action.payload as ObjType).value
-        ),
-      };
-    case 'SET_VALUES':
-      return {
-        ...state,
-        values: setInObj(
-          cloneObj(state.values) as ObjType,
-          (action.payload as ObjType).name as string,
-          (action.payload as ObjType).value
-        ),
-      };
-    case 'SET_VISITED':
-      return {
-        ...state,
-        visited: setInObj(
-          cloneObj(state.visited) as ObjType,
-          (action.payload as ObjType).name as string,
-          (action.payload as ObjType).value
-        ),
-      };
-    case 'SET_ALL_VISITED':
-      return {
-        ...state,
-        visited: cloneObjWithDefaultVal(state.fieldValues, true) as ObjType,
-      };
-    case 'SET_ERRORS':
-      return {
-        ...state,
-        errors: cloneObj(action.payload) as ObjType,
-      };
-    default:
-      throw new Error();
-  }
-}
+//       return {
+//         ...state,
+//         values: setInObj(
+//           cloneObj(state.values),
+//           action.payload.name,
+//           action.payload.value
+//         ) as Record<string, unknown>,
+//         fieldValues: setInObj(
+//           cloneObj(state.fieldValues),
+//           action.payload.name,
+//           action.payload.value
+//         ),
+//       };
+//     case 'SET_FIELD_VALUE':
+//       return {
+//         ...state,
+//         fieldValues: setInObj(
+//           cloneObj(state.fieldValues),
+//           action.payload.name,
+//           action.payload.value
+//         ),
+//       };
+//     case 'SET_VALUES':
+//       return {
+//         ...state,
+//         values: setInObj(
+//           cloneObj(state.values),
+//           action.payload.name,
+//           action.payload.value
+//         ) as Record<string, unknown>,
+//       };
+//     case 'SET_VISITED':
+//       return {
+//         ...state,
+//         visited: setInObj(
+//           cloneObj(state.visited),
+//           action.payload.name,
+//           action.payload.value
+//         ),
+//       };
+//     case 'SET_ALL_VISITED':
+//       return {
+//         ...state,
+//         visited: cloneObjWithDefaultVal(state.fieldValues, true),
+//       };
+//     case 'SET_ERRORS':
+//       return {
+//         ...state,
+//         errors: cloneObj(action.payload.value),
+//       };
+//     default:
+//       throw new Error();
+//   }
+// }
 
-interface Props {
-  initialValues?: ObjType;
-  onSubmit: (values: ObjType) => void;
-  validate?: (values: ObjType) => ObjType;
-  children: React.ReactNode;
-}
-
-export default function Form(props: Props) {
+export default function Form<Values = InitialValues>(props: Props<Values>) {
   const { initialValues, children, validate, onSubmit } = props;
-  const clonedInitialValues = cloneObj(initialValues) as ObjType;
+
+  const formState: FormState = {
+    values: cloneObj(initialValues) || {},
+    errors: {},
+    visited: {},
+  };
+
+  const useFormState = createState<FormState>(formState);
+
+  const setState = useFormState(null, { set: true });
 
   const runValidations = async () => {
     if (validate) {
-      const errors = await validate(state.values);
+      const errors = await validate(formState.values as Values);
       if (errors && Object.keys(errors).length > 0) {
-        dispatch({ type: 'SET_ERRORS', payload: errors });
+        setState({ errors: errors });
         return false;
       }
-      dispatch({ type: 'SET_ERRORS', payload: {} });
+      setState({ errors: {} });
     }
 
     return true;
   };
 
-  const initialFormState: FormState = {
-    values: clonedInitialValues || {},
-    fieldValues: clonedInitialValues || {},
-    errors: {},
-    initialValues: clonedInitialValues,
-    visited: {},
+  const contextVal: ContextVal = {
+    useFormState: useFormState,
+    runValidations: runValidations,
   };
-  const [state, dispatch] = useReducer(reducer, initialFormState);
-  const formContextVal: FormContextVal = { state, dispatch, runValidations };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    dispatch({ type: 'SET_ALL_VISITED', payload: null });
+    setState((s) => ({
+      visited: cloneObjWithDefaultVal(s.values as object, true),
+    }));
     const validationResult = await runValidations();
     if (validationResult && onSubmit) {
-      onSubmit(state.values);
+      onSubmit(formState.values as Values);
     }
   };
 
   return (
-    <FormContext.Provider value={formContextVal}>
+    <FormContext.Provider value={contextVal}>
       <form role="form" onSubmit={handleSubmit}>
         {children}
       </form>

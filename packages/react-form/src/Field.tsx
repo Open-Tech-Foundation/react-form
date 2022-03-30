@@ -1,3 +1,4 @@
+import { InputHTMLAttributes } from 'react';
 import { useField } from '.';
 
 type FieldType =
@@ -17,12 +18,13 @@ type FieldType =
   | 'time'
   | 'week';
 
-interface Props {
+interface Props
+  extends InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
   name: string;
-  type: FieldType;
+  type?: FieldType;
 }
 
-export default function Field(props: Props): React.ReactNode {
+export default function Field(props: Props) {
   const { name, type, ...otherProps } = props;
   const { field } = useField(name);
 

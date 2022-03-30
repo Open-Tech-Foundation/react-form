@@ -1,21 +1,20 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, InputHTMLAttributes } from 'react';
 import useField from './useField';
 
-interface Props {
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   label: string;
   value?: string;
 }
 
-export default function CheckboxField(props: Props): React.ReactNode {
+export default function CheckboxField(props: Props) {
   const { name, label, value, ...otherProps } = props;
   const { field, setValue } = useField(name, { multiple: Boolean(value) });
 
-  // @ts-ignore
   const id = crypto.randomUUID();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    let v: boolean | string[];
+    let v: boolean | string[] = e.target.checked;
 
     if (value) {
       if (e.target.checked) {
@@ -23,8 +22,6 @@ export default function CheckboxField(props: Props): React.ReactNode {
       } else {
         v = (field.value as string[]).filter((i) => i !== value);
       }
-    } else {
-      v = e.target.checked;
     }
 
     setValue(v);

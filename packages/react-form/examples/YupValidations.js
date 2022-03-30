@@ -1,10 +1,10 @@
-import { Typography } from "@mui/material";
-import { Box } from "@mui/system";
-import * as yup from "yup";
+import { Typography } from '@mui/material';
+import { Box } from '@mui/system';
+import * as yup from 'yup';
 
-import { Form, Field } from "../src/index";
-import ErrorMsg from "./ErrorMsg";
-import Values from "./Values";
+import { Form, Field } from '../src/index';
+import ErrorMsg from './ErrorMsg';
+import Values from './Values';
 
 export default function YupValidations() {
   return (

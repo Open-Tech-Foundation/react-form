@@ -8,7 +8,10 @@ export default function SimpleForm() {
     <>
       <Typography variant="h6">Simple Form:</Typography>
       <Box mt={5}>
-        <Form onSubmit={(values) => console.log(values)}>
+        <Form
+          onSubmit={(values) => console.log(values)}
+          initialValues={{ name: 'g' }}
+        >
           <Box mt={2}>
             <Box>Name: </Box>
             <Field name="name" />
