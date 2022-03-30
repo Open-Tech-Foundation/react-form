@@ -5,10 +5,10 @@ import { Field, Form } from '../src';
 import ErrorMsg from './ErrorMsg';
 
 describe('Validations', () => {
-  test('empty validate fn', async () => {
-    let formValues;
+  test('No validate fn', async () => {
+    let formValues: object;
     render(
-      <Form onSubmit={(values) => (formValues = values)} validate={() => {}}>
+      <Form onSubmit={(values) => (formValues = values)}>
         <Field name="name" />
         <button type="submit" />
       </Form>
@@ -20,9 +20,16 @@ describe('Validations', () => {
   });
 
   it('displays text field validation error', async () => {
-    let formValues;
+    interface FormValues {
+      name: string;
+    }
+
+    const initialValues: FormValues = { name: '' };
+
+    let formValues: object;
     render(
       <Form
+        initialValues={initialValues}
         onSubmit={(values) => (formValues = values)}
         validate={(values) => {
           const errors = {};
@@ -45,7 +52,7 @@ describe('Validations', () => {
   });
 
   test('multiple validation errors', async () => {
-    let formValues;
+    let formValues: object;
     render(
       <Form
         onSubmit={(values) => (formValues = values)}
@@ -130,7 +137,7 @@ describe('Validations', () => {
   });
 
   test('Blur the fields to show validation errors', async () => {
-    let formValues;
+    let formValues: object;
     render(
       <Form
         onSubmit={(values) => (formValues = values)}
@@ -173,7 +180,7 @@ describe('Validations', () => {
       expect(screen.getByText('Name is required!')).toBeInTheDocument();
       expect(screen.getByText('Invalid email address!')).toBeInTheDocument();
     });
-    
+
     screen.getByLabelText('Age').focus();
     fireEvent.change(screen.getByLabelText('Age'), { target: { value: 17 } });
     screen.getByLabelText('Age').blur();

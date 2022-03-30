@@ -1,12 +1,12 @@
 import { render, fireEvent, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-import { Field, FieldArray, Form, useField } from '../src';
+import { Field, FieldArray, Form } from '../src';
 import ErrorMsg from './ErrorMsg';
 
 describe('Field Array', () => {
   test('Create array of fields and validate them', async () => {
-    let formValues;
+    let formValues: object;
 
     render(
       <Form

@@ -1,6 +1,6 @@
-import { useContext, useMemo } from "react";
-import { getInObj } from "@open-tech-world/js-utils";
-import { FormContext, FormContextVal } from "./formContext";
+import { useContext } from 'react';
+import { getInObj } from '@open-tech-world/js-utils';
+import { FormContext, FormContextVal } from './formContext';
 
 interface ComponentProps {
   fields: string[];
@@ -10,7 +10,7 @@ interface ComponentProps {
 
 interface Props {
   name: string;
-  component: (props: ComponentProps) => React.ReactNode;
+  component: (props: ComponentProps) => JSX.Element;
 }
 
 export default function FieldArray(props: Props) {
@@ -22,26 +22,26 @@ export default function FieldArray(props: Props) {
 
   const push = (obj: unknown) => {
     dispatch({
-      type: "SET_FIELD_VALUE",
+      type: 'SET_FIELD_VALUE',
       payload: { name, value: [...value, obj] },
     });
     dispatch({
-      type: "SET_VALUES",
+      type: 'SET_VALUES',
       payload: { name, value: [...value, obj] },
     });
   };
 
   const remove = (index: number) => {
     dispatch({
-      type: "SET_FIELD_VALUE",
+      type: 'SET_FIELD_VALUE',
       payload: { name, value: value.filter((_, i) => index !== i) },
     });
     dispatch({
-      type: "SET_VALUES",
+      type: 'SET_VALUES',
       payload: { name, value: value.filter((_, i) => index !== i) },
     });
     dispatch({
-      type: "SET_VISITED",
+      type: 'SET_VISITED',
       payload: { name, value: value.filter((_, i) => index !== i) },
     });
   };

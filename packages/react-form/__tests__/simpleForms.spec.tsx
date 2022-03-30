@@ -5,13 +5,13 @@ import { Field, Form } from '../src';
 
 describe('Simple Forms', () => {
   it('Creates an empty form with a role', () => {
-    render(<Form />);
+    render(<Form onSubmit={() => undefined}>null</Form>);
     expect(screen.getByRole('form')).toBeInTheDocument();
   });
 
   it('Creates a form with a text input', () => {
     render(
-      <Form>
+      <Form onSubmit={() => undefined}>
         <label htmlFor="username-input">Username</label>
         <input id="username-input" type="text" />
       </Form>
@@ -21,10 +21,10 @@ describe('Simple Forms', () => {
   });
 
   test('Add text to a Field input & submit the form', async () => {
-    let formValues;
+    let formValues: object;
     render(
-      <Form onSubmit={(values) => (formValues = values)}>
-        <Field name="userName" />
+      <Form onSubmit={(values) => (formValues = values as object)}>
+        <Field name="userName" placeholder="username" />
         <button type="submit" />
       </Form>
     );
@@ -40,7 +40,7 @@ describe('Simple Forms', () => {
 
   test('Email Field input type', () => {
     render(
-      <Form>
+      <Form onSubmit={() => undefined}>
         <Field name="email" type="email" />
       </Form>
     );
@@ -49,9 +49,9 @@ describe('Simple Forms', () => {
   });
 
   it('Returns values from multiple input fields when the form submitted', async () => {
-    let formValues;
+    let formValues: object;
     render(
-      <Form onSubmit={(values) => (formValues = values)}>
+      <Form onSubmit={(values) => (formValues = values as object)}>
         <label htmlFor="name-input">Name</label>
         <Field id="name-input" name="name" />
         <label htmlFor="email-input">Email</label>
@@ -82,7 +82,7 @@ describe('Simple Forms', () => {
   });
 
   test('empty initial values form', async () => {
-    let formValues;
+    let formValues: object;
     render(
       <Form initialValues={{}} onSubmit={(values) => (formValues = values)}>
         <label htmlFor="name-input">Name</label>
@@ -98,7 +98,7 @@ describe('Simple Forms', () => {
   });
 
   it('returns the same initial values passed to the form', async () => {
-    let formValues;
+    let formValues: object;
     render(
       <Form
         initialValues={{ name: 'abc', age: 25 }}
@@ -117,7 +117,7 @@ describe('Simple Forms', () => {
   });
 
   it('returns the initial values merged with the changed values', async () => {
-    let formValues;
+    let formValues: object;
     render(
       <Form
         initialValues={{ name: 'abc', age: 25 }}

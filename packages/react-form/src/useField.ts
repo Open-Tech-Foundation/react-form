@@ -1,36 +1,34 @@
-import { getInObj } from '@open-tech-world/js-utils';
-import { ChangeEvent, useContext, useEffect } from 'react';
-import { FormContext, FormContextVal } from './formContext';
+import { getInObj, setInObj } from '@open-tech-world/js-utils';
+import { ChangeEvent, useContext } from 'react';
+import { FormContext } from './formContext';
+import { ContextVal } from './types';
 
-interface OptionsProps {
+export interface OptionsProps {
   multiple?: boolean;
 }
 
-export default function useField(
-  name: string,
-  options?: Partial<OptionsProps>
-) {
-  const { state, dispatch, runValidations } =
-    useContext<FormContextVal>(FormContext);
-  const initialFormStateValue = getInObj(state.fieldValues, name);
-  let value: unknown = options?.multiple ? [] : '';
-  if (initialFormStateValue) {
-    if (options?.multiple && !Array.isArray(initialFormStateValue)) {
-      value = [initialFormStateValue];
-    } else {
-      value = initialFormStateValue;
-    }
-  }
+export default function useField(name: string) {
+  const { useFormState, runValidations } = useContext(
+    FormContext
+  ) as ContextVal;
 
-  useEffect(() => {
-    dispatch({ type: 'REGISTER_FIELD', payload: { name: name, value } });
-  }, []);
+  const [{ value, isVisited, error }, setState] = useFormState(
+    (s) => ({
+      value: getInObj(s.values as object, name),
+      isVisited: getInObj(s.visited, name),
+      error: getInObj(s.errors, name),
+    }),
+    {
+      set: true,
+      shallow: true,
+    }
+  );
 
   const getValue = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
-    const target = e.currentTarget || e.target
-    
+    const target = e.currentTarget || e.target;
+
     if (target.type === 'number') {
       return parseInt(target.value);
     }
@@ -43,56 +41,23 @@ export default function useField(
   };
 
   const setValue = (v: unknown) => {
-    dispatch({
-      type: 'SET_VALUES',
-      payload: {
-        name,
-        value: v,
-      },
-    });
-    dispatch({
-      type: 'SET_FIELD_VALUE',
-      payload: {
-        name,
-        value: v,
-      },
-    });
+    setState((s) => ({ values: setInObj(s.values as object, name, v) }));
   };
 
   const onChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
-    const target = e.currentTarget || e.target
-
-    dispatch({
-      type: 'SET_VALUES',
-      payload: {
-        name,
-        value: getValue(e),
-      },
-    });
-    dispatch({
-      type: 'SET_FIELD_VALUE',
-      payload: {
-        name,
-        value: target.value,
-      },
-    });
+    setValue(getValue(e));
   };
 
   const onBlur = () => {
-    setTimeout(() => {
-      dispatch({
-        type: 'SET_VISITED',
-        payload: { name, value: true },
-      });
-      runValidations();
-    }, 300);
+    setState((s) => ({ visited: setInObj(s.visited as object, name, true) }));
+    runValidations();
   };
 
   const getFieldError = () => {
-    if (getInObj(state.visited, name) as boolean) {
-      return getInObj(state.errors, name);
+    if (isVisited && error) {
+      return error;
     }
   };
 

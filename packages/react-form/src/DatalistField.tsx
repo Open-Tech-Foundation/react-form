@@ -1,11 +1,12 @@
+import { InputHTMLAttributes } from 'react';
 import { useField } from '.';
 
-interface Props {
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   options: string[];
 }
 
-export default function DatalistField(props: Props): React.ReactNode {
+export default function DatalistField(props: Props) {
   const { name, options, ...otherProps } = props;
   const { field } = useField(name);
   const listId = crypto.randomUUID();
