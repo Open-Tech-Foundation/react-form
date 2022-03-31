@@ -3,10 +3,6 @@ import { ChangeEvent, useContext } from 'react';
 import { FormContext } from './formContext';
 import { ContextVal } from './types';
 
-export interface OptionsProps {
-  multiple?: boolean;
-}
-
 export default function useField(name: string) {
   const { useFormState, runValidations } = useContext(
     FormContext
