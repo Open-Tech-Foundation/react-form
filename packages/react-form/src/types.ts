@@ -22,9 +22,14 @@ export interface Props<Values> {
   children: ReactNode;
 }
 
-type Errors<T> = { [K in keyof T]: string | T[K] };
+export type Errors<T> = {
+  [K in keyof T]?: T[K] extends unknown[] | Record<string, unknown>
+    ? Errors<T[K]>
+    : string;
+};
+
 type Visited<T> = {
-  [K in keyof T]?: T[K] extends any[] | Record<string, unknown>
+  [K in keyof T]?: T[K] extends unknown[] | Record<string, unknown>
     ? Visited<T[K]>
     : boolean;
 };
