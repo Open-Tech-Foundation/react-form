@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import { useForm } from '../src';
 
-export default function ErrorMsg({ path }) {
+export default function ErrorMsg({ path }: { path: string }) {
   const { getFieldError } = useForm();
   const error = getFieldError(path);
 
