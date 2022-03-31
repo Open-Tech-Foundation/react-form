@@ -2,7 +2,7 @@ import Form from './Form';
 import Field from './Field';
 import useForm from './useForm';
 import useField from './useField';
-import FieldArray from './FieldArray';
+import useFieldArray from './useFieldArray';
 import CheckboxField from './CheckboxField';
 import RadioGroupField from './RadioGroupField';
 import SelectField from './SelectField';
@@ -11,7 +11,7 @@ import DatalistField from './DatalistField';
 export {
   Form,
   Field,
-  FieldArray,
+  useFieldArray,
   useForm,
   useField,
   CheckboxField,
