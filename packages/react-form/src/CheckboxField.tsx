@@ -9,7 +9,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 
 export default function CheckboxField(props: Props) {
   const { name, label, value, ...otherProps } = props;
-  const { field, setValue } = useField(name, { multiple: Boolean(value) });
+  const { field, setValue } = useField(name);
 
   const id = crypto.randomUUID();
 

@@ -5,16 +5,20 @@ import { ContextVal } from './types';
 
 export default function useForm() {
   const { useFormState }: ContextVal = useContext(FormContext) as ContextVal;
-  const state = useFormState((s) => s);
+  const { values, errors, visited } = useFormState((s) => ({
+    values: s.values,
+    errors: s.errors,
+    visited: s.visited,
+  }));
 
   return {
-    values: state.values,
-    errors: state.errors,
-    visited: state.visited,
+    values: values,
+    errors: errors,
+    visited: visited,
     getFieldError: (path: string): string | undefined => {
-      const isVisited = getInObj(state.visited, path) as boolean;
+      const isVisited = getInObj(visited, path) as boolean;
       if (isVisited || path.startsWith('_')) {
-        return getInObj(state.errors as object, path) as string | undefined;
+        return getInObj(errors as object, path) as string | undefined;
       }
     },
   };

@@ -1,5 +1,5 @@
 import { getInObj, setInObj } from '@open-tech-world/js-utils';
-import { ChangeEvent, useContext } from 'react';
+import { ChangeEvent, useContext, startTransition } from 'react';
 import { FormContext } from './formContext';
 import { ContextVal } from './types';
 
@@ -37,7 +37,9 @@ export default function useField(name: string) {
   };
 
   const setValue = (v: unknown) => {
-    setState((s) => ({ values: setInObj(s.values as object, name, v) }));
+    startTransition(() => {
+      setState((s) => ({ values: setInObj(s.values as object, name, v) }));
+    });
   };
 
   const onChange = (
@@ -47,7 +49,9 @@ export default function useField(name: string) {
   };
 
   const onBlur = () => {
-    setState((s) => ({ visited: setInObj(s.visited as object, name, true) }));
+    startTransition(() => {
+      setState((s) => ({ visited: setInObj(s.visited as object, name, true) }));
+    });
     runValidations();
   };
 

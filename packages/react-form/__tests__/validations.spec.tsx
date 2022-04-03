@@ -3,12 +3,16 @@ import '@testing-library/jest-dom';
 
 import { Field, Form } from '../src';
 import ErrorMsg from './ErrorMsg';
+import { Errors } from '../src/types';
 
 describe('Validations', () => {
   test('No validate fn', async () => {
     let formValues: object;
     render(
-      <Form onSubmit={(values) => (formValues = values)}>
+      <Form
+        initialValues={{ name: '' }}
+        onSubmit={(values) => (formValues = values as object)}
+      >
         <Field name="name" />
         <button type="submit" />
       </Form>
@@ -32,7 +36,7 @@ describe('Validations', () => {
         initialValues={initialValues}
         onSubmit={(values) => (formValues = values)}
         validate={(values) => {
-          const errors = {};
+          const errors: Errors<FormValues> = {};
           if (!values.name) {
             errors.name = 'Required!';
           }
@@ -53,11 +57,18 @@ describe('Validations', () => {
 
   test('multiple validation errors', async () => {
     let formValues: object;
+    interface FormValues {
+      name: string;
+      email: string;
+      age: number;
+    }
+    const initialValues: FormValues = { name: '', email: '', age: 0 };
     render(
       <Form
+        initialValues={initialValues}
         onSubmit={(values) => (formValues = values)}
         validate={(values) => {
-          const errors = {};
+          const errors: Errors<FormValues> = {};
           if (!values.name) {
             errors.name = 'Name is required!';
           }
@@ -137,12 +148,19 @@ describe('Validations', () => {
   });
 
   test('Blur the fields to show validation errors', async () => {
-    let formValues: object;
+    interface FormValues {
+      name: string;
+      email: string;
+      age: number;
+    }
+    const initialValues: FormValues = { name: '', email: '', age: 0 };
+
     render(
       <Form
-        onSubmit={(values) => (formValues = values)}
+        initialValues={initialValues}
+        onSubmit={() => undefined}
         validate={(values) => {
-          const errors = {};
+          const errors: Errors<FormValues> = {};
           if (!values.name) {
             errors.name = 'Name is required!';
           }
