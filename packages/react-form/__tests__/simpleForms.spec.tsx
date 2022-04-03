@@ -93,7 +93,7 @@ describe('Simple Forms', () => {
     );
     fireEvent.click(screen.getByRole('button'));
     await waitFor(() => {
-      expect(formValues).toEqual({ name: '' });
+      expect(formValues).toEqual({});
     });
   });
 

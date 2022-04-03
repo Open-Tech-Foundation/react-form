@@ -13,16 +13,19 @@ import {
 
 describe('Multiple Input Types', () => {
   test('Checkbox', async () => {
-    let formValues: object;
+    let formValues: unknown;
     render(
-      <Form onSubmit={(values) => (formValues = values)}>
+      <Form
+        initialValues={{ newsletter: false }}
+        onSubmit={(values) => (formValues = values)}
+      >
         <CheckboxField name="newsletter" label="Send newsletter" />
         <button type="submit" />
       </Form>
     );
     fireEvent.click(screen.getByRole('button'));
     await waitFor(() => {
-      expect(formValues).toEqual({ newsletter: '' });
+      expect(formValues).toEqual({ newsletter: false });
     });
     fireEvent.click(screen.getByLabelText('Send newsletter'));
     fireEvent.click(screen.getByRole('button'));
@@ -37,9 +40,12 @@ describe('Multiple Input Types', () => {
   });
 
   test('Checkbox group', async () => {
-    let formValues: object;
+    let formValues: unknown;
     render(
-      <Form onSubmit={(values) => (formValues = values)}>
+      <Form
+        initialValues={{ interests: [] }}
+        onSubmit={(values) => (formValues = values)}
+      >
         <CheckboxField name="interests" label="Art" value="art" />
         <CheckboxField name="interests" label="Coding" value="coding" />
         <CheckboxField name="interests" label="Music" value="music" />
@@ -63,9 +69,12 @@ describe('Multiple Input Types', () => {
   });
 
   test('Radio group field', async () => {
-    let formValues: object;
+    let formValues: unknown;
     render(
-      <Form onSubmit={(values) => (formValues = values)}>
+      <Form
+        initialValues={{ contact: '' }}
+        onSubmit={(values) => (formValues = values)}
+      >
         <RadioGroupField name="contact" label="Email" value="email" />
         <RadioGroupField name="contact" label="Phone" value="phone" />
         <RadioGroupField name="contact" label="Mail" value="mail" />
@@ -89,9 +98,12 @@ describe('Multiple Input Types', () => {
   });
 
   test('Date input', async () => {
-    let formValues: object;
+    let formValues: unknown;
     render(
-      <Form onSubmit={(values) => (formValues = values)}>
+      <Form
+        initialValues={{ today: new Date() }}
+        onSubmit={(values) => (formValues = values)}
+      >
         <label htmlFor="date-input">Today</label>
         <Field id="date-input" name="today" type="date" />
         <button type="submit" />
@@ -108,9 +120,12 @@ describe('Multiple Input Types', () => {
   });
 
   test('Datalist type', async () => {
-    let formValues: object;
+    let formValues: unknown;
     render(
-      <Form onSubmit={(values) => (formValues = values)}>
+      <Form
+        initialValues={{ browser: '' }}
+        onSubmit={(values) => (formValues = values)}
+      >
         <DatalistField
           name="browser"
           options={[
@@ -136,7 +151,7 @@ describe('Multiple Input Types', () => {
   });
 
   test('Select type', async () => {
-    let formValues: object;
+    let formValues: unknown;
     render(
       <Form onSubmit={(values) => (formValues = values)}>
         <SelectField name="browser">
@@ -159,7 +174,7 @@ describe('Multiple Input Types', () => {
   });
 
   test('Multiple Select type', async () => {
-    let formValues: object;
+    let formValues: unknown;
     render(
       <Form onSubmit={(values) => (formValues = values)}>
         <SelectField name="browser" multiple>
@@ -180,9 +195,12 @@ describe('Multiple Input Types', () => {
   });
 
   test('Textarea type', async () => {
-    let formValues: object;
+    let formValues: unknown;
     render(
-      <Form onSubmit={(values) => (formValues = values)}>
+      <Form
+        initialValues={{ desc: '' }}
+        onSubmit={(values) => (formValues = values)}
+      >
         <Field name="desc" type="textarea" />
         <button type="submit" />
       </Form>

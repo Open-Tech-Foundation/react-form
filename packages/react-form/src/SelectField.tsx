@@ -9,7 +9,7 @@ interface Props extends InputHTMLAttributes<HTMLSelectElement> {
 
 export default function SelectField(props: Props) {
   const { name, multiple, children, ...otherProps } = props;
-  const { field, setValue } = useField(name, { multiple });
+  const { field, setValue } = useField(name);
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     let value;

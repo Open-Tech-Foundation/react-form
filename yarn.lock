@@ -3186,13 +3186,13 @@ __metadata:
     "@emotion/styled": ^11.8.1
     "@mui/material": ^5.5.1
     "@open-tech-world/js-utils": ^0.14.0
-    "@open-tech-world/react-state": ^0.3.1
+    "@open-tech-world/react-state": ^0.7.0
     "@parcel/packager-ts": 2.4.0
     "@parcel/transformer-react-refresh-wrap": ^2.4.0
     "@parcel/transformer-typescript-types": 2.4.0
     "@storybook/react": ^6.4.19
     "@testing-library/jest-dom": ^5.16.2
-    "@testing-library/react": ^12.1.4
+    "@testing-library/react": ^13.0.0
     "@testing-library/user-event": ^14.0.0
     "@types/react": ^17.0.40
     "@types/react-dom": ^17.0.13
@@ -3219,13 +3219,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@open-tech-world/react-state@npm:^0.3.1":
-  version: 0.3.1
-  resolution: "@open-tech-world/react-state@npm:0.3.1"
+"@open-tech-world/react-state@npm:^0.7.0":
+  version: 0.7.0
+  resolution: "@open-tech-world/react-state@npm:0.7.0"
+  dependencies:
+    use-sync-external-store: ^1.0.0
   peerDependencies:
     react: "*"
     react-dom: "*"
-  checksum: 93f105a847c2f8e5fe1d6b28dc45731d635d5ca754fe79b17169bd5c39f7c186374ebb72da1c592a61df60d9cf176cb5688d4eac35b4705c18a12202d9f66cbe
+  checksum: caff85c583d41eebc0dac8f72f4de2d8ab58df95948bdc7dec8606f73258800af5ed8d115ae3b131a74a83bc03ed21ef699d1f10d76fd3959b04283d4789a197
   languageName: node
   linkType: hard
 
@@ -5060,9 +5062,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/dom@npm:^8.0.0":
-  version: 8.11.3
-  resolution: "@testing-library/dom@npm:8.11.3"
+"@testing-library/dom@npm:^8.5.0":
+  version: 8.12.0
+  resolution: "@testing-library/dom@npm:8.12.0"
   dependencies:
     "@babel/code-frame": ^7.10.4
     "@babel/runtime": ^7.12.5
@@ -5072,7 +5074,7 @@ __metadata:
     dom-accessibility-api: ^0.5.9
     lz-string: ^1.4.4
     pretty-format: ^27.0.2
-  checksum: 2245d254b6058590e25de86fb7b3c75e4a31096901a191f80d3efb9fa7e1e273043416f370c8770feb9f3ccc73a1550a877a3b003b593f1728ae828fcb52cd62
+  checksum: 2bbf5fa5c1e883571c440ccee76c0568fa5153b43c097456dd7146797256687352bfca9db574e0e78a022ce14722a6acaaba5f680ee16b95e12405501713d34d
   languageName: node
   linkType: hard
 
@@ -5093,17 +5095,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/react@npm:^12.1.4":
-  version: 12.1.4
-  resolution: "@testing-library/react@npm:12.1.4"
+"@testing-library/react@npm:^13.0.0":
+  version: 13.0.0
+  resolution: "@testing-library/react@npm:13.0.0"
   dependencies:
     "@babel/runtime": ^7.12.5
-    "@testing-library/dom": ^8.0.0
+    "@testing-library/dom": ^8.5.0
     "@types/react-dom": "*"
   peerDependencies:
-    react: "*"
-    react-dom: "*"
-  checksum: 944c5f8d4abb22c0650c25c7ae499651828c37c0e741ff67a4635d4cd99b307d486dabec05b372aba638bd359d29cd2af97393b5055ea294a201d80b4bc384b8
+    react: ^18.0.0
+    react-dom: ^18.0.0
+  checksum: 75c2348cff6ac00f22c997c72f1444a802ebe6e671c8db70f203070d0e5d4c5a7e31d62cd86e2eedde68558834b256f99a972fe45b15fd2356e3c65b5515e197
   languageName: node
   linkType: hard
 
@@ -19879,6 +19881,15 @@ __metadata:
     "@types/react":
       optional: true
   checksum: f0cb3a49119e14ed46db8a946b1aa17b838b8834c8a652bde314877ede6057c55b50654a97ee802597a5839c070180195e58ea3a756b7c33db7f540642f0ddea
+  languageName: node
+  linkType: hard
+
+"use-sync-external-store@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "use-sync-external-store@npm:1.0.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0-rc
+  checksum: f3df10af62625169d6a8cd8d4f38942dc6817aa27398fa7f474421fd574b0c4c83679b9d15f983f482c396ee1183416eb146814c81f44241e1480acd701ef018
   languageName: node
   linkType: hard
 
