@@ -1,4 +1,3 @@
-import { getInObj } from '@open-tech-world/js-utils';
 import { useContext } from 'react';
 import { FormContext } from './formContext';
 import { ContextVal } from './types';
@@ -15,11 +14,5 @@ export default function useForm() {
     values: values,
     errors: errors,
     visited: visited,
-    getFieldError: (path: string): string | undefined => {
-      const isVisited = getInObj(visited, path) as boolean;
-      if (isVisited || path.startsWith('_')) {
-        return getInObj(errors as object, path) as string | undefined;
-      }
-    },
   };
 }
