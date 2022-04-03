@@ -38,7 +38,9 @@ export default function useField(name: string) {
 
   const setValue = (v: unknown) => {
     startTransition(() => {
-      setState((s) => ({ values: setInObj(s.values as object, name, v) }));
+      setState((s) => ({
+        values: setInObj(s.values as object, name, v),
+      }));
     });
   };
 
