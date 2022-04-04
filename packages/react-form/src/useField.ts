@@ -2,23 +2,20 @@ import { getInObj, setInObj } from '@open-tech-world/js-utils';
 import { ChangeEvent, useContext, startTransition } from 'react';
 import { FormContext } from './formContext';
 import { ContextVal } from './types';
+import useFieldError from './useFieldError';
 
 export default function useField(name: string) {
   const { useFormState, runValidations } = useContext(
     FormContext
   ) as ContextVal;
 
-  const [{ value, isVisited, error }, setState] = useFormState(
-    (s) => ({
-      value: getInObj(s.values as object, name),
-      isVisited: getInObj(s.visited, name),
-      error: getInObj(s.errors, name),
-    }),
+  const [value, setState] = useFormState(
+    (s) => getInObj(s.values as object, name),
     {
       set: true,
-      shallow: true,
     }
   );
+  const error = useFieldError(name);
 
   const getValue = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -57,19 +54,13 @@ export default function useField(name: string) {
     runValidations();
   };
 
-  const getFieldError = () => {
-    if (isVisited && error) {
-      return error;
-    }
-  };
-
   return {
     field: {
       value,
       onChange,
       onBlur,
     },
-    error: getFieldError(),
+    error,
     setValue,
   };
 }
