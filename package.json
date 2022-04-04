@@ -10,5 +10,6 @@
     "build": "yarn workspace @open-tech-world/react-form build",
     "build:website": "yarn build && yarn workspace website build",
     "ci": "yarn workspace @open-tech-world/react-form ci"
-  }
+  },
+  "version": "0.1.0"
 }
