@@ -22,7 +22,7 @@
     "node": ">=14.0.0"
   },
   "scripts": {
-    "start": "parcel examples/index.html --port 3000",
+    "start": "parcel examples-local/index.html --port 3000",
     "build": "parcel build",
     "test": "jest",
     "lint": "eslint src/**",
