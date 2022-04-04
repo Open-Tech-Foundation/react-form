@@ -1,7 +1,8 @@
-import { startTransition, useContext } from 'react';
+import { useContext } from 'react';
 import { getInObj, setInObj } from '@open-tech-world/js-utils';
 import { FormContext } from './formContext';
 import { ContextVal, FormState } from './types';
+import startTransition from './startTransition';
 
 export default function useFieldArray(name: string) {
   const { useFormState } = useContext(FormContext) as ContextVal;
