@@ -1,8 +1,9 @@
 import { cloneObj } from '@open-tech-world/js-utils';
 import { createState } from '@open-tech-world/react-state';
-import { FormEvent, startTransition } from 'react';
+import { FormEvent } from 'react';
 import cloneObjWithDefaultVal from './cloneObjWithDefaultVal';
 import { FormContext } from './formContext';
+import startTransition from './startTransition';
 import { ContextVal, FormState, InitialValues, Props } from './types';
 
 export default function Form<Values = InitialValues>(props: Props<Values>) {

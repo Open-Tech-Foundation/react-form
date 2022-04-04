@@ -1,6 +1,7 @@
 import { getInObj, setInObj } from '@open-tech-world/js-utils';
-import { ChangeEvent, useContext, startTransition } from 'react';
+import { ChangeEvent, useContext } from 'react';
 import { FormContext } from './formContext';
+import startTransition from './startTransition';
 import { ContextVal } from './types';
 import useFieldError from './useFieldError';
 
