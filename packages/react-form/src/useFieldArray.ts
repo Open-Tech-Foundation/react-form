@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { startTransition, useContext } from 'react';
 import { getInObj, setInObj } from '@open-tech-world/js-utils';
 import { FormContext } from './formContext';
 import { ContextVal, FormState } from './types';
@@ -16,42 +16,46 @@ export default function useFieldArray(name: string) {
   );
 
   const push = (obj: unknown) => {
-    setState((s) => ({
-      values: setInObj(s.values as object, name, [...value, obj]),
-    }));
+    startTransition(() => {
+      setState((s) => ({
+        values: setInObj(s.values as object, name, [...value, obj]),
+      }));
+    });
   };
 
   const remove = (index: number) => {
-    setState((s) => {
-      const obj: Partial<FormState> = {
-        values: setInObj(
-          s.values as object,
-          name,
-          value.filter((_, i) => index !== i)
-        ),
-      };
+    startTransition(() => {
+      setState((s) => {
+        const obj: Partial<FormState> = {
+          values: setInObj(
+            s.values as object,
+            name,
+            value.filter((_, i) => index !== i)
+          ),
+        };
 
-      if (getInObj(s.visited, name)) {
-        obj['visited'] = setInObj(
-          s.visited as object,
-          name,
-          (getInObj(s.visited as object, name) as unknown[]).filter(
-            (_, i) => index !== i
-          )
-        );
-      }
+        if (getInObj(s.visited, name)) {
+          obj['visited'] = setInObj(
+            s.visited as object,
+            name,
+            (getInObj(s.visited as object, name) as unknown[]).filter(
+              (_, i) => index !== i
+            )
+          );
+        }
 
-      if (getInObj(s.errors, name)) {
-        obj['errors'] = setInObj(
-          s.errors as object,
-          name,
-          (getInObj(s.errors as object, name) as unknown[]).filter(
-            (_, i) => index !== i
-          )
-        );
-      }
+        if (getInObj(s.errors, name)) {
+          obj['errors'] = setInObj(
+            s.errors as object,
+            name,
+            (getInObj(s.errors as object, name) as unknown[]).filter(
+              (_, i) => index !== i
+            )
+          );
+        }
 
-      return obj;
+        return obj;
+      });
     });
   };
 
