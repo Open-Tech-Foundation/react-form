@@ -18,13 +18,13 @@ type FieldType =
   | 'time'
   | 'week';
 
-interface Props
+interface FieldProps
   extends InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
   name: string;
   type?: FieldType;
 }
 
-export default function Field(props: Props) {
+export default function Field(props: FieldProps) {
   const { name, type, ...otherProps } = props;
   const { field } = useField(name);
 

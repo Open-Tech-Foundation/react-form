@@ -13,7 +13,7 @@ export interface ContextVal {
   runValidations: () => Promise<boolean>;
 }
 
-export interface Props<Values> {
+export interface FormProps<Values> {
   initialValues?: Values;
   onSubmit: (values: Values) => void;
   validate?: (
@@ -28,7 +28,7 @@ export type Errors<T> = {
     : string;
 };
 
-type Visited<T> = {
+export type Visited<T> = {
   [K in keyof T]?: T[K] extends unknown[] | Record<string, unknown>
     ? Visited<T[K]>
     : boolean;
@@ -39,3 +39,9 @@ export interface FormState {
   errors: Errors<Values>;
   visited: Visited<Values>;
 }
+
+export type FormContext = {
+  values: Values;
+  errors: Errors<Values>;
+  visited: Visited<Values>;
+};

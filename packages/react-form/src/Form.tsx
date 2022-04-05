@@ -2,11 +2,11 @@ import { cloneObj } from '@open-tech-world/js-utils';
 import { createState } from '@open-tech-world/react-state';
 import { FormEvent } from 'react';
 import cloneObjWithDefaultVal from './cloneObjWithDefaultVal';
-import { FormContext } from './formContext';
+import { FORM_CONTEXT } from './formContext';
 import startTransition from './startTransition';
-import { ContextVal, FormState, InitialValues, Props } from './types';
+import { ContextVal, FormState, InitialValues, FormProps } from './types';
 
-export default function Form<Values = InitialValues>(props: Props<Values>) {
+export default function Form<Values = InitialValues>(props: FormProps<Values>) {
   const { initialValues, children, validate, onSubmit } = props;
 
   const formState: FormState = {
@@ -55,10 +55,10 @@ export default function Form<Values = InitialValues>(props: Props<Values>) {
   };
 
   return (
-    <FormContext.Provider value={contextVal}>
+    <FORM_CONTEXT.Provider value={contextVal}>
       <form role="form" onSubmit={handleSubmit}>
         {children}
       </form>
-    </FormContext.Provider>
+    </FORM_CONTEXT.Provider>
   );
 }
