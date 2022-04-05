@@ -6,7 +6,11 @@ export default function App() {
     <div className="App">
       <Form
         onSubmit={(values) => alert(JSON.stringify(values, '', 4))}
-        initialValues={{ newsletter: true, interests: ['art'] }}
+        initialValues={{
+          newsletter: true,
+          interests: ['art'],
+          agreement: false,
+        }}
       >
         <fieldset>
           <legend>Choose your interests</legend>
