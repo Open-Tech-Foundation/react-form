@@ -7,7 +7,9 @@ import TypeScriptBasicFormSource from '!!raw-loader!@site/src/examples/TypeScrip
 
 By using `TypeScript`, you can define the `shape` of form fields to get all the powers of the language, from code editor `IntelliSense` to fixing unknown `issues`.
 
+:::tip
 You can use either `type` or `interface` to define a form's shape.
+:::
 
 ### Example
 

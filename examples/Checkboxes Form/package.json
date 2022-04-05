@@ -1,7 +1,7 @@
 {
-  "name": "@open-tech-world/react-form-simple-form",
+  "name": "@open-tech-world/react-form-checkboxes-form",
   "version": "0.1.0",
-  "description": "This example shows how to use the basic <Form /> & <Field /> components in a form.",
+  "description": "This example shows how to use the <CheckboxField /> component in a form.",
   "main": "index.js",
   "dependencies": {
     "react": "latest",
