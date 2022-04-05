@@ -5,14 +5,20 @@ sidebar_label: Introduction
 title: Introduction
 ---
 
-# @open-tech-world/react-form
+# React Form
 
 > Build & Manage the State of Forms in React.
 
 ## Features
 
-- Simple APIs to use.
+- Simple APIs to use
 
-- It supports nested & array fields.
+- It supports nested & array fields
 
-- It supports form validation.
+- It supports form validation
+
+- TypeScript support
+
+- Render optimized
+
+- <a href="https://bundlephobia.com/package/@open-tech-world/react-form">Minified + GZip Size {'<'} 3KB</a>

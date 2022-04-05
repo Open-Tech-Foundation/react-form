@@ -1,53 +1,50 @@
-import { Form, Field, FieldArray } from '@open-tech-world/react-form';
-import Values from './Values';
+import { Form, Field, useFieldArray } from '@open-tech-world/react-form';
 
-export default function FieldArrayForm() {
-  const MembersField = ({ fields, push, remove }) => {
-    const members = fields.map((f, i) => (
-      <fieldset>
-        <legend>Member - {i + 1}</legend>
-        <div>
-          <div>Name</div>
-          <Field name={`${f}.name`} />
-        </div>
-
-        <div>
-          <div>Email</div>
-          <Field name={`${f}.email`} type="email" />
-        </div>
-
-        <br />
-        <button type="button" onClick={() => remove(i)}>
-          ❌ Remove
-        </button>
-      </fieldset>
-    ));
-
-    return (
+const MembersField = () => {
+  const { fields, push, remove } = useFieldArray('members');
+  const members = fields.map((f, i) => (
+    <fieldset>
+      <legend>Member - {i + 1}</legend>
       <div>
-        {members}
-        <br />
-        <button type="button" onClick={() => push({})}>
-          Add Member
-        </button>
+        <div>Name</div>
+        <Field name={`${f}.name`} />
       </div>
-    );
-  };
 
+      <div>
+        <div>Email</div>
+        <Field name={`${f}.email`} type="email" />
+      </div>
+
+      <button type="button" onClick={() => remove(i)}>
+        ❌ Remove
+      </button>
+    </fieldset>
+  ));
+
+  return (
+    <div>
+      <div>{members}</div>
+      <button type="button" onClick={() => push({})}>
+        Add Member
+      </button>
+    </div>
+  );
+};
+
+export default function App() {
   return (
     <Form
       initialValues={{ members: [{}] }}
-      onSubmit={(values) => alert(JSON.stringify(values, '', 4))}
+      onSubmit={(values) => {
+        console.log(values);
+      }}
     >
       <div>
         <div>Members:</div>
-        <FieldArray name="members" component={MembersField} />
+        <MembersField />
       </div>
 
-      <br />
       <button type="submit">Submit</button>
-
-      <Values />
     </Form>
   );
 }

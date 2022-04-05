@@ -1,26 +1,22 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 import CodeBlock from '@theme/CodeBlock';
-import BrowserWindow from '@site/src/components/BrowserWindow';
-import ErrorsForm from '@site/src/examples/ErrorsForm';
 import ErrorsFormSource from '!!raw-loader!@site/src/examples/ErrorsForm';
 import ErrorMsgSource from '!!raw-loader!@site/src/examples/ErrorMsg';
 
 The `errors` object returned from the validation function is used to display errors in the form.
 
-## useForm
+## useFieldError()
 
-The form field's error message can be obtained from the `useForm` hook function.
+The form field's `error` message can be obtained from the `useFieldError` hook function.
 
-The hook function returns an object containing a helper function, `getFieldError`, which accepts a `path` as an argument and it returns an `error` message.
+The field `name` or `path` is passed to the hook.
+
+The hook function returns an `error` from the `errors` object when the field is `visited` or `touched`.
 
 ### Example
 
 <CodeBlock className="language-jsx" title="ErrorMsg.jsx">{ErrorMsgSource}</CodeBlock>
-<CodeBlock className="language-jsx" title="ErrorsForm.jsx">{ErrorsFormSource}</CodeBlock>
-
-<BrowserWindow>
-  <ErrorsForm />
-</BrowserWindow>
+<CodeBlock className="language-jsx" title="App.jsx">{ErrorsFormSource}</CodeBlock>

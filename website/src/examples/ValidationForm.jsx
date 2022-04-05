@@ -1,10 +1,11 @@
 import { Form, Field } from '@open-tech-world/react-form';
-import Values from './Values';
 
-export default function ValidationForm() {
+export default function App() {
   return (
     <Form
-      onSubmit={(values) => alert(JSON.stringify(values, '', 4))}
+      onSubmit={(values) => {
+        console.log(values);
+      }}
       validate={(values) => {
         const errors = {};
         if (!values.name) {
@@ -25,10 +26,8 @@ export default function ValidationForm() {
         <label>Email: </label>
         <Field name="email" type="email" />
       </div>
-      
+
       <button type="submit">Submit</button>
-      
-      <Values />
     </Form>
   );
 }

@@ -1,5 +1,4 @@
 import { Form, useField } from '@open-tech-world/react-form';
-import Values from './Values';
 
 function TweetField({ name }) {
   const { field } = useField(name);
@@ -28,8 +27,6 @@ export default function TweetForm() {
       <TweetField name="tweet" />
 
       <button type="submit">Tweet</button>
-      
-      <Values />
     </Form>
   );
 }

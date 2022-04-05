@@ -23,17 +23,12 @@ Any additional props supplied to the component will be passed on to the input el
 ## Usage
 
 ```jsx
-import { Form, CheckboxField } from '@open-tech-world/react-form';
+import { CheckboxField } from '@open-tech-world/react-form';
 
-function MyForm() {
-  return (
-      <Form onSubmit={(values) => {}}>
-        <CheckboxField name="name" label="Label Text" />
-        // For checkbox group
-        <CheckboxField name="group" label="Value 1" value="value 1" />
-        <CheckboxField name="group" label="Value 2" value="value 2" />
-        <CheckboxField name="group" label="Value 3" value="value 3" />
-      </Form>;
-  )
-}
+<CheckboxField name="name" label="Label Text" />
+
+// For checkbox group
+<CheckboxField name="group1" label="Label 1" value="value 1" />
+<CheckboxField name="group1" label="Label 2" value="value 2" />
+<CheckboxField name="group1" label="Label 3" value="value 3" />
 ```

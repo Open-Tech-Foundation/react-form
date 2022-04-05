@@ -1,11 +1,12 @@
 import { Form, Field } from '@open-tech-world/react-form';
 import ErrorMsg from './ErrorMsg';
-import Values from './Values';
 
-export default function ErrorsForm() {
+export default function App() {
   return (
     <Form
-      onSubmit={(values) => alert(JSON.stringify(values, '', 4))}
+      onSubmit={(values) => {
+        console.log(values);
+      }}
       validate={(values) => {
         const errors = {};
         if (!values.name) {
@@ -29,10 +30,7 @@ export default function ErrorsForm() {
         <ErrorMsg path="email" />
       </div>
 
-      <br />
       <button type="submit">Submit</button>
-
-      <Values />
     </Form>
   );
 }

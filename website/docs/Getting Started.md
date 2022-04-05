@@ -31,11 +31,51 @@ yarn add @open-tech-world/react-form
 
 ## Usage
 
-```ts
+```jsx
 import { Form, Field } from '@open-tech-world/react-form';
 
-<Form onSubmit={(values) => {}}>
-  <Field ... />
-  ...
-</Form>
+export default function App() {
+  return (
+    <Form
+      onSubmit={(values) => {
+        console.log(values);
+      }}
+    >
+      <Field name="field1" />
+
+      {/* Other fields... */}
+
+      <button type="submit">Submit</button>
+    </Form>
+  );
+}
+```
+
+## Usage (TypeScript)
+
+```tsx
+import { Form, Field } from '@open-tech-world/react-form';
+
+interface FormValues {
+  field1: type;
+}
+
+export default function App() {
+  const initialValues: FormValues = { field1: '' };
+
+  return (
+    <Form
+      initialValues={initialValues}
+      onSubmit={(values) => {
+        console.log(values);
+      }}
+    >
+      <Field name="field1" />
+
+      {/* Other fields... */}
+
+      <button type="submit">Submit</button>
+    </Form>
+  );
+}
 ```

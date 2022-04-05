@@ -6,8 +6,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: '@open-tech-world/react-form',
-  url: 'https://your-docusaurus-test-site.com',
+  title: 'React Form',
+  url: 'https://react-form.pages.dev',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -37,18 +37,32 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: '@open-tech-world/react-form',
+        title: 'React Form',
         items: [
           {
+            label: 'v0.10.1',
+            position: 'right',
+            href: 'https://www.npmjs.com/package/@open-tech-world/react-form/v/0.10.1',
+            // className: 'header-ver-link',
+          },
+          {
             href: 'https://github.com/open-tech-world/react-form',
-            label: 'GitHub',
+            className: 'header-github-link',
             position: 'right',
           },
         ],
       },
       footer: {
         style: 'dark',
-        copyright: `Copyright © ${new Date().getFullYear()} Contributors of <a href="https://github.com/open-tech-world/react-form">@open-tech-world/react-form</a>. Built with <a href="https://docusaurus.io/">Docusaurus</a>.`,
+        links: [
+          {
+            html: `⚡ by <a href="https://open-tech-world.pages.dev">Open Tech World</a>`,
+          },
+          {
+            html: `📝 with <a href="https://docusaurus.io/">Docusaurus</a>`,
+          },
+        ],
+        copyright: `Copyright © ${new Date().getFullYear()} Contributors of <a href="https://github.com/open-tech-world/react-form">@open-tech-world/react-form</a>`,
       },
       prism: {
         theme: lightCodeTheme,

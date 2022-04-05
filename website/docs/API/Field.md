@@ -25,14 +25,9 @@ It does not support the `checkbox` and `radio` input types; instead, use the [`<
 ## Usage
 
 ```jsx
-import { Form, Field } from '@open-tech-world/react-form';
+import { Field } from '@open-tech-world/react-form';
 
-function MyForm() {
-  return (
-      <Form onSubmit={(values) => {}}>
-        <Field name="name" />
-        <Field name="email" type="email" />
-      </Form>;
-  )
-}
+<Field name="field1" />
+<Field name="field2" type="email" />
+<Field name="field3" type="textarea" rows="5" cols="10" />
 ```

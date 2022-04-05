@@ -1,15 +1,11 @@
 ---
-sidebar_position: 7
+sidebar_position: 6
 ---
 
 ```ts
-interface OptionsProps {
-    multiple?: boolean;
-}
-
-useField(name: string, options?: Partial<OptionsProps>): {
+useField(name: string): {
     field: {
-        value: unknown;
+        value: Values;
         onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
         onBlur: () => void;
     };
@@ -31,11 +27,13 @@ import { useField } from '@open-tech-world/react-form';
 
 function MyCustomField1({ name }) {
   const { field } = useField(name);
+
   return <input {...field} />;
 }
 
 function MyCustomField2({ name }) {
   const { field, error, setValue } = useField(name);
+
   return (
     <>
       <input

@@ -3,11 +3,7 @@ sidebar_position: 1
 ---
 
 import CodeBlock from '@theme/CodeBlock';
-import BrowserWindow from '@site/src/components/BrowserWindow';
-import BasicForm from '@site/src/examples/BasicForm';
 import BasicFormSource from '!!raw-loader!@site/src/examples/BasicForm';
-import BasicForm2 from '@site/src/examples/BasicForm2';
-import BasicForm2Source from '!!raw-loader!@site/src/examples/BasicForm2';
 
 ## `<Form />`
 
@@ -16,6 +12,10 @@ The `root` component for all the `input` fields.
 The required `onSubmit` prop is used to receive the values of the form when submitted.
 
 The `initialValues` prop can be used to set initial values for the form.
+
+:::tip
+Always initialize the form with the `initialValues` prop to avoid `React` dev warnings, and to get `TypeScript` support.
+:::
 
 ## `<Field />`
 
@@ -32,15 +32,3 @@ It does not support the `checkbox` and `radio` input types; instead, use the [`<
 ### Example
 
 <CodeBlock className="language-jsx">{BasicFormSource}</CodeBlock>
-
-<BrowserWindow>
-  <BasicForm />
-</BrowserWindow>
-
-### Example (Initial values)
-
-<CodeBlock className="language-jsx">{BasicForm2Source}</CodeBlock>
-
-<BrowserWindow>
-  <BasicForm2 />
-</BrowserWindow>

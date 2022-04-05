@@ -1,5 +1,4 @@
 import { Field, Form, useField } from '@open-tech-world/react-form';
-import Values from './Values';
 
 function CCNumberField({ name }) {
   const { field, setValue } = useField(name);
@@ -70,8 +69,6 @@ export default function CCForm() {
 
       <br />
       <button type="submit">Submit</button>
-
-      <Values />
     </Form>
   );
 }

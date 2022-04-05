@@ -1,11 +1,17 @@
 import { Form, Field } from '@open-tech-world/react-form';
-import Values from './Values';
 
-export default function BasicForm() {
+interface FormValues {
+  name: string;
+  email: string;
+}
+
+export default function App() {
+  const initialValues: FormValues = { name: '', email: '' };
+
   return (
     <Form
-      initialValues={{ name: 'xxx' }}
-      onSubmit={(values) => alert(JSON.stringify(values, '', 4))}
+      initialValues={initialValues}
+      onSubmit={(values) => console.log(values)}
     >
       <div>
         <label>Name: </label>
@@ -16,10 +22,8 @@ export default function BasicForm() {
         <label>Email: </label>
         <Field name="email" type="email" />
       </div>
-      
+
       <button type="submit">Submit</button>
-      
-      <Values />
     </Form>
   );
 }
