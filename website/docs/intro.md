@@ -7,7 +7,7 @@ title: Introduction
 
 # React Form
 
-> Build & Manage the State of Forms in React.
+> Build Forms & Manage Their State in React.
 
 ## Features
 

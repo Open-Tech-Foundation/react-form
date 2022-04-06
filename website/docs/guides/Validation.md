@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-import CodeBlock from '@theme/CodeBlock';
+import {SandBox} from '@open-tech-world/react-examples-sandbox';
 import ValidationFormSource from '!!raw-loader!@site/src/examples/ValidationForm';
 
 Generally, forms do have two types of validation. They are:
@@ -25,4 +25,4 @@ The validating function can be either `sync` or `async`
 
 ### Example
 
-<CodeBlock className="language-jsx">{ValidationFormSource}</CodeBlock>
+<SandBox code={ValidationFormSource} />

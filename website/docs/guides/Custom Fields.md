@@ -2,7 +2,8 @@
 sidebar_position: 5
 ---
 
-import CodeBlock from '@theme/CodeBlock';
+import {SandBox} from '@open-tech-world/react-examples-sandbox';
+
 import TweetFormSource from '!!raw-loader!@site/src/examples/TweetForm';
 
 import CCFormSource from '!!raw-loader!@site/src/examples/CCForm';
@@ -23,5 +24,10 @@ The `field` object contains `value`, `onChange`, and `onBlur` input props.
 
 The following example shows the `custom` field for displaying input character length.
 
-<CodeBlock className="language-jsx">{TweetFormSource}</CodeBlock>
+<SandBox code={TweetFormSource} />
 
+### Example2
+
+The following example shows the `custom` fields implementing the credit card form.
+
+<SandBox code={CCFormSource} />

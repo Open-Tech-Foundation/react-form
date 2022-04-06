@@ -11,7 +11,7 @@ export default function App() {
   return (
     <Form
       initialValues={initialValues}
-      onSubmit={(values) => console.log(values)}
+      onSubmit={(values) => alert(JSON.stringify(values, null, 4))}
     >
       <div>
         <label>Name: </label>

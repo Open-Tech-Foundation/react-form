@@ -4,8 +4,9 @@ import ErrorMsg from './ErrorMsg';
 export default function App() {
   return (
     <Form
+      initialValues={{ name: '', email: '' }}
       onSubmit={(values) => {
-        console.log(values);
+        alert(JSON.stringify(values, null, 4));
       }}
       validate={(values) => {
         const errors = {};

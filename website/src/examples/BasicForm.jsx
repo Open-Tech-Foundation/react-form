@@ -2,7 +2,7 @@ import { Form, Field } from '@open-tech-world/react-form';
 
 export default function App() {
   return (
-    <Form onSubmit={(values) => console.log(values)}>
+    <Form onSubmit={(values) => alert(JSON.stringify(values, null, 4))}>
       <div>
         <label>Name: </label>
         <Field name="name" />

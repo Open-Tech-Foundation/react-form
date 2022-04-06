@@ -12,6 +12,8 @@ const TasksField = () => {
       >
         ❌
       </button>
+      <br />
+      <br />
     </div>
   ));
 
@@ -31,7 +33,7 @@ export default function App() {
     <Form
       initialValues={{ tasks: ['Task 1'] }}
       onSubmit={(values) => {
-        console.log(values);
+        alert(JSON.stringify(values, null, 4));
       }}
     >
       <div>
@@ -39,10 +41,14 @@ export default function App() {
         <Field name="projectName" />
       </div>
 
+      <br />
+
       <div>
         <div>Tasks:</div>
         <TasksField />
       </div>
+
+      <br />
 
       <button type="submit">Submit</button>
     </Form>

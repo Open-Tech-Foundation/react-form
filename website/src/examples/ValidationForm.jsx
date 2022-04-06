@@ -4,7 +4,7 @@ export default function App() {
   return (
     <Form
       onSubmit={(values) => {
-        console.log(values);
+        alert(JSON.stringify(values, null, 4));
       }}
       validate={(values) => {
         const errors = {};

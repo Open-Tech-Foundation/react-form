@@ -2,8 +2,8 @@
 sidebar_position: 1
 ---
 
-import CodeBlock from '@theme/CodeBlock';
 import BasicFormSource from '!!raw-loader!@site/src/examples/BasicForm';
+import {SandBox} from '@open-tech-world/react-examples-sandbox';
 
 ## `<Form />`
 
@@ -31,4 +31,4 @@ It does not support the `checkbox` and `radio` input types; instead, use the [`<
 
 ### Example
 
-<CodeBlock className="language-jsx">{BasicFormSource}</CodeBlock>
+<SandBox code={BasicFormSource} />

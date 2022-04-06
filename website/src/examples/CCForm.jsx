@@ -47,15 +47,21 @@ export default function CCForm() {
         <Field name="name" placeholder="Name" />
       </div>
 
+      <br />
+
       <div>
         <div>Card Number</div>
         <CCNumberField name="ccNumber" />
       </div>
 
+      <br />
+
       <div>
         <div>Expiry Date</div>
         <ExpiryDateField name="expiryDate" />
       </div>
+
+      <br />
 
       <div>
         <div>CVC</div>
@@ -68,6 +74,7 @@ export default function CCForm() {
       </div>
 
       <br />
+
       <button type="submit">Submit</button>
     </Form>
   );

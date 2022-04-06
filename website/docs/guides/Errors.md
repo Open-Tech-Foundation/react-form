@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-import CodeBlock from '@theme/CodeBlock';
+import {SandBox} from '@open-tech-world/react-examples-sandbox';
 import ErrorsFormSource from '!!raw-loader!@site/src/examples/ErrorsForm';
 import ErrorMsgSource from '!!raw-loader!@site/src/examples/ErrorMsg';
 
@@ -18,5 +18,4 @@ The hook function returns an `error` from the `errors` object when the field is 
 
 ### Example
 
-<CodeBlock className="language-jsx" title="ErrorMsg.jsx">{ErrorMsgSource}</CodeBlock>
-<CodeBlock className="language-jsx" title="App.jsx">{ErrorsFormSource}</CodeBlock>
+<SandBox files={{'/App.js': ErrorsFormSource, '/ErrorMsg.js': ErrorMsgSource}} />
