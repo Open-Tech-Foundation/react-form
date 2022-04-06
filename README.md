@@ -3,7 +3,7 @@
 # React Form - ⚡ by [Open Tech World](https://open-tech-world.pages.dev/)
 
 [![Build](https://github.com/open-tech-world/react-form/actions/workflows/build.yml/badge.svg)](https://github.com/open-tech-world/react-form/actions/workflows/build.yml)
-![npm bundle size (scoped version)](https://img.shields.io/bundlephobia/minzip/@open-tech-world/react-form/latest?label=Min%2BGZip)
+[![npm bundle size (scoped version)](https://img.shields.io/bundlephobia/minzip/@open-tech-world/react-form/latest?label=Min%2BGZip)](https://bundlephobia.com/package/@open-tech-world/react-form)
 
 </div>
 
