@@ -1,7 +1,7 @@
 {
   "name": "@open-tech-world/react-form",
   "version": "0.11.0",
-  "description": "Build & Manage the State of Forms in React.",
+  "description": "Build Forms & Manage Their State in React.",
   "homepage": "https://react-form.pages.dev/",
   "keywords": [
     "react",
