@@ -18,7 +18,7 @@ export default function CheckboxField(props: Props) {
 
     if (value) {
       if (e.target.checked) {
-        v = [...(field.value as string[]), value];
+        v = field.value ? [...(field.value as string[]), value] : [value];
       } else {
         v = (field.value as string[]).filter((i) => i !== value);
       }
@@ -28,8 +28,11 @@ export default function CheckboxField(props: Props) {
   };
 
   const isChecked = () => {
-    if (typeof field.value === 'boolean') return field.value;
-    return (field.value as string[]).includes(value as string);
+    if (value && Array.isArray(field.value)) {
+      return (field.value as string[]).includes(value as string);
+    }
+
+    return Boolean(field.value);
   };
 
   return (

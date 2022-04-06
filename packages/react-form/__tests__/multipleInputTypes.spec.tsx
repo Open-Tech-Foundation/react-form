@@ -15,17 +15,14 @@ describe('Multiple Input Types', () => {
   test('Checkbox', async () => {
     let formValues: unknown;
     render(
-      <Form
-        initialValues={{ newsletter: false }}
-        onSubmit={(values) => (formValues = values)}
-      >
+      <Form onSubmit={(values) => (formValues = values)}>
         <CheckboxField name="newsletter" label="Send newsletter" />
         <button type="submit" />
       </Form>
     );
     fireEvent.click(screen.getByRole('button'));
     await waitFor(() => {
-      expect(formValues).toEqual({ newsletter: false });
+      expect(formValues).toEqual({});
     });
     fireEvent.click(screen.getByLabelText('Send newsletter'));
     fireEvent.click(screen.getByRole('button'));
@@ -55,6 +52,32 @@ describe('Multiple Input Types', () => {
     fireEvent.click(screen.getByRole('button'));
     await waitFor(() => {
       expect(formValues).toEqual({ interests: [] });
+    });
+    fireEvent.click(screen.getByLabelText('Art'));
+    fireEvent.click(screen.getByRole('button'));
+    await waitFor(() => {
+      expect(formValues).toEqual({ interests: ['art'] });
+    });
+    fireEvent.click(screen.getByLabelText('Music'));
+    fireEvent.click(screen.getByRole('button'));
+    await waitFor(() => {
+      expect(formValues).toEqual({ interests: ['art', 'music'] });
+    });
+  });
+
+  test('Checkbox group w/o initialValues', async () => {
+    let formValues: unknown;
+    render(
+      <Form onSubmit={(values) => (formValues = values)}>
+        <CheckboxField name="interests" label="Art" value="art" />
+        <CheckboxField name="interests" label="Coding" value="coding" />
+        <CheckboxField name="interests" label="Music" value="music" />
+        <button type="submit" />
+      </Form>
+    );
+    fireEvent.click(screen.getByRole('button'));
+    await waitFor(() => {
+      expect(formValues).toEqual({});
     });
     fireEvent.click(screen.getByLabelText('Art'));
     fireEvent.click(screen.getByRole('button'));
