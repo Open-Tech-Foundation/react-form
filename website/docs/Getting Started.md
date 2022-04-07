@@ -42,7 +42,6 @@ export default function App() {
       }}
     >
       <Field name="field1" />
-
       {/* Other fields... */}
 
       <button type="submit">Submit</button>
@@ -57,11 +56,12 @@ export default function App() {
 import { Form, Field } from '@open-tech-world/react-form';
 
 interface FormValues {
-  field1: type;
+  field1: type1;
+  field2: type2;
 }
 
 export default function App() {
-  const initialValues: FormValues = { field1: '' };
+  const initialValues: FormValues = { field1: '', field2: '' };
 
   return (
     <Form
@@ -71,7 +71,7 @@ export default function App() {
       }}
     >
       <Field name="field1" />
-
+      <Field name="field2" />
       {/* Other fields... */}
 
       <button type="submit">Submit</button>

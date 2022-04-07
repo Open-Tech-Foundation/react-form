@@ -4,6 +4,9 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
+const pkgVer = require('../packages/react-form/package.json')
+
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'React Form',
@@ -44,9 +47,9 @@ const config = {
         title: 'React Form',
         items: [
           {
-            label: 'v0.10.1',
+            label: 'v' + pkgVer.version,
             position: 'right',
-            href: 'https://www.npmjs.com/package/@open-tech-world/react-form/v/0.10.1',
+            href: 'https://www.npmjs.com/package/@open-tech-world/react-form',
             // className: 'header-ver-link',
           },
           {

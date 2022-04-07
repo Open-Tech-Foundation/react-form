@@ -27,7 +27,7 @@ const MembersField = () => {
     <div>
       <div>{members}</div>
       <br />
-      <button type="button" onClick={() => push({})}>
+      <button type="button" onClick={() => push({name: '', email: ''})}>
         Add Member
       </button>
     </div>

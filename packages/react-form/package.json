@@ -22,12 +22,11 @@
     "node": ">=14.0.0"
   },
   "scripts": {
-    "start": "parcel examples-local/index.html --port 3000",
     "build": "parcel build",
     "test": "jest",
     "lint": "eslint src/**",
-    "check": "tsc",
-    "ci": "yarn build && yarn test && yarn lint && yarn check"
+    "type-check": "tsc",
+    "ci": "yarn build && yarn test && yarn lint && yarn type-check"
   },
   "publishConfig": {
     "access": "public"
