@@ -25,4 +25,4 @@ The validating function can be either `sync` or `async`
 
 ### Example
 
-<SandBox code={ValidationFormSource} />
+<SandBox lib="react-form" code={ValidationFormSource} />

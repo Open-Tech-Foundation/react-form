@@ -14,4 +14,4 @@ You can use either `type` or `interface` to define a form's shape.
 
 ### Example
 
-<SandBox ts code={TypeScriptBasicFormSource} />
+<SandBox lib="react-form" ts code={TypeScriptBasicFormSource} />

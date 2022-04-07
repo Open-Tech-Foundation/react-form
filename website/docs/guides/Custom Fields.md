@@ -24,10 +24,10 @@ The `field` object contains `value`, `onChange`, and `onBlur` input props.
 
 The following example shows the `custom` field for displaying input character length.
 
-<SandBox code={TweetFormSource} />
+<SandBox lib="react-form" code={TweetFormSource} />
 
 ### Example2
 
 The following example shows the `custom` fields implementing the credit card form.
 
-<SandBox code={CCFormSource} />
+<SandBox lib="react-form" code={CCFormSource} />

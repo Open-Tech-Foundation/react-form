@@ -25,8 +25,8 @@ It supports `Arrays` and `Arrays of objects( [{}] )`.
 
 ### Example (Array)
 
-<SandBox code={FieldArrayFormSource} />
+<SandBox lib="react-form" code={FieldArrayFormSource} />
 
 ### Example (Array of objects)
 
-<SandBox code={FieldArrayForm2Source} />
+<SandBox lib="react-form" code={FieldArrayForm2Source} />

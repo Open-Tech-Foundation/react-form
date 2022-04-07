@@ -31,4 +31,4 @@ It does not support the `checkbox` and `radio` input types; instead, use the [`<
 
 ### Example
 
-<SandBox code={BasicFormSource} />
+<SandBox lib="react-form" code={BasicFormSource} />

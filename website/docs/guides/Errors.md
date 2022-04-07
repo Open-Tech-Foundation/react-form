@@ -18,4 +18,4 @@ The hook function returns an `error` from the `errors` object when the field is 
 
 ### Example
 
-<SandBox files={{'/App.js': ErrorsFormSource, '/ErrorMsg.js': ErrorMsgSource}} />
+<SandBox lib="react-form" files={{'/App.js': ErrorsFormSource, '/ErrorMsg.js': ErrorMsgSource}} />
