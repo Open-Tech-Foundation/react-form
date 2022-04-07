@@ -84,7 +84,7 @@ export default function App() {
   return (
     <div className="App">
       <Form
-        initialValues={{ switch1: true }}
+        initialValues={{ switch1: true, select1: '' }}
         onSubmit={(values) => alert(JSON.stringify(values, '', 4))}
         validate={(values) => {
           const errors = {};

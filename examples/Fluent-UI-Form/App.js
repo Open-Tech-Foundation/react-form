@@ -98,7 +98,7 @@ export default function App() {
   return (
     <div className="App">
       <Form
-        initialValues={{ check1: true, toggle1: true }}
+        initialValues={{ check1: true, toggle1: true, comboBox1: '', comboBox2: '' }}
         validate={(values) => {
           const errors = {};
           if (!values.name) {
