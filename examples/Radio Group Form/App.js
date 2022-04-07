@@ -18,6 +18,8 @@ export default function App() {
         </fieldset>
         <br />
         <button type="submit">Submit</button>
+
+        <br />
         <FormContext />
       </Form>
     </div>
