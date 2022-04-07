@@ -9,6 +9,12 @@ export default function App() {
   return (
     <div className="App">
       <Form
+        initialValues={{
+          name: '',
+          email: '',
+          password: '',
+          confirmPassword: '',
+        }}
         onSubmit={(values) => alert(JSON.stringify(values, '', 4))}
         validate={async (values) => {
           const errors = {};
@@ -18,7 +24,7 @@ export default function App() {
             password: yup.string().min(8).max(15).required(),
             confirmPassword: yup
               .string()
-              .oneOf([yup.ref('password'), null], 'Passwords must match')
+              .oneOf([yup.ref('password'), null], 'Passwords must match'),
           });
 
           try {
@@ -56,7 +62,7 @@ export default function App() {
         <button type="submit">Submit</button>
 
         <br />
-        
+
         <FormContext />
       </Form>
     </div>
