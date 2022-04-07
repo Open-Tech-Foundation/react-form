@@ -8,6 +8,8 @@
     "react-dom": "latest",
     "react-scripts": "latest",
     "@mui/material": "latest",
+    "@emotion/styled": "latest",
+    "@emotion/react": "latest",
     "@open-tech-world/react-form": "latest"
 
   }
