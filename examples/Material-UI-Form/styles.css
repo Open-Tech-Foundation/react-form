@@ -1,0 +1,20 @@
+.App {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+}
+
+pre {
+  font-family: 'Roboto Mono';
+}
+
+.form-context {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-context .form-context__output {
+  background-color: #001f3f;
+  color: white;
+  padding: 15px;
+  margin-top: 15px;
+}
