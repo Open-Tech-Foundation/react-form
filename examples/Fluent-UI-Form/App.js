@@ -5,7 +5,7 @@ import {
   PrimaryButton,
   SelectableOptionMenuItemType,
   TextField,
-  Toggle
+  Toggle,
 } from '@fluentui/react';
 import FormContext from './FormContext';
 
@@ -41,7 +41,7 @@ const FluentToggleField = ({ name, ...otherProps }) => {
 
 const FluentComboBoxField = ({ name, ...otherProps }) => {
   const { field, error, setValue } = useField(name, {
-    multiple: otherProps.multiSelect
+    multiple: otherProps.multiSelect,
   });
   return (
     <ComboBox
@@ -71,7 +71,7 @@ export default function App() {
     {
       key: 'Header1',
       text: 'First heading',
-      itemType: SelectableOptionMenuItemType.Header
+      itemType: SelectableOptionMenuItemType.Header,
     },
     { key: 'A', text: 'Option A' },
     { key: 'B', text: 'Option B' },
@@ -80,25 +80,33 @@ export default function App() {
     {
       key: 'divider',
       text: '-',
-      itemType: SelectableOptionMenuItemType.Divider
+      itemType: SelectableOptionMenuItemType.Divider,
     },
     {
       key: 'Header2',
       text: 'Second heading',
-      itemType: SelectableOptionMenuItemType.Header
+      itemType: SelectableOptionMenuItemType.Header,
     },
     { key: 'E', text: 'Option E' },
     { key: 'F', text: 'Option F', disabled: true },
     { key: 'G', text: 'Option G' },
     { key: 'H', text: 'Option H' },
     { key: 'I', text: 'Option I' },
-    { key: 'J', text: 'Option J' }
+    { key: 'J', text: 'Option J' },
   ];
 
   return (
     <div className="App">
       <Form
-        initialValues={{ check1: true, toggle1: true, comboBox1: '', comboBox2: '' }}
+        initialValues={{
+          name: '',
+          email: '',
+          password: '',
+          check1: true,
+          toggle1: true,
+          comboBox1: '',
+          comboBox2: '',
+        }}
         validate={(values) => {
           const errors = {};
           if (!values.name) {
