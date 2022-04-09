@@ -26,7 +26,7 @@ It supports the HTML `<input>` element and the `<textarea>` element.
 It uses the `name` prop to map the input value.
 
 :::caution
-It does not support the `checkbox` and `radio` input types; instead, use the [`<CheckboxField />`](/api/checkboxfield) and [`<RadioGroupField />`](/api/radiogroupfield) components.
+It does not support the `checkbox`, `radio` & `file` input types; instead, use the [`<CheckboxField />`](/api/checkboxfield), [`<RadioGroupField />`](/api/radiogroupfield), & [`<FileField />`](/api/fileField) components.
 :::
 
 ### Example
