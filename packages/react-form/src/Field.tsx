@@ -1,13 +1,11 @@
 import { InputHTMLAttributes } from 'react';
 import { useField } from '.';
 
-type FieldType =
+export type FieldType =
   | 'color'
   | 'date'
   | 'datetime-local'
   | 'email'
-  | 'file'
-  | 'month'
   | 'number'
   | 'password'
   | 'range'
@@ -18,7 +16,7 @@ type FieldType =
   | 'time'
   | 'week';
 
-interface FieldProps
+export interface FieldProps
   extends InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
   name: string;
   type?: FieldType;

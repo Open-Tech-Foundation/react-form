@@ -1,13 +1,14 @@
 import { ChangeEvent, InputHTMLAttributes, type ReactNode } from 'react';
 import { useField } from '.';
 
-interface Props extends InputHTMLAttributes<HTMLSelectElement> {
+export interface SelectFieldProps
+  extends InputHTMLAttributes<HTMLSelectElement> {
   name: string;
   multiple?: boolean;
   children: ReactNode;
 }
 
-export default function SelectField(props: Props) {
+export default function SelectField(props: SelectFieldProps) {
   const { name, multiple, children, ...otherProps } = props;
   const { field, setValue } = useField(name);
 

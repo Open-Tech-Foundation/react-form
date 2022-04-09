@@ -9,6 +9,7 @@ import {
   DatalistField,
   SelectField,
   RadioGroupField,
+  FileField,
 } from '../src';
 
 describe('Multiple Input Types', () => {
@@ -235,6 +236,65 @@ describe('Multiple Input Types', () => {
     fireEvent.click(screen.getByRole('button'));
     await waitFor(() => {
       expect(formValues).toEqual({ desc: 'abc \n xyz' });
+    });
+  });
+
+  test('FileField - Single', async () => {
+    const photoFile = new File(['hello'], 'hello.png', { type: 'image/png' });
+    interface FormValues {
+      photo: FileList | string;
+    }
+    let formValues: FormValues;
+    const initialValues: FormValues = { photo: '' };
+    render(
+      <Form
+        initialValues={initialValues}
+        onSubmit={(values) => (formValues = values)}
+      >
+        <div>
+          <label htmlFor="photo">Photo</label>
+          <FileField id="photo" name="photo" />
+        </div>
+        <button type="submit">Submit</button>
+      </Form>
+    );
+
+    userEvent.upload(screen.getByLabelText('Photo'), photoFile);
+    fireEvent.click(screen.getByRole('button', { name: 'Submit' }));
+    await waitFor(() => {
+      expect((formValues.photo as FileList).item(0)).toEqual(photoFile);
+    });
+  });
+
+  test('FileField - Multiple', async () => {
+    const file1 = new File(['hello1'], 'hello1.png', { type: 'image/png' });
+    const file2 = new File(['hello1'], 'hello2.png', { type: 'image/png' });
+    interface FormValues {
+      myFiles: FileList | string;
+    }
+    let formValues: FormValues;
+    const initialValues: FormValues = { myFiles: '' };
+    render(
+      <Form
+        initialValues={initialValues}
+        onSubmit={(values) => (formValues = values)}
+      >
+        <div>
+          <label htmlFor="myFiles">My Files</label>
+          <FileField id="myFiles" name="myFiles" multiple clearable />
+        </div>
+        <button type="submit">Submit</button>
+      </Form>
+    );
+
+    userEvent.upload(screen.getByLabelText('My Files'), [file1, file2]);
+    fireEvent.click(screen.getByRole('button', { name: 'Submit' }));
+    await waitFor(() => {
+      expect(formValues.myFiles as FileList).toHaveLength(2);
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Clear' }));
+    await waitFor(() => {
+      expect(formValues.myFiles as FileList).toHaveLength(0);
     });
   });
 });

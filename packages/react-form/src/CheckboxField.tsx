@@ -1,13 +1,14 @@
 import { ChangeEvent, InputHTMLAttributes } from 'react';
 import useField from './useField';
 
-interface Props extends InputHTMLAttributes<HTMLInputElement> {
+export interface CheckboxFieldProps
+  extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   label: string;
   value?: string;
 }
 
-export default function CheckboxField(props: Props) {
+export default function CheckboxField(props: CheckboxFieldProps) {
   const { name, label, value, ...otherProps } = props;
   const { field, setValue } = useField(name);
 

@@ -1,13 +1,14 @@
 import { InputHTMLAttributes } from 'react';
 import useField from './useField';
 
-interface Props extends InputHTMLAttributes<HTMLInputElement> {
+export interface RadioGroupFieldProps
+  extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   label: string;
   value?: string;
 }
 
-export default function RadioGroupField(props: Props) {
+export default function RadioGroupField(props: RadioGroupFieldProps) {
   const { name, label, value, ...otherProps } = props;
   const { field, setValue } = useField(name);
 
