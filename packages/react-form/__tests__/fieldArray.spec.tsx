@@ -38,9 +38,11 @@ describe('Field Array', () => {
       _tasks?: string;
     }
 
+    const values: FormValues = { tasks: [], _tasks: '' };
+
     render(
       <Form
-        initialValues={{ tasks: [], _tasks: '' }}
+        initialValues={values}
         onSubmit={(values) => (formValues = values)}
         validate={(values) => {
           const errors: Errors<FormValues> = {};

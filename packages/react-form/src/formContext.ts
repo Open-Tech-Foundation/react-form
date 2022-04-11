@@ -1,4 +1,5 @@
 import { createContext } from 'react';
-import { ContextVal } from './types';
+import { FormContextType } from './types';
 
-export const FORM_CONTEXT = createContext<ContextVal | null>(null);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const FORM_CONTEXT = createContext<FormContextType<any> | null>(null);

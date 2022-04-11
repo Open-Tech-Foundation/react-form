@@ -1,10 +1,10 @@
 import { getInObj } from '@open-tech-world/js-utils';
 import { useContext } from 'react';
 import { FORM_CONTEXT } from './formContext';
-import { ContextVal } from './types';
+import { FormContextType, Values } from './types';
 
 export default function useFieldError(name: string): string | undefined {
-  const { useFormState }: ContextVal = useContext(FORM_CONTEXT) as ContextVal;
+  const { useFormState } = useContext(FORM_CONTEXT) as FormContextType<Values>;
   const { error, isVisited } = useFormState(
     (s) => ({
       isVisited: getInObj(s.visited, name),

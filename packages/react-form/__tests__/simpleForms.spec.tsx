@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { render, fireEvent, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
@@ -33,6 +34,40 @@ describe('Simple Forms', () => {
       target: { value: 'abc' },
     });
     fireEvent.click(screen.getByRole('button'));
+    await waitFor(() => {
+      expect(formValues).toEqual({ userName: 'abc' });
+    });
+  });
+
+  test('The Form does not lose its state values when re-renderred', async () => {
+    let formValues: object;
+    const App = () => {
+      const [state, setState] = useState(0);
+      return (
+        <div>
+          <p>State: {state}</p>
+          <Form onSubmit={(values) => (formValues = values as object)}>
+            <Field name="userName" placeholder="username" />
+            <button type="submit">Submit</button>
+          </Form>
+          <button onClick={() => setState(1)}>Change State</button>
+        </div>
+      );
+    };
+    render(<App />);
+    expect(screen.getByRole('textbox')).toBeInTheDocument();
+    fireEvent.change(screen.getByRole('textbox'), {
+      target: { value: 'abc' },
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Submit' }));
+    await waitFor(() => {
+      expect(formValues).toEqual({ userName: 'abc' });
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Change State' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Submit' }));
+    await waitFor(() => {
+      expect(screen.getByText('State: 1')).toBeInTheDocument();
+    });
     await waitFor(() => {
       expect(formValues).toEqual({ userName: 'abc' });
     });

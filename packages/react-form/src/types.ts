@@ -1,25 +1,26 @@
-import { ComponentPropsWithoutRef, ReactNode } from 'react';
+import { ComponentPropsWithoutRef, ReactNode, FormHTMLAttributes } from 'react';
 import { Hook } from '@open-tech-world/react-state';
 import Form from './Form';
 
-export type InitialValues = ComponentPropsWithoutRef<
-  typeof Form
->['initialValues'];
+export type Values = ComponentPropsWithoutRef<typeof Form>['initialValues'];
 
-export type Values = InitialValues;
-
-export interface ContextVal {
-  useFormState: Hook<FormState>;
+export type FormContextType<Values> = {
+  useFormState: Hook<FormState<Values>>;
   runValidations: () => Promise<boolean>;
-}
+};
 
-export interface FormProps<Values> {
+export interface FormProps<Values>
+  extends Omit<FormHTMLAttributes<HTMLFormElement>, 'onSubmit'> {
   initialValues?: Values;
   onSubmit: (values: Values) => void;
-  validate?: (
-    values: Values
-  ) => Record<string, unknown> | Promise<Record<string, unknown>>;
+  validate?: (values: Values) => Errors<Values> | Promise<Errors<Values>>;
   children: ReactNode;
+}
+
+export interface UseFormProps<Values> {
+  initialValues?: Values;
+  onSubmit: (values: Values) => void;
+  validate?: (values: Values) => Errors<Values> | Promise<Errors<Values>>;
 }
 
 export type Errors<T> = {
@@ -34,13 +35,13 @@ export type Visited<T> = {
     : boolean;
 };
 
-export interface FormState {
+export interface FormState<Values> {
   values: Values;
   errors: Errors<Values>;
   visited: Visited<Values>;
 }
 
-export type FormContext = {
+export type FormContext<Values> = {
   values: Values;
   errors: Errors<Values>;
   visited: Visited<Values>;

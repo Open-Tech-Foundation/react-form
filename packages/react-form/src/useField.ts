@@ -2,13 +2,13 @@ import { getInObj, setInObj } from '@open-tech-world/js-utils';
 import { ChangeEvent, useContext } from 'react';
 import { FORM_CONTEXT } from './formContext';
 import startTransition from './startTransition';
-import { ContextVal } from './types';
+import { FormContextType, Values } from './types';
 import useFieldError from './useFieldError';
 
 export default function useField(name: string) {
   const { useFormState, runValidations } = useContext(
     FORM_CONTEXT
-  ) as ContextVal;
+  ) as FormContextType<Values>;
 
   const [value, setState] = useFormState(
     (s) => getInObj(s.values as object, name),

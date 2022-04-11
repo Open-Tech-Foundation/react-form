@@ -1,11 +1,11 @@
 import { useContext } from 'react';
 import { getInObj, setInObj } from '@open-tech-world/js-utils';
 import { FORM_CONTEXT } from './formContext';
-import { ContextVal, FormState } from './types';
+import { FormContextType, FormState, Values } from './types';
 import startTransition from './startTransition';
 
 export default function useFieldArray(name: string) {
-  const { useFormState } = useContext(FORM_CONTEXT) as ContextVal;
+  const { useFormState } = useContext(FORM_CONTEXT) as FormContextType<Values>;
 
   const [value, setState] = useFormState(
     (s) => getInObj(s.values as object, name) as unknown[],
@@ -27,7 +27,7 @@ export default function useFieldArray(name: string) {
   const remove = (index: number) => {
     startTransition(() => {
       setState((s) => {
-        const obj: Partial<FormState> = {
+        const obj: Partial<FormState<Values>> = {
           values: setInObj(
             s.values as object,
             name,
