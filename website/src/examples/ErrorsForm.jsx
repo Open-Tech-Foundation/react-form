@@ -25,12 +25,15 @@ export default function App() {
         <ErrorMsg path="name" />
       </div>
 
+      <br />
+
       <div>
         <label>Email: </label>
         <Field name="email" type="email" />
         <ErrorMsg path="email" />
       </div>
 
+      <br />
       <button type="submit">Submit</button>
     </Form>
   );

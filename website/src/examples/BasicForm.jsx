@@ -8,11 +8,14 @@ export default function App() {
         <Field name="name" />
       </div>
 
+      <br />
+
       <div>
         <label>Email: </label>
         <Field name="email" type="email" />
       </div>
 
+      <br />
       <button type="submit">Submit</button>
     </Form>
   );

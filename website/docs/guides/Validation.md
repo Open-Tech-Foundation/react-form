@@ -25,4 +25,6 @@ The validating function can be either `sync` or `async`
 
 ### Example
 
+Try to submit the form with and w/o values in both fields.
+
 <SandBox lib="react-form" code={ValidationFormSource} />
