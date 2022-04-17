@@ -21,4 +21,4 @@ title: Introduction
 
 - Render optimized
 
-- <a href="https://bundlephobia.com/package/@open-tech-world/react-form">Minified + GZip Size {'<'} 3KB</a>
+- <a href="https://bundlephobia.com/package/@open-tech-world/react-form">Minified + GZip Size ~3KB</a>

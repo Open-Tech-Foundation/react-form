@@ -41,11 +41,15 @@ export default function App() {
           <ErrorMsg path="name" />
         </div>
 
+        <br />
+
         <div>
           <div>Email: </div>
           <Field name="email" type="email" />
           <ErrorMsg path="email" />
         </div>
+
+        <br />
 
         <div>
           <div>Password: </div>
@@ -53,12 +57,16 @@ export default function App() {
           <ErrorMsg path="password" />
         </div>
 
+        <br />
+
         <div>
           <div>Confirm Password: </div>
           <Field name="confirmPassword" type="password" />
           <ErrorMsg path="confirmPassword" />
         </div>
 
+        <br />
+        
         <button type="submit">Submit</button>
 
         <br />
