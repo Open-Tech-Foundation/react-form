@@ -11,6 +11,7 @@ export interface SelectFieldProps
 export default function SelectField(props: SelectFieldProps) {
   const { name, multiple, children, ...otherProps } = props;
   const { field, setValue } = useField(name);
+  const value = field.value === undefined ? (multiple ? [] : '') : field.value;
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     let value;
@@ -32,7 +33,7 @@ export default function SelectField(props: SelectFieldProps) {
     <select
       multiple={multiple}
       name={name}
-      value={field.value as string | string[]}
+      value={value as string | string[]}
       onChange={handleChange}
       onBlur={field.onBlur}
       {...otherProps}

@@ -25,6 +25,8 @@ export interface FieldProps
 export default function Field(props: FieldProps) {
   const { name, type, ...otherProps } = props;
   const { field } = useField(name);
+  const value =
+    field.value === undefined ? '' : (field.value as string | number);
 
   if (type === 'textarea') {
     return (
@@ -42,7 +44,7 @@ export default function Field(props: FieldProps) {
     <input
       type={type || 'text'}
       name={name}
-      value={field.value as string | number}
+      value={value}
       onChange={field.onChange}
       onBlur={field.onBlur}
       {...otherProps}

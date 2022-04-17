@@ -9,17 +9,21 @@ export type FormContextType<Values> = {
   runValidations: () => Promise<boolean>;
 };
 
+export interface FormActions<Values> {
+  reset: (values?: Values) => void;
+}
+
 export interface FormProps<Values>
   extends Omit<FormHTMLAttributes<HTMLFormElement>, 'onSubmit'> {
   initialValues?: Values;
-  onSubmit: (values: Values) => void;
+  onSubmit: (values: Values, actions: FormActions<Values>) => void;
   validate?: (values: Values) => Errors<Values> | Promise<Errors<Values>>;
   children: ReactNode;
 }
 
 export interface UseFormProps<Values> {
   initialValues?: Values;
-  onSubmit: (values: Values) => void;
+  onSubmit: (values: Values, actions: FormActions<Values>) => void;
   validate?: (values: Values) => Errors<Values> | Promise<Errors<Values>>;
 }
 
@@ -36,6 +40,7 @@ export type Visited<T> = {
 };
 
 export interface FormState<Values> {
+  initialValues: Values;
   values: Values;
   errors: Errors<Values>;
   visited: Visited<Values>;

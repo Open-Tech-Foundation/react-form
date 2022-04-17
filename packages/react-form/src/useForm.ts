@@ -1,10 +1,11 @@
+import { cloneObj } from '@open-tech-world/js-utils';
 import { createState, Hook, StateAPI } from '@open-tech-world/react-state';
 import { FormEvent, startTransition, useMemo, useRef } from 'react';
 import cloneObjWithDefaultVal from './cloneObjWithDefaultVal';
-import { FormState, UseFormProps } from './types';
+import { FormActions, FormState, UseFormProps } from './types';
 
 export default function useForm<Values>(props: UseFormProps<Values>) {
-  const { initialValues, onSubmit, validate } = props;
+  const { initialValues = {}, onSubmit, validate } = props;
   const useFormState = useRef<Hook<FormState<Values>> | null>(null);
   const stateAPI = useRef<StateAPI<FormState<Values>> | null>(null);
 
@@ -12,7 +13,8 @@ export default function useForm<Values>(props: UseFormProps<Values>) {
     if (useFormState.current === null) {
       const [hook, api] = createState<FormState<Values>>(
         {
-          values: { ...initialValues } as Values,
+          initialValues: cloneObj(initialValues),
+          values: cloneObj(initialValues),
           errors: {},
           visited: {},
         },
@@ -42,6 +44,16 @@ export default function useForm<Values>(props: UseFormProps<Values>) {
     return true;
   };
 
+  const reset = (values?: Values) => {
+    stateAPI.current?.setState((s) => ({
+      initialValues: values ? cloneObj(values) : s.initialValues,
+      values: cloneObj(values || s.initialValues) as Values,
+      errors: {},
+      visited: {},
+    }));
+    // stateAPI.current?.destroy();
+  };
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     startTransition(() => {
@@ -54,7 +66,13 @@ export default function useForm<Values>(props: UseFormProps<Values>) {
     });
     const validationResult = await runValidations();
     if (validationResult && onSubmit) {
-      onSubmit(stateAPI.current?.getState().values as unknown as Values);
+      const formActions: FormActions<Values> = {
+        reset,
+      };
+      onSubmit(
+        stateAPI.current?.getState().values as unknown as Values,
+        formActions
+      );
     }
   };
 
