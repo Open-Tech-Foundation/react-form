@@ -72,6 +72,6 @@
   },
   "dependencies": {
     "@open-tech-world/js-utils": "^0.14.0",
-    "@open-tech-world/react-state": "^0.9.0"
+    "@open-tech-world/react-state": "^0.10.0"
   }
 }
