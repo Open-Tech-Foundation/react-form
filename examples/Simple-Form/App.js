@@ -1,4 +1,4 @@
-import { Form, Field } from '@open-tech-world/react-form';
+import { Form, Field } from '@opentf/react-form';
 import FormContext from './FormContext';
 
 export default function App() {

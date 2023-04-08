@@ -1,4 +1,4 @@
-import { ChangeEvent, InputHTMLAttributes } from 'react';
+import type { ChangeEvent, InputHTMLAttributes } from 'react';
 import useField from './useField';
 
 export interface CheckboxFieldProps
@@ -10,7 +10,7 @@ export interface CheckboxFieldProps
 
 export default function CheckboxField(props: CheckboxFieldProps) {
   const { name, label, value, ...otherProps } = props;
-  const { field, setValue } = useField(name);
+  const { field } = useField(name);
 
   const id = crypto.randomUUID();
 
@@ -25,7 +25,7 @@ export default function CheckboxField(props: CheckboxFieldProps) {
       }
     }
 
-    setValue(v);
+    field.onChange(v);
   };
 
   const isChecked = () => {

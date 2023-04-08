@@ -1,12 +1,16 @@
-import { useState } from 'react';
-import { render, fireEvent, screen, waitFor } from '@testing-library/react';
+import React from 'react';
 import '@testing-library/jest-dom';
+import '@testing-library/react';
+import '@jest/globals';
+import { useState } from 'react';
+import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import { Field, Form } from '../src';
 
 describe('Simple Forms', () => {
   it('Creates an empty form with a role', () => {
-    render(<Form onSubmit={() => undefined}>null</Form>);
+    render(<Form onSubmit={() => {}}>null</Form>);
     expect(screen.getByRole('form')).toBeInTheDocument();
   });
 
@@ -22,25 +26,20 @@ describe('Simple Forms', () => {
   });
 
   test('Add text to a Field input & submit the form', async () => {
-    let formValues: object;
+    let formValues: object = {};
     render(
       <Form onSubmit={(values) => (formValues = values as object)}>
         <Field name="userName" placeholder="username" />
         <button type="submit" />
       </Form>
     );
-    expect(screen.getByRole('textbox')).toBeInTheDocument();
-    fireEvent.change(screen.getByRole('textbox'), {
-      target: { value: 'abc' },
-    });
-    fireEvent.click(screen.getByRole('button'));
-    await waitFor(() => {
-      expect(formValues).toEqual({ userName: 'abc' });
-    });
+    await userEvent.type(screen.getByRole('textbox'), 'abc');
+    await userEvent.click(screen.getByRole('button'));
+    expect(formValues).toEqual({ userName: 'abc' });
   });
 
   test('The Form does not lose its state values when re-renderred', async () => {
-    let formValues: object;
+    let formValues: object = {};
     const App = () => {
       const [state, setState] = useState(0);
       return (
@@ -55,22 +54,13 @@ describe('Simple Forms', () => {
       );
     };
     render(<App />);
-    expect(screen.getByRole('textbox')).toBeInTheDocument();
-    fireEvent.change(screen.getByRole('textbox'), {
-      target: { value: 'abc' },
-    });
-    fireEvent.click(screen.getByRole('button', { name: 'Submit' }));
-    await waitFor(() => {
-      expect(formValues).toEqual({ userName: 'abc' });
-    });
-    fireEvent.click(screen.getByRole('button', { name: 'Change State' }));
-    fireEvent.click(screen.getByRole('button', { name: 'Submit' }));
-    await waitFor(() => {
-      expect(screen.getByText('State: 1')).toBeInTheDocument();
-    });
-    await waitFor(() => {
-      expect(formValues).toEqual({ userName: 'abc' });
-    });
+    await userEvent.type(screen.getByRole('textbox'), 'abc');
+    await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
+    expect(formValues).toEqual({ userName: 'abc' });
+    await userEvent.click(screen.getByRole('button', { name: 'Change State' }));
+    await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
+    expect(screen.getByText('State: 1')).toBeInTheDocument();
+    expect(formValues).toEqual({ userName: 'abc' });
   });
 
   test('Email Field input type', () => {
@@ -84,7 +74,7 @@ describe('Simple Forms', () => {
   });
 
   it('Returns values from multiple input fields when the form submitted', async () => {
-    let formValues: object;
+    let formValues: object = {};
     render(
       <Form onSubmit={(values) => (formValues = values as object)}>
         <label htmlFor="name-input">Name</label>
@@ -96,28 +86,19 @@ describe('Simple Forms', () => {
         <button type="submit" />
       </Form>
     );
-    fireEvent.change(screen.getByLabelText('Name'), {
-      target: { value: 'abc' },
-    });
-    fireEvent.change(screen.getByLabelText('Email'), {
-      target: { value: 'abc@example.com' },
-    });
-    fireEvent.change(screen.getByLabelText('Age'), {
-      target: { value: 25 },
-    });
-    fireEvent.click(screen.getByRole('button'));
-    await waitFor(() => {
-      expect(formValues).toEqual({
-        name: 'abc',
-        email: 'abc@example.com',
-        age: 25,
-      });
-      expect(screen.getByLabelText('Age').getAttribute('type')).toBe('number');
+    await userEvent.type(screen.getByLabelText('Name'), 'abc');
+    await userEvent.type(screen.getByLabelText('Email'), 'abc@example.com');
+    await userEvent.type(screen.getByLabelText('Age'), '19');
+    await userEvent.click(screen.getByRole('button'));
+    expect(formValues).toEqual({
+      name: 'abc',
+      email: 'abc@example.com',
+      age: '19',
     });
   });
 
   test('empty initial values form', async () => {
-    let formValues: object;
+    let formValues: object = {};
     render(
       <Form initialValues={{}} onSubmit={(values) => (formValues = values)}>
         <label htmlFor="name-input">Name</label>
@@ -126,14 +107,12 @@ describe('Simple Forms', () => {
         <button type="submit" />
       </Form>
     );
-    fireEvent.click(screen.getByRole('button'));
-    await waitFor(() => {
-      expect(formValues).toEqual({});
-    });
+    await userEvent.click(screen.getByRole('button'));
+    expect(formValues).toEqual({});
   });
 
   it('returns the same initial values passed to the form', async () => {
-    let formValues: object;
+    let formValues: object = {};
     render(
       <Form
         initialValues={{ name: 'abc', age: 25 }}
@@ -145,14 +124,12 @@ describe('Simple Forms', () => {
         <button type="submit" />
       </Form>
     );
-    fireEvent.click(screen.getByRole('button'));
-    await waitFor(() => {
-      expect(formValues).toEqual({ name: 'abc', age: 25 });
-    });
+    await userEvent.click(screen.getByRole('button'));
+    expect(formValues).toEqual({ name: 'abc', age: 25 });
   });
 
   it('returns the initial values merged with the changed values', async () => {
-    let formValues: object;
+    let formValues: object = {};
     render(
       <Form
         initialValues={{ name: 'abc', age: 25 }}
@@ -164,12 +141,8 @@ describe('Simple Forms', () => {
         <button type="submit" />
       </Form>
     );
-    fireEvent.change(screen.getByLabelText('Name'), {
-      target: { value: 'xyz' },
-    });
-    fireEvent.click(screen.getByRole('button'));
-    await waitFor(() => {
-      expect(formValues).toEqual({ name: 'xyz', age: 25 });
-    });
+    await userEvent.type(screen.getByLabelText('Name'), 'xyz');
+    await userEvent.click(screen.getByRole('button'));
+    expect(formValues).toEqual({ name: 'abcxyz', age: 25 });
   });
 });

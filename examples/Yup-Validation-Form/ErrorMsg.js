@@ -1,4 +1,4 @@
-import { useFieldError } from '@open-tech-world/react-form';
+import { useFieldError } from '@opentf/react-form';
 
 export default function ErrorMsg({ path }) {
   const error = useFieldError(path);

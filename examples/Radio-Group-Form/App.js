@@ -1,4 +1,4 @@
-import { Form, RadioGroupField } from '@open-tech-world/react-form';
+import { Form, RadioGroupField } from '@opentf/react-form';
 import FormContext from './FormContext';
 
 export default function App() {

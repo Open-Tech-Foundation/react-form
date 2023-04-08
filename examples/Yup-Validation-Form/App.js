@@ -1,5 +1,5 @@
-import { Form, Field } from '@open-tech-world/react-form';
-import { capitalize } from '@open-tech-world/es-utils';
+import { Form, Field } from '@opentf/react-form';
+import { capitalize } from '@opentf/es-utils';
 import * as yup from 'yup';
 
 import ErrorMsg from './ErrorMsg';

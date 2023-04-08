@@ -1,14 +1,36 @@
 {
-  "workspaces": [
-    "packages/react-form",
-    "website"
-  ],
+  "private": true,
   "scripts": {
-    "start": "yarn workspace @open-tech-world/react-form start",
-    "start:website": "yarn workspace website start",
-    "test": "yarn workspace @open-tech-world/react-form test",
-    "build": "yarn workspace @open-tech-world/react-form build",
-    "build:website": "yarn build && yarn workspace website build",
-    "ci": "yarn workspace @open-tech-world/react-form ci"
+    "dev": "turbo run build --filter=react-form -- --watch",
+    "dev:web": "turbo run start --filter=website",
+    "test": "turbo run test --filter=react-form",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "lint": "turbo run lint --filter=@opentf/react-form",
+    "build": "turbo run build --filter=react-form",
+    "build:website": "turbo run build --filter=website",
+    "ci": "turbo run ci --filter=react-form",
+    "prepare": "husky install",
+    "publish-packages": "turbo run build lint test --filter=react-form && changeset version && changeset publish"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "lint-staged": {
+    "packages/react-form/src/*.{ts,tsx}": [
+      "pnpm run format",
+      "pnpm run lint --"
+    ],
+    "*.json": [
+      "npm run format"
+    ]
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.26.0",
+    "@commitlint/cli": "^17.5.1",
+    "@commitlint/config-conventional": "^17.4.4",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.2.0",
+    "turbo": "^1.8.2"
   }
 }

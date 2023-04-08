@@ -1,55 +1,37 @@
-import { getInObj, setInObj } from '@open-tech-world/js-utils';
-import { ChangeEvent, useContext } from 'react';
+import { getInObj, setInObj } from '@opentf/utils';
+import { useContext, useEffect, useState } from 'react';
 import { FORM_CONTEXT } from './formContext';
-import startTransition from './startTransition';
-import { FormContextType, Values } from './types';
+import type { FormCtxVal, Values } from './types';
 import useFieldError from './useFieldError';
 
 export default function useField(name: string) {
-  const { useFormState, runValidations } = useContext(
+  const [fv, setFV] = useState<unknown>('');
+  const { useFormState, setFormState, runValidations } = useContext(
     FORM_CONTEXT
-  ) as FormContextType<Values>;
+  ) as FormCtxVal<Values>;
+  const value = useFormState((s) => getInObj(s.values as object, name)) || '';
 
-  const [value, setState] = useFormState(
-    (s) => getInObj(s.values as object, name),
-    {
-      set: true,
-    }
-  );
+  useEffect(() => {
+    setFV(value);
+  }, [value]);
+
   const error = useFieldError(name);
 
-  const getValue = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    const target = e.currentTarget || e.target;
-
-    if (target.type === 'number') {
-      return parseInt(target.value);
-    }
-
-    if (target.type === 'file') {
-      return (target as HTMLInputElement).files;
-    }
-
-    return target.value;
-  };
-
   const setValue = (v: unknown) => {
-    setState((s) => ({
+    setFormState((s) => ({
       values: setInObj(s.values as object, name, v),
     }));
   };
 
-  const onChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    setValue(getValue(e));
+  const onChange = (value: unknown) => {
+    setValue(value);
+    setFV(value);
   };
 
   const onBlur = () => {
-    startTransition(() => {
-      setState((s) => ({ visited: setInObj(s.visited as object, name, true) }));
-    });
+    setFormState((s) => ({
+      visited: setInObj(s.visited as object, name, true),
+    }));
     setTimeout(() => {
       runValidations();
     }, 250);
@@ -57,7 +39,7 @@ export default function useField(name: string) {
 
   return {
     field: {
-      value,
+      value: fv,
       onChange,
       onBlur,
     },

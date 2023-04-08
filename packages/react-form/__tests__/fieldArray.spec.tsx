@@ -1,5 +1,7 @@
-import { render, fireEvent, screen, waitFor } from '@testing-library/react';
+import React from 'react';
+import { render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import userEvent from '@testing-library/user-event';
 
 import { Field, useFieldArray, Form } from '../src';
 import ErrorMsg from './ErrorMsg';
@@ -73,28 +75,26 @@ describe('Field Array', () => {
       </Form>
     );
 
-    fireEvent.click(screen.getByRole('button', { name: 'Submit' }));
+    await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
     await waitFor(() => {
       expect(
         screen.getByText('Atleast one task is required')
       ).toBeInTheDocument();
     });
 
-    fireEvent.click(screen.getByRole('button', { name: 'Add Task' }));
-    fireEvent.click(screen.getByRole('button', { name: 'Submit' }));
+    await userEvent.click(screen.getByRole('button', { name: 'Add Task' }));
+    await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
     await waitFor(() => {
       expect(screen.getByText('Required!')).toBeInTheDocument();
     });
 
-    fireEvent.change(screen.getByLabelText('Name 0'), {
-      target: { value: 'task 1' },
-    });
-    fireEvent.click(screen.getByRole('button', { name: 'Submit' }));
+    await userEvent.type(screen.getByLabelText('Name 0'), 'task 1');
+    await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
     await waitFor(() => {
       expect(formValues).toEqual({ tasks: ['task 1'], _tasks: '' });
     });
 
-    fireEvent.click(screen.getByRole('button', { name: 'Add Task' }));
+    await userEvent.click(screen.getByRole('button', { name: 'Add Task' }));
     await waitFor(() => {
       expect(screen.getAllByRole('textbox')).toHaveLength(2);
     });

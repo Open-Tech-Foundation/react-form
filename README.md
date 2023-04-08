@@ -1,14 +1,14 @@
 <div align="center">
 
 # React Form
-⚡ by [Open Tech World](https://open-tech-world.pages.dev/)
 
-[![Build](https://github.com/open-tech-world/react-form/actions/workflows/build.yml/badge.svg)](https://github.com/open-tech-world/react-form/actions/workflows/build.yml)
-[![npm bundle size (scoped version)](https://img.shields.io/bundlephobia/minzip/@open-tech-world/react-form/latest?label=Min%2BGZip)](https://bundlephobia.com/package/@open-tech-world/react-form)
+⚡ by [OPEN TECH FOUNDATION](https://open-tech-foundation.pages.dev/)
+
+[![Build](https://github.com/open-tech-foundation/react-form/actions/workflows/build.yml/badge.svg)](https://github.com/open-tech-foundation/react-form/actions/workflows/build.yml)
 
 </div>
 
-> Build Forms & Manage Their State in React.
+> Build forms & manage their state in React.
 
 ## Features
 
@@ -18,24 +18,34 @@
 
 - It supports form validation
 
-- TypeScript support
-
 - Render optimized
+
+- TypeScript support
 
 ## Installation
 
-```bash
-# With npm
-$ npm install @open-tech-world/react-form
+Using npm
 
-# With yarn
-$ yarn add @open-tech-world/react-form
+```shell
+npm install @opentf/react-form
+```
+
+Using Yarn
+
+```shell
+yarn add @opentf/react-form
+```
+
+Using pnpm
+
+```shell
+pnpm add @opentf/react-form
 ```
 
 ## Usage
 
 ```jsx
-import { Form, Field } from '@open-tech-world/react-form';
+import { Form, Field } from '@opentf/react-form';
 
 export default function App() {
   return (
@@ -45,9 +55,9 @@ export default function App() {
       }}
     >
       <Field name="field1" />
-      
+
       {/* Other fields... */}
-      
+
       <button type="submit">Submit</button>
     </Form>
   );
@@ -56,7 +66,7 @@ export default function App() {
 
 ## Documentation
 
-Please read the complete documentation at: [https://react-form.pages.dev/](https://react-form.pages.dev/)
+Please visit [https://react-form.pages.dev/](https://react-form.pages.dev/) for complete documentation.
 
 ## License
 

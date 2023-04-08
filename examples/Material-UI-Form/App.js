@@ -11,7 +11,7 @@ import {
   Switch,
   TextField
 } from '@mui/material';
-import { Form, useField } from '@open-tech-world/react-form';
+import { Form, useField } from '@opentf/react-form';
 import FormContext from './FormContext';
 
 const MUITextField = ({ name, label }) => {

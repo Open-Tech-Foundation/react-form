@@ -1,5 +1,5 @@
 {
-  "name": "@open-tech-world/react-form-yup-schema-form",
+  "name": "@opentf/react-form-yup-schema-form",
   "version": "0.1.0",
   "description": "This example shows how to validate a form using Yup schema.",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "react-dom": "latest",
     "react-scripts": "latest",
     "yup": "latest",
-    "@open-tech-world/es-utils": "latest",
-    "@open-tech-world/react-form": "latest"
+    "@opentf/es-utils": "latest",
+    "@opentf/react-form": "latest"
   }
 }

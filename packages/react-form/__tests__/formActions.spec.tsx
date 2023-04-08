@@ -1,5 +1,7 @@
-import { render, fireEvent, screen, waitFor } from '@testing-library/react';
+import React from 'react';
+import { render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import userEvent from '@testing-library/user-event';
 
 import { Field, Form } from '../src';
 
@@ -22,23 +24,17 @@ describe('Form Actions', () => {
       );
     };
     render(<App />);
-    fireEvent.change(screen.getByRole('textbox'), {
-      target: { value: 'xxx' },
-    });
-    fireEvent.click(screen.getByRole('button'));
-    await waitFor(() => {
-      expect(formValues).toEqual({ name: 'xxx' });
-    });
-    await waitFor(() => {
-      expect(screen.getByLabelText('Name')).toHaveValue('');
-    });
+    await userEvent.type(screen.getByRole('textbox'), 'xxx');
+    await userEvent.click(screen.getByRole('button'));
+    expect(formValues).toEqual({ name: 'xxx' });
+    expect(screen.getByLabelText('Name')).toHaveValue('');
   });
 
   it('Reset the form on submit with initialValues', async () => {
     interface FormValues {
       name: string;
     }
-    let formValues: FormValues;
+    let formValues: FormValues = { name: '' };
 
     const App = () => {
       return (
@@ -56,23 +52,18 @@ describe('Form Actions', () => {
       );
     };
     render(<App />);
-    fireEvent.change(screen.getByRole('textbox'), {
-      target: { value: 'React' },
-    });
-    fireEvent.click(screen.getByRole('button'));
-    await waitFor(() => {
-      expect(formValues).toEqual({ name: 'React' });
-    });
-    await waitFor(() => {
-      expect(screen.getByLabelText('Name')).toHaveValue('g');
-    });
+    await userEvent.clear(screen.getByRole('textbox'));
+    await userEvent.type(screen.getByRole('textbox'), 'React');
+    await userEvent.click(screen.getByRole('button'));
+    expect(formValues).toEqual({ name: 'React' });
+    expect(screen.getByLabelText('Name')).toHaveValue('g');
   });
 
   it('Reset the form on submit with new initialValues', async () => {
     interface FormValues {
       name: string;
     }
-    let formValues: FormValues;
+    let formValues: FormValues = { name: '' };
 
     const App = () => {
       return (
@@ -90,15 +81,10 @@ describe('Form Actions', () => {
       );
     };
     render(<App />);
-    fireEvent.change(screen.getByRole('textbox'), {
-      target: { value: 'React' },
-    });
-    fireEvent.click(screen.getByRole('button'));
-    await waitFor(() => {
-      expect(formValues).toEqual({ name: 'React' });
-    });
-    await waitFor(() => {
-      expect(screen.getByLabelText('Name')).toHaveValue('xxx');
-    });
+    await userEvent.clear(screen.getByRole('textbox'));
+    await userEvent.type(screen.getByRole('textbox'), 'React');
+    await userEvent.click(screen.getByRole('button'));
+    expect(formValues).toEqual({ name: 'React' });
+    expect(screen.getByLabelText('Name')).toHaveValue('xxx');
   });
 });

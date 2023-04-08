@@ -1,4 +1,5 @@
-import { render, fireEvent, screen, waitFor } from '@testing-library/react';
+import React from 'react';
+import { render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 
@@ -21,17 +22,17 @@ describe('Multiple Input Types', () => {
         <button type="submit" />
       </Form>
     );
-    fireEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByRole('button'));
     await waitFor(() => {
       expect(formValues).toEqual({});
     });
-    fireEvent.click(screen.getByLabelText('Send newsletter'));
-    fireEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByLabelText('Send newsletter'));
+    await userEvent.click(screen.getByRole('button'));
     await waitFor(() => {
       expect(formValues).toEqual({ newsletter: true });
     });
-    fireEvent.click(screen.getByLabelText('Send newsletter'));
-    fireEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByLabelText('Send newsletter'));
+    await userEvent.click(screen.getByRole('button'));
     await waitFor(() => {
       expect(formValues).toEqual({ newsletter: false });
     });
@@ -50,17 +51,17 @@ describe('Multiple Input Types', () => {
         <button type="submit" />
       </Form>
     );
-    fireEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByRole('button'));
     await waitFor(() => {
       expect(formValues).toEqual({ interests: [] });
     });
-    fireEvent.click(screen.getByLabelText('Art'));
-    fireEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByLabelText('Art'));
+    await userEvent.click(screen.getByRole('button'));
     await waitFor(() => {
       expect(formValues).toEqual({ interests: ['art'] });
     });
-    fireEvent.click(screen.getByLabelText('Music'));
-    fireEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByLabelText('Music'));
+    await userEvent.click(screen.getByRole('button'));
     await waitFor(() => {
       expect(formValues).toEqual({ interests: ['art', 'music'] });
     });
@@ -76,17 +77,17 @@ describe('Multiple Input Types', () => {
         <button type="submit" />
       </Form>
     );
-    fireEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByRole('button'));
     await waitFor(() => {
       expect(formValues).toEqual({});
     });
-    fireEvent.click(screen.getByLabelText('Art'));
-    fireEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByLabelText('Art'));
+    await userEvent.click(screen.getByRole('button'));
     await waitFor(() => {
       expect(formValues).toEqual({ interests: ['art'] });
     });
-    fireEvent.click(screen.getByLabelText('Music'));
-    fireEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByLabelText('Music'));
+    await userEvent.click(screen.getByRole('button'));
     await waitFor(() => {
       expect(formValues).toEqual({ interests: ['art', 'music'] });
     });
@@ -105,17 +106,17 @@ describe('Multiple Input Types', () => {
         <button type="submit" />
       </Form>
     );
-    fireEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByRole('button'));
     await waitFor(() => {
       expect(formValues).toEqual({ contact: '' });
     });
-    fireEvent.click(screen.getByLabelText('Email'));
-    fireEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByLabelText('Email'));
+    await userEvent.click(screen.getByRole('button'));
     await waitFor(() => {
       expect(formValues).toEqual({ contact: 'email' });
     });
-    fireEvent.click(screen.getByLabelText('Phone'));
-    fireEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByLabelText('Phone'));
+    await userEvent.click(screen.getByRole('button'));
     await waitFor(() => {
       expect(formValues).toEqual({ contact: 'phone' });
     });
@@ -134,10 +135,8 @@ describe('Multiple Input Types', () => {
       </Form>
     );
 
-    fireEvent.change(screen.getByLabelText('Today'), {
-      target: { value: '2020-01-01' },
-    });
-    fireEvent.click(screen.getByRole('button'));
+    await userEvent.type(screen.getByLabelText('Today'), '2020-01-01');
+    await userEvent.click(screen.getByRole('button'));
     await waitFor(() => {
       expect(formValues).toEqual({ today: '2020-01-01' });
     });
@@ -165,10 +164,8 @@ describe('Multiple Input Types', () => {
       </Form>
     );
 
-    fireEvent.change(screen.getByRole('combobox'), {
-      target: { value: 'Chrome' },
-    });
-    fireEvent.click(screen.getByRole('button'));
+    await userEvent.type(screen.getByRole('combobox'), 'Chrome');
+    await userEvent.click(screen.getByRole('button'));
     await waitFor(() => {
       expect(formValues).toEqual({ browser: 'Chrome' });
     });
@@ -187,10 +184,8 @@ describe('Multiple Input Types', () => {
       </Form>
     );
 
-    fireEvent.change(screen.getByRole('combobox'), {
-      target: { value: 'chrome' },
-    });
-    fireEvent.click(screen.getByRole('button'));
+    await userEvent.selectOptions(screen.getByRole('combobox'), 'chrome');
+    await userEvent.click(screen.getByRole('button'));
     expect(screen.getAllByRole('option')).toHaveLength(3);
     await waitFor(() => {
       expect(formValues).toEqual({ browser: 'chrome' });
@@ -213,11 +208,11 @@ describe('Multiple Input Types', () => {
   //   );
 
   //   expect(screen.getAllByRole('option')).toHaveLength(3);
-  //   await userEvent.selectOptions(screen.getByRole('listbox'), [
+  //   await await userEvent.selectOptions(screen.getByRole('listbox'), [
   //     'firefox',
   //     'chrome',
   //   ]);
-  //   fireEvent.click(screen.getByRole('button'));
+  //   await userEvent.click(screen.getByRole('button'));
   //   await waitFor(() => {
   //     expect(formValues).toEqual({ browser: ['chrome', 'firefox'] });
   //   });
@@ -235,10 +230,8 @@ describe('Multiple Input Types', () => {
       </Form>
     );
 
-    fireEvent.change(screen.getByRole('textbox'), {
-      target: { value: 'abc \n xyz' },
-    });
-    fireEvent.click(screen.getByRole('button'));
+    await userEvent.type(screen.getByRole('textbox'), 'abc \n xyz');
+    await userEvent.click(screen.getByRole('button'));
     await waitFor(() => {
       expect(formValues).toEqual({ desc: 'abc \n xyz' });
     });
@@ -264,8 +257,8 @@ describe('Multiple Input Types', () => {
       </Form>
     );
 
-    userEvent.upload(screen.getByLabelText('Photo'), photoFile);
-    fireEvent.click(screen.getByRole('button', { name: 'Submit' }));
+    await userEvent.upload(screen.getByLabelText('Photo'), photoFile);
+    await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
     await waitFor(() => {
       expect((formValues.photo as FileList).item(0)).toEqual(photoFile);
     });
@@ -292,12 +285,12 @@ describe('Multiple Input Types', () => {
       </Form>
     );
 
-    userEvent.upload(screen.getByLabelText('My Files'), [file1, file2]);
-    fireEvent.click(screen.getByRole('button', { name: 'Submit' }));
+    await userEvent.upload(screen.getByLabelText('My Files'), [file1, file2]);
+    await userEvent.click(screen.getByRole('button', { name: 'Submit' }));
     await waitFor(() => {
       expect(formValues.myFiles as FileList).toHaveLength(2);
     });
-    fireEvent.click(screen.getByRole('button', { name: 'Clear' }));
+    await userEvent.click(screen.getByRole('button', { name: 'Clear' }));
     await waitFor(() => {
       expect(formValues.myFiles as FileList).toHaveLength(0);
     });

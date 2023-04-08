@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import { FORM_CONTEXT } from './formContext';
-import { FormContextType, Values, type FormContext } from './types';
+import type { FormCtxVal, FormCtx, Values } from './types';
 
 export default function useFormContext() {
-  const { useFormState } = useContext(FORM_CONTEXT) as FormContextType<Values>;
+  const { useFormState } = useContext(FORM_CONTEXT) as FormCtxVal<Values>;
   const { values, errors, visited } = useFormState((s) => ({
     values: s.values,
     errors: s.errors,
@@ -14,5 +14,5 @@ export default function useFormContext() {
     values: values,
     errors: errors,
     visited: visited,
-  } as FormContext<Values>;
+  } as FormCtx<Values>;
 }

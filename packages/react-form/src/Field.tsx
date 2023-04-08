@@ -1,4 +1,4 @@
-import { InputHTMLAttributes } from 'react';
+import type { InputHTMLAttributes } from 'react';
 import { useField } from '.';
 
 export type FieldType =
@@ -25,15 +25,13 @@ export interface FieldProps
 export default function Field(props: FieldProps) {
   const { name, type, ...otherProps } = props;
   const { field } = useField(name);
-  const value =
-    field.value === undefined ? '' : (field.value as string | number);
 
   if (type === 'textarea') {
     return (
       <textarea
         name={name}
         value={field.value as string}
-        onChange={field.onChange}
+        onChange={(e) => field.onChange(e.target.value)}
         onBlur={field.onBlur}
         {...otherProps}
       />
@@ -44,8 +42,8 @@ export default function Field(props: FieldProps) {
     <input
       type={type || 'text'}
       name={name}
-      value={value}
-      onChange={field.onChange}
+      value={field.value as string | string[] | number}
+      onChange={(e) => field.onChange(e.target.value)}
       onBlur={field.onBlur}
       {...otherProps}
     />

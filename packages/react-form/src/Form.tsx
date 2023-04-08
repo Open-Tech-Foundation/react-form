@@ -1,23 +1,29 @@
 import { FORM_CONTEXT } from './formContext';
-import { FormProps } from './types';
+import type { FormCtxVal, FormProps } from './types';
 import useForm from './useForm';
 
 export default function Form<Values>(props: FormProps<Values>) {
   const { initialValues, children, validate, onSubmit, ...otherProps } = props;
 
-  const { useFormState, runValidations, handleSubmit } = useForm<Values>({
-    initialValues,
-    onSubmit,
-    validate,
-  });
+  const { useFormState, setFormState, runValidations, handleSubmit } =
+    useForm<Values>({
+      initialValues,
+      onSubmit,
+      validate,
+    });
 
-  const contextVal = {
-    useFormState: useFormState,
-    runValidations: runValidations,
-  };
+  let ctxVal: FormCtxVal<Values> | null = null;
+
+  if (useFormState && setFormState) {
+    ctxVal = {
+      useFormState,
+      setFormState,
+      runValidations,
+    };
+  }
 
   return (
-    <FORM_CONTEXT.Provider value={contextVal}>
+    <FORM_CONTEXT.Provider value={ctxVal}>
       <form role="form" onSubmit={handleSubmit} {...otherProps}>
         {children}
       </form>

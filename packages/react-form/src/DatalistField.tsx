@@ -1,4 +1,4 @@
-import { InputHTMLAttributes } from 'react';
+import type { InputHTMLAttributes } from 'react';
 import { useField } from '.';
 
 export interface DatalistFieldProps
@@ -18,7 +18,7 @@ export default function DatalistField(props: DatalistFieldProps) {
         list={listId}
         name={name}
         value={field.value as string | string[]}
-        onChange={field.onChange}
+        onChange={(e) => field.onChange(e.target.value)}
         {...otherProps}
       />
       <datalist id={listId}>

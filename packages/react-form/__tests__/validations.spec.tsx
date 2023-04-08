@@ -1,5 +1,7 @@
-import { render, fireEvent, screen, waitFor } from '@testing-library/react';
+import React from 'react';
+import { render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import userEvent from '@testing-library/user-event';
 
 import { Field, Form } from '../src';
 import ErrorMsg from './ErrorMsg';
@@ -17,7 +19,7 @@ describe('Validations', () => {
         <button type="submit" />
       </Form>
     );
-    fireEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByRole('button'));
     await waitFor(() => {
       expect(formValues).toEqual({ name: '' });
     });
@@ -48,7 +50,7 @@ describe('Validations', () => {
         <button type="submit" />
       </Form>
     );
-    fireEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByRole('button'));
     await waitFor(() => {
       expect(screen.getByText('Required!')).toBeInTheDocument();
       expect(formValues).toBeUndefined();
@@ -94,7 +96,7 @@ describe('Validations', () => {
       </Form>
     );
 
-    fireEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByRole('button'));
     await waitFor(() => {
       expect(screen.getByText('Name is required!')).toBeInTheDocument();
       expect(screen.getByText('Invalid email address!')).toBeInTheDocument();
@@ -102,20 +104,16 @@ describe('Validations', () => {
       expect(formValues).toBeUndefined();
     });
 
-    fireEvent.change(screen.getByLabelText('Name'), {
-      target: { value: 'abc' },
-    });
-    fireEvent.click(screen.getByRole('button'));
+    await userEvent.type(screen.getByLabelText('Name'), 'abc');
+    await userEvent.click(screen.getByRole('button'));
     await waitFor(() => {
       expect(screen.queryByText('Invalid email address!')).toBeInTheDocument();
       expect(screen.queryByText('You must be a major')).toBeInTheDocument();
       expect(formValues).toBeUndefined();
     });
 
-    fireEvent.change(screen.getByLabelText('Email'), {
-      target: { value: 'abc@example.com' },
-    });
-    fireEvent.click(screen.getByRole('button'));
+    await userEvent.type(screen.getByLabelText('Email'), 'abc@example.com');
+    await userEvent.click(screen.getByRole('button'));
     await waitFor(() => {
       expect(
         screen.queryByText('Invalid email address!')
@@ -124,23 +122,20 @@ describe('Validations', () => {
       expect(formValues).toBeUndefined();
     });
 
-    fireEvent.change(screen.getByLabelText('Age'), {
-      target: { value: 15 },
-    });
-    fireEvent.click(screen.getByRole('button'));
+    await userEvent.type(screen.getByLabelText('Age'), '15');
+    await userEvent.click(screen.getByRole('button'));
     await waitFor(() => {
       expect(screen.queryByText('You must be a major')).toBeInTheDocument();
       expect(formValues).toBeUndefined();
     });
 
-    fireEvent.change(screen.getByLabelText('Age'), {
-      target: { value: 20 },
-    });
-    fireEvent.click(screen.getByRole('button'));
+    await userEvent.clear(screen.getByLabelText('Age'));
+    await userEvent.type(screen.getByLabelText('Age'), '20');
+    await userEvent.click(screen.getByRole('button'));
     await waitFor(() => {
       expect(screen.queryByText('You must be a major')).not.toBeInTheDocument();
       expect(formValues).toEqual({
-        age: 20,
+        age: '20',
         email: 'abc@example.com',
         name: 'abc',
       });
@@ -200,7 +195,7 @@ describe('Validations', () => {
     });
 
     screen.getByLabelText('Age').focus();
-    fireEvent.change(screen.getByLabelText('Age'), { target: { value: 17 } });
+    await userEvent.type(screen.getByLabelText('Age'), '17');
     screen.getByLabelText('Age').blur();
     await waitFor(() => {
       expect(screen.getByText('Name is required!')).toBeInTheDocument();
@@ -209,7 +204,7 @@ describe('Validations', () => {
     });
 
     screen.getByLabelText('Age').focus();
-    fireEvent.change(screen.getByLabelText('Age'), { target: { value: 20 } });
+    await userEvent.type(screen.getByLabelText('Age'), '20');
     screen.getByLabelText('Age').blur();
     await waitFor(() => {
       expect(screen.getByText('Name is required!')).toBeInTheDocument();

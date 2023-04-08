@@ -1,10 +1,10 @@
-import { getInObj } from '@open-tech-world/js-utils';
+import { getInObj } from '@opentf/utils';
 import { useContext } from 'react';
 import { FORM_CONTEXT } from './formContext';
-import { FormContextType, Values } from './types';
+import type { FormCtxVal, Values } from './types';
 
-export default function useFieldError(name: string): string | undefined {
-  const { useFormState } = useContext(FORM_CONTEXT) as FormContextType<Values>;
+export default function useFieldError(name: string) {
+  const { useFormState } = useContext(FORM_CONTEXT) as FormCtxVal<Values>;
   const { error, isVisited } = useFormState(
     (s) => ({
       isVisited: getInObj(s.visited, name),
@@ -16,4 +16,6 @@ export default function useFieldError(name: string): string | undefined {
   if (isVisited || name.startsWith('_')) {
     return error;
   }
+
+  return;
 }

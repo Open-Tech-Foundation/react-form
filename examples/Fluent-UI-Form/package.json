@@ -1,5 +1,5 @@
 {
-  "name": "@open-tech-world/react-form-fluent-ui-form",
+  "name": "@opentf/react-form-fluent-ui-form",
   "version": "0.1.0",
   "description": "This example shows how to use the Fluent UI components in the <Form /> component.",
   "main": "index.js",
@@ -8,6 +8,6 @@
     "react-dom": "latest",
     "react-scripts": "latest",
     "@fluentui/react": "latest",
-    "@open-tech-world/react-form": "latest"
+    "@opentf/react-form": "latest"
   }
 }

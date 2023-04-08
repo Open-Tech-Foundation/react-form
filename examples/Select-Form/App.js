@@ -1,4 +1,4 @@
-import { Form, SelectField } from '@open-tech-world/react-form';
+import { Form, SelectField } from '@opentf/react-form';
 import FormContext from './FormContext';
 
 export default function App() {

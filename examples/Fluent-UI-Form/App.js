@@ -1,4 +1,4 @@
-import { Form, useField } from '@open-tech-world/react-form';
+import { Form, useField } from '@opentf/react-form';
 import {
   Checkbox,
   ComboBox,

@@ -1,5 +1,5 @@
 {
-  "name": "@open-tech-world/react-form-simple-form",
+  "name": "@opentf/react-form-simple-form",
   "version": "0.1.0",
   "description": "This example shows how to use the basic <Form /> & <Field /> components in a form.",
   "main": "index.js",
@@ -7,6 +7,6 @@
     "react": "latest",
     "react-dom": "latest",
     "react-scripts": "latest",
-    "@open-tech-world/react-form": "latest"
+    "@opentf/react-form": "latest"
   }
 }

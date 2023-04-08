@@ -1,4 +1,4 @@
-import { Form, CheckboxField } from '@open-tech-world/react-form';
+import { Form, CheckboxField } from '@opentf/react-form';
 import FormContext from './FormContext';
 
 export default function App() {

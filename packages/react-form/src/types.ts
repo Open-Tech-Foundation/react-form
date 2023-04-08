@@ -1,11 +1,16 @@
-import { ComponentPropsWithoutRef, ReactNode, FormHTMLAttributes } from 'react';
-import { Hook } from '@open-tech-world/react-state';
-import Form from './Form';
+import type {
+  ComponentPropsWithoutRef,
+  ReactNode,
+  FormHTMLAttributes,
+} from 'react';
+import type { Hook, SetState, API } from '@opentf/react-state';
+import type Form from './Form';
 
 export type Values = ComponentPropsWithoutRef<typeof Form>['initialValues'];
 
-export type FormContextType<Values> = {
+export type FormCtxVal<Values> = {
   useFormState: Hook<FormState<Values>>;
+  setFormState: SetState<FormState<Values>>;
   runValidations: () => Promise<boolean>;
 };
 
@@ -46,8 +51,14 @@ export interface FormState<Values> {
   visited: Visited<Values>;
 }
 
-export type FormContext<Values> = {
+export type FormCtx<Values> = {
   values: Values;
   errors: Errors<Values>;
   visited: Visited<Values>;
 };
+
+export interface FormHookRef<Values> {
+  hook: Hook<FormState<Values>>;
+  setState: SetState<FormState<Values>>;
+  api: API<FormState<Values>>;
+}
