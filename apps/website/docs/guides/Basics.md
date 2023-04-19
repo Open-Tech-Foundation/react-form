@@ -31,4 +31,4 @@ It does not support the `checkbox`, `radio` & `file` input types; instead, use t
 
 ### Example
 
-<SandBox lib="react-form" code={BasicFormSource} />
+<SandBox deps={["@opentf/react-form"]} code={BasicFormSource} />

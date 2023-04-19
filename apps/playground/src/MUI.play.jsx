@@ -75,6 +75,7 @@ const MUISelectField = ({ name, label, children }) => {
         label={label}
         onChange={(e) => field.onChange(e.target.value)}
         value={field.value}
+        onBlur={field.onBlur}
       >
         {children}
       </Select>

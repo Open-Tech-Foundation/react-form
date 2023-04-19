@@ -2,7 +2,7 @@ import { Form, Field } from '@opentf/react-form';
 
 export default function App() {
   return (
-    <Form onSubmit={(values) => alert(JSON.stringify(values, null, 4))}>
+    <Form onSubmit={(values) => console.log(values)}>
       <div>
         <label>Name: </label>
         <Field name="name" />
