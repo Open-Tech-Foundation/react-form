@@ -43,7 +43,7 @@ importers:
       '@docusaurus/preset-classic': 2.4.0
       '@mdx-js/react': ^1.6.22
       '@opentf/react-form': workspace:^
-      '@opentf/react-sandbox': ^0.5.0
+      '@opentf/react-sandbox': ^0.6.0
       clsx: ^1.1.1
       prism-react-renderer: ^1.3.1
       raw-loader: ^4.0.2
@@ -54,7 +54,7 @@ importers:
       '@docusaurus/preset-classic': 2.4.0_biqbaboplfbrettd7655fr4n2y
       '@mdx-js/react': 1.6.22_react@18.2.0
       '@opentf/react-form': link:../../packages/react-form
-      '@opentf/react-sandbox': 0.5.0_biqbaboplfbrettd7655fr4n2y
+      '@opentf/react-sandbox': 0.6.0_biqbaboplfbrettd7655fr4n2y
       clsx: 1.2.1
       prism-react-renderer: 1.3.5_react@18.2.0
       react: 18.2.0
@@ -66,7 +66,7 @@ importers:
     specifiers:
       '@jest/globals': ^29.5.0
       '@opentf/eslint-config-base': ^0.1.0
-      '@opentf/react-state': ^0.12.0
+      '@opentf/react-state': ^0.13.0
       '@opentf/utils': ^0.16.0
       '@swc/core': ^1.3.46
       '@swc/jest': ^0.2.24
@@ -87,7 +87,7 @@ importers:
       tsup: ^6.7.0
       typescript: 5.0.2
     dependencies:
-      '@opentf/react-state': 0.12.0_biqbaboplfbrettd7655fr4n2y
+      '@opentf/react-state': 0.13.0_biqbaboplfbrettd7655fr4n2y
       '@opentf/utils': 0.16.0
     devDependencies:
       '@jest/globals': 29.5.0
@@ -4083,8 +4083,8 @@ packages:
       - typescript
     dev: true
 
-  /@opentf/react-sandbox/0.5.0_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-ppIMpTCughTOhj6g8C1VCoJP1dymPVCXVLEEFLUCb3bFg34DrOOTdzSgOfIPr03gN+L0dgVbCVUiVC22rIzyag==}
+  /@opentf/react-sandbox/0.6.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-s6xLNw1ec51petyf5CPxC4mUdzj0E5A5Nd3ijnLCn79rCg9t5XegM+XNQClJfKnlTun6ovoFefpPYNkt3C874A==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       react: '*'
@@ -4095,8 +4095,8 @@ packages:
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /@opentf/react-state/0.12.0_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-MGha5YdEK+lVy5z1xF0oWKMvpFAjdz5CR46xgTfPy87FyKiF1mUprm0dV0HKLrhntvXGuInf+Uttp7Gtzm6eeA==}
+  /@opentf/react-state/0.13.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-8MkV3R60b6rBJXlEZp3EHslRotqERADpCg2DS5LVM1aDpcbX5AX7wkDYdGyBiuOsVsjc3kVB3S8zp8UanQ67bQ==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       react: '*'

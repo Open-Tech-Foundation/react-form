@@ -3,6 +3,7 @@
   "scripts": {
     "dev": "turbo run build --filter=react-form -- --watch",
     "dev:web": "turbo run start --filter=website",
+    "play": "turbo run dev --filter=playground",
     "test": "turbo run test --filter=react-form",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "turbo run lint --filter=@opentf/react-form",
