@@ -1,34 +1,21 @@
-import { Form, useField } from '@opentf/react-form';
-
-function TweetField({ name }) {
-  const { field } = useField(name);
-  return (
-    <div style={{ width: '250px', height: '150px' }}>
-      <label>What's happening?</label>
-      <div>
-        <textarea
-          {...field}
-          placeholder="Type here..."
-          style={{ width: '100%' }}
-          rows="5"
-          maxLength={140}
-        />
-        <div style={{ textAlign: 'right' }}>
-          {field.value.length} / 140 Characters
-        </div>
-      </div>
-    </div>
-  );
-}
+import { Form } from '@opentf/react-form';
+import TweetField from './TweetField';
 
 export default function TweetForm() {
   return (
     <Form
       initialValues={{ tweet: '' }}
-      onSubmit={(values) => alert(JSON.stringify(values, '', 4))}
+      validate={(values) => {
+        const errors = {};
+        if (!values.tweet) {
+          errors.tweet = '*Required';
+        }
+        return errors;
+      }}
+      onSubmit={(values) => console.log(values)}
     >
+      <label>What's happening?</label>
       <TweetField name="tweet" />
-
       <button type="submit">Tweet</button>
     </Form>
   );

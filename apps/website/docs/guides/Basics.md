@@ -9,9 +9,9 @@ import {SandBox} from '@opentf/react-sandbox';
 
 The `root` component for all the `input` fields.
 
-The required `onSubmit` prop is used to receive the values of the form when submitted.
-
 The `initialValues` prop can be used to set initial values for the form.
+
+The required `onSubmit` prop is used to receive the values of the form when submitted.
 
 :::tip
 Always initialize the form with the `initialValues` prop to avoid `React` dev warnings, and to get `TypeScript` support.
@@ -31,4 +31,4 @@ It does not support the `checkbox`, `radio` & `file` input types; instead, use t
 
 ### Example
 
-<SandBox deps={["@opentf/react-form"]} code={BasicFormSource} />
+<SandBox deps={["@opentf/react-form"]} code={BasicFormSource} consoleType="Advanced" />

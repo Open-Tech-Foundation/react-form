@@ -13,7 +13,7 @@ import MUI from '!!raw-loader!@site/src/Demo/MUI';
 
 # React Form
 
-> Build Forms & Manage Their State in React.
+> Build forms & manage their state in React.
 
 ## Features
 
@@ -32,8 +32,10 @@ import MUI from '!!raw-loader!@site/src/Demo/MUI';
 ## DEMO
 
 <SandBox
+consoleType="Advanced"
 deps={["@opentf/react-form", "@mui/material", "@emotion/react", "@emotion/styled"]}
 code={DemoSource}
 files={{'/MUI.jsx': MUI, '/FormContext.jsx': FormContext, '/styles.css': Styles}}
 style={{height: '500px'}}
+tabIndex={1}
 />

@@ -12,6 +12,7 @@ defaultValue="npm"
 values={[
 {label: 'npm', value: 'npm'},
 {label: 'Yarn', value: 'yarn'},
+{label: 'pnpm', value: 'pnpm'},
 ]}>
 <TabItem value="npm">
 
@@ -20,6 +21,7 @@ npm install @opentf/react-form
 ```
 
 </TabItem>
+
   <TabItem value="yarn">
 
 ```shell
@@ -27,6 +29,15 @@ yarn add @opentf/react-form
 ```
 
   </TabItem>
+
+  <TabItem value="pnpm">
+
+```shell
+pnpm add @opentf/react-form
+```
+
+  </TabItem>
+
 </Tabs>
 
 ## Usage
@@ -42,8 +53,6 @@ export default function App() {
       }}
     >
       <Field name="field1" />
-      {/* Other fields... */}
-
       <button type="submit">Submit</button>
     </Form>
   );
@@ -56,12 +65,11 @@ export default function App() {
 import { Form, Field } from '@opentf/react-form';
 
 interface FormValues {
-  field1: type1;
-  field2: type2;
+  field1: string;
 }
 
 export default function App() {
-  const initialValues: FormValues = { field1: '', field2: '' };
+  const initialValues: FormValues = { field1: '' };
 
   return (
     <Form
@@ -71,9 +79,6 @@ export default function App() {
       }}
     >
       <Field name="field1" />
-      <Field name="field2" />
-      {/* Other fields... */}
-
       <button type="submit">Submit</button>
     </Form>
   );

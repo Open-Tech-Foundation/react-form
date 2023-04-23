@@ -1,4 +1,4 @@
-import { Form, Field, useFieldArray } from '@opentf/react-form';
+import { Form, Field, useFieldArray } from '../../../packages/react-form/src';
 
 const MembersField = () => {
   const { fields, push, remove } = useFieldArray('members');

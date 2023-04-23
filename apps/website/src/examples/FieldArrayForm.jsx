@@ -30,27 +30,29 @@ const TasksField = () => {
 
 export default function App() {
   return (
-    <Form
-      initialValues={{ tasks: ['Task 1'] }}
-      onSubmit={(values) => {
-        alert(JSON.stringify(values, null, 4));
-      }}
-    >
-      <div>
-        <div>Project Name:</div>
-        <Field name="projectName" />
-      </div>
+    <div style={{ padding: '15px' }}>
+      <Form
+        initialValues={{ projectName: '', tasks: ['Task 1'] }}
+        onSubmit={(values) => {
+          console.log(values);
+        }}
+      >
+        <div>
+          <div>Project Name:</div>
+          <Field name="projectName" />
+        </div>
 
-      <br />
+        <br />
 
-      <div>
-        <div>Tasks:</div>
-        <TasksField />
-      </div>
+        <div>
+          <div>Tasks:</div>
+          <TasksField />
+        </div>
 
-      <br />
+        <br />
 
-      <button type="submit">Submit</button>
-    </Form>
+        <button type="submit">Submit</button>
+      </Form>
+    </div>
   );
 }

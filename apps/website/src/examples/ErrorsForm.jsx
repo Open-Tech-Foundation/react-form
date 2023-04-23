@@ -6,33 +6,34 @@ export default function App() {
     <Form
       initialValues={{ name: '', email: '' }}
       onSubmit={(values) => {
-        alert(JSON.stringify(values, null, 4));
+        console.log(values);
       }}
       validate={(values) => {
         const errors = {};
         if (!values.name) {
-          errors.name = 'Name is required!';
+          errors.name = 'Required';
         }
         if (!values.email) {
-          errors.email = 'Email is required!';
+          errors.email = 'Required';
         }
         return errors;
       }}
     >
       <div>
         <label>Name: </label>
+      </div>
+      <div>
         <Field name="name" />
         <ErrorMsg path="name" />
       </div>
-
       <br />
-
       <div>
         <label>Email: </label>
+      </div>
+      <div>
         <Field name="email" type="email" />
         <ErrorMsg path="email" />
       </div>
-
       <br />
       <button type="submit">Submit</button>
     </Form>

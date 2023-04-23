@@ -1,5 +1,6 @@
 ---
 sidebar_position: 7
+slug: file-input
 ---
 
 import {SandBox} from '@opentf/react-sandbox';
@@ -15,7 +16,7 @@ Use the `<FileField>` with a `name` prop for basic usage.
 
 ### Example (Basic)
 
-<SandBox lib="react-form" code={FileInputFormSource} />
+<SandBox code={FileInputFormSource} deps={["@opentf/react-form"]} consoleType="Advanced" />
 
 <br />
 
@@ -27,4 +28,4 @@ The following example accepts only `PNG` or `JPG` image files.
 
 ### Example (With preview)
 
-<SandBox lib="react-form" code={FileInputFormWithPreviewSource} />
+<SandBox code={FileInputFormWithPreviewSource} deps={["@opentf/react-form"]} consoleType="Advanced" />

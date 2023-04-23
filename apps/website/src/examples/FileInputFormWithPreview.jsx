@@ -21,11 +21,7 @@ export default function App() {
     <div>
       <Form
         onSubmit={async (values) => {
-          if (values.photo && values.photo.length > 0) {
-            alert(values.photo[0].name + ' Saved!');
-          } else {
-            alert('There has been no change to the profile picture.');
-          }
+          console.log(values);
         }}
       >
         <div>

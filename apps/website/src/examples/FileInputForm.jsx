@@ -4,11 +4,7 @@ export default function App() {
   return (
     <Form
       onSubmit={(values) => {
-        if (values.file && values.file.length > 0) {
-          alert(values.file[0].name + ' Uploaded!');
-        } else {
-          alert('No file selected!');
-        }
+        console.log(values);
       }}
     >
       <div>

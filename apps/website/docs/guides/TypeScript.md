@@ -14,4 +14,4 @@ You can use either `type` or `interface` to define a form's shape.
 
 ### Example
 
-<SandBox lib="react-form" ts code={TypeScriptBasicFormSource} />
+<SandBox template="react-ts" deps={["@opentf/react-form"]} code={TypeScriptBasicFormSource} consoleType="Advanced" />
