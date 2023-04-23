@@ -1,5 +1,11 @@
 # @opentf/react-form
 
+## 0.18.1
+
+### Patch Changes
+
+- 0210e6e: Added demo link into the readme.
+
 ## 0.18.0
 
 ### Minor Changes
