@@ -1,5 +1,11 @@
 # @opentf/react-form
 
+## 0.18.0
+
+### Minor Changes
+
+- 5bbdbf8: Added useFormActions hook
+
 ## 0.17.0
 
 ### Minor Changes
