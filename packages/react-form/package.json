@@ -8,7 +8,11 @@
     "form",
     "validation",
     "input",
-    "state"
+    "state",
+    "yup",
+    "zod",
+    "material-ui",
+    "mui"
   ],
   "type": "module",
   "main": "dist/index.cjs",
