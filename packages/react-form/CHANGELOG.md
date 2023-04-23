@@ -1,5 +1,11 @@
 # @opentf/react-form
 
+## 0.18.2
+
+### Patch Changes
+
+- a60dbc4: Updated pkg keywords
+
 ## 0.18.1
 
 ### Patch Changes

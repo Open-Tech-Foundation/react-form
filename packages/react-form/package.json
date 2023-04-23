@@ -1,6 +1,6 @@
 {
   "name": "@opentf/react-form",
-  "version": "0.18.1",
+  "version": "0.18.2",
   "description": "Build forms & manage their state in React.",
   "homepage": "https://react-form.pages.dev/",
   "keywords": [
