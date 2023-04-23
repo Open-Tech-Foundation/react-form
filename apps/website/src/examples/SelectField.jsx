@@ -5,7 +5,7 @@ export default function App() {
   return (
     <div className="App">
       <Form
-        initialValues={{ location: { city: 'Chennai' } }}
+        initialValues={{ location: { city: 'Chennai' }, pets: [] }}
         onSubmit={(values) => console.log(values)}
       >
         <div>

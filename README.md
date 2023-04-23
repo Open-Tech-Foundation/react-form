@@ -10,6 +10,8 @@
 
 > Build forms & manage their state in React.
 
+## [View Demo](https://react-form.pages.dev/#demo)
+
 ## Features
 
 - Simple APIs to use
@@ -55,9 +57,32 @@ export default function App() {
       }}
     >
       <Field name="field1" />
+      <button type="submit">Submit</button>
+    </Form>
+  );
+}
+```
 
-      {/* Other fields... */}
+## Usage (TypeScript)
 
+```tsx
+import { Form, Field } from '@opentf/react-form';
+
+interface FormValues {
+  field1: string;
+}
+
+export default function App() {
+  const initialValues: FormValues = { field1: '' };
+
+  return (
+    <Form
+      initialValues={initialValues}
+      onSubmit={(values) => {
+        console.log(values);
+      }}
+    >
+      <Field name="field1" />
       <button type="submit">Submit</button>
     </Form>
   );
@@ -66,7 +91,7 @@ export default function App() {
 
 ## Documentation
 
-Please visit [https://react-form.pages.dev/](https://react-form.pages.dev/) for complete documentation.
+Please visit [https://react-form.pages.dev/](https://react-form.pages.dev/) to get started.
 
 ## License
 

@@ -25,19 +25,13 @@ The `hook` function returns an `object` containing a `field` object, an `error` 
 ```jsx
 import { useField } from '@opentf/react-form';
 
-function MyCustomField1({ name }) {
-  const { field } = useField(name);
-
-  return <input {...field} />;
-}
-
-function MyCustomField2({ name }) {
-  const { field, error, setValue } = useField(name);
+function MyCustomField({ name }) {
+  const { field, error } = useField(name);
 
   return (
     <>
       <input
-        onChange={(e) => setValue(e.target.value)}
+        onChange={(e) => field.onChange(e.target.value)}
         onBlur={field.onBlur}
         value={field.value}
       />
