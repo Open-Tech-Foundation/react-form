@@ -5,7 +5,7 @@ import useForm from './useForm';
 export default function Form<Values>(props: FormProps<Values>) {
   const { initialValues, children, validate, onSubmit, ...otherProps } = props;
 
-  const { useFormState, setFormState, runValidations, handleSubmit } =
+  const { useFormState, setFormState, runValidations, handleSubmit, actions } =
     useForm<Values>({
       initialValues,
       onSubmit,
@@ -19,6 +19,7 @@ export default function Form<Values>(props: FormProps<Values>) {
       useFormState,
       setFormState,
       runValidations,
+      actions,
     };
   }
 

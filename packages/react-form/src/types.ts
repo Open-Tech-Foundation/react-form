@@ -12,6 +12,7 @@ export type FormCtxVal<Values> = {
   useFormState: Hook<FormState<Values>>;
   setFormState: SetState<FormState<Values>>;
   runValidations: () => Promise<boolean>;
+  actions: FormActions<Values>;
 };
 
 export interface FormActions<Values> {

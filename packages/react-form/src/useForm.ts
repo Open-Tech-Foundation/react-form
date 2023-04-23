@@ -80,5 +80,8 @@ export default function useForm<Values>(props: UseFormProps<Values>) {
     setFormState: stateRef.current?.setState,
     runValidations,
     handleSubmit,
+    actions: {
+      reset,
+    },
   };
 }

@@ -13,6 +13,7 @@ import useFormContext from './useFormContext';
 import useField from './useField';
 import useFieldArray from './useFieldArray';
 import useFieldError from './useFieldError';
+import useFormActions from './useFormActions';
 
 export {
   Form,
@@ -26,4 +27,5 @@ export {
   useFieldArray,
   useFormContext,
   useField,
+  useFormActions,
 };
