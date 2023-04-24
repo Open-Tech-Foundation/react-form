@@ -7,9 +7,12 @@
     "dev": "vite --port 3000"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.5.5",
+    "@chakra-ui/theme": "^3.0.1",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@mui/material": "^5.11.16",
+    "framer-motion": "^10.12.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

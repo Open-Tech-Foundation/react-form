@@ -12,7 +12,8 @@
     "yup",
     "zod",
     "material-ui",
-    "mui"
+    "mui",
+    "chakra-ui"
   ],
   "type": "module",
   "main": "dist/index.cjs",
