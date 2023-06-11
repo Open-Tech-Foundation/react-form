@@ -1,5 +1,11 @@
 # @opentf/react-form
 
+## 0.19.0
+
+### Minor Changes
+
+- f451636: Add default value param to useField
+
 ## 0.18.3
 
 ### Patch Changes
