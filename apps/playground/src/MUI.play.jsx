@@ -2,6 +2,7 @@ import {
   Box,
   Button,
   Checkbox,
+  Chip,
   FormControl,
   FormControlLabel,
   FormHelperText,
@@ -64,8 +65,8 @@ const MUISwitchField = ({ name, label }) => {
   );
 };
 
-const MUISelectField = ({ name, label, children }) => {
-  const { field, error } = useField(name);
+const MUISelectField = ({ name, label, multiple, children }) => {
+  const { field, error } = useField(name, multiple ? [] : '');
   return (
     <FormControl fullWidth error={Boolean(error)}>
       <InputLabel id="demo-simple-select-label">{label}</InputLabel>
@@ -76,6 +77,20 @@ const MUISelectField = ({ name, label, children }) => {
         onChange={(e) => field.onChange(e.target.value)}
         value={field.value}
         onBlur={field.onBlur}
+        multiple={multiple}
+        renderValue={(selected) => {
+          if (multiple) {
+            return (
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                {selected.map((value) => (
+                  <Chip key={value} label={value} />
+                ))}
+              </Box>
+            );
+          } else {
+            return selected;
+          }
+        }}
       >
         {children}
       </Select>
@@ -87,8 +102,15 @@ const MUISelectField = ({ name, label, children }) => {
 export default function App() {
   return (
     <div className="App">
+      <h6>MUI</h6>
       <Form
-        initialValues={{ name: '', switch1: false, select1: '', check1: false }}
+        initialValues={{
+          name: 'G',
+          switch1: false,
+          select1: '',
+          select2: [],
+          check1: false,
+        }}
         onSubmit={(values) => console.log(values)}
         validate={(values) => {
           const errors = {};
@@ -115,6 +137,15 @@ export default function App() {
 
         <Box mt={2}>
           <MUISelectField name="select1" label="Select">
+            <MenuItem value="">Choose</MenuItem>
+            <MenuItem value="option 1">Option 1</MenuItem>
+            <MenuItem value="option 2">Option 2</MenuItem>
+            <MenuItem value="option 3">Option 3</MenuItem>
+          </MUISelectField>
+        </Box>
+
+        <Box mt={2}>
+          <MUISelectField name="select2" label="Multi Select" multiple>
             <MenuItem value="">Choose</MenuItem>
             <MenuItem value="option 1">Option 1</MenuItem>
             <MenuItem value="option 2">Option 2</MenuItem>

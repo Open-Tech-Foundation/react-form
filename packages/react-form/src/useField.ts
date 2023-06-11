@@ -4,12 +4,13 @@ import { FORM_CONTEXT } from './formContext';
 import type { FormCtxVal, Values } from './types';
 import useFieldError from './useFieldError';
 
-export default function useField(name: string) {
-  const [fv, setFV] = useState<unknown>('');
+export default function useField(name: string, defaultValue = '') {
+  const [fv, setFV] = useState<unknown>(defaultValue);
   const { useFormState, setFormState, runValidations } = useContext(
     FORM_CONTEXT
   ) as FormCtxVal<Values>;
-  const value = useFormState((s) => getInObj(s.values as object, name)) || '';
+  const value =
+    useFormState((s) => getInObj(s.values as object, name)) || defaultValue;
 
   useEffect(() => {
     setFV(value);
