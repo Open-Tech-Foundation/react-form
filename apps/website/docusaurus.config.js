@@ -33,6 +33,10 @@ const config = {
           trackingID: 'G-DS7F7ZCPS5',
           anonymizeIP: true,
         },
+        sitemap: {
+          changefreq: 'weekly',
+          filename: 'sitemap.xml',
+        },
       }),
     ],
   ],
