@@ -1,5 +1,11 @@
 # @opentf/react-form
 
+## 0.20.0
+
+### Minor Changes
+
+- 90e7ba1: Added form ref to control the form from the wrapper component.
+
 ## 0.19.0
 
 ### Minor Changes
