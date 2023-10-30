@@ -8,7 +8,7 @@
 
 </div>
 
-> Build forms & manage their state in React.
+> A simple form state management for React.
 
 ## [View Demo](https://react-form.pages.dev/#demo)
 

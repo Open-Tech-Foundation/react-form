@@ -13,11 +13,11 @@ import MUI from '!!raw-loader!@site/src/Demo/MUI';
 
 # React Form
 
-> Build forms & manage their state in React.
+> A simple form state management for React.
 
 ## Features
 
-- Simple APIs to use
+- Simple API
 
 - It supports nested & array fields
 
@@ -33,6 +33,7 @@ import MUI from '!!raw-loader!@site/src/Demo/MUI';
 
 <SandBox
 consoleType="Advanced"
+layout="Tabs"
 deps={["@opentf/react-form", "@mui/material", "@emotion/react", "@emotion/styled"]}
 code={DemoSource}
 files={{'/MUI.jsx': MUI, '/FormContext.jsx': FormContext, '/styles.css': Styles}}

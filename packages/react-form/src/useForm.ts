@@ -13,21 +13,19 @@ export default function useForm<Values>(props: UseFormProps<Values>) {
   const { initialValues = {}, onSubmit, validate } = props;
   const stateRef = useRef<FormHookRef<Values>>();
 
-  useMemo(() => {
-    if (!stateRef.current) {
-      const [hook, setState, api] = create<FormState<Values>>({
-        initialValues: cloneObj(initialValues),
-        values: cloneObj(initialValues),
-        errors: {},
-        visited: {},
-      });
-      stateRef.current = {
-        hook,
-        setState,
-        api,
-      };
-    }
-  }, [initialValues]);
+  stateRef.current = useMemo(() => {
+    const [hook, setState, api] = create<FormState<Values>>({
+      initialValues: cloneObj(initialValues),
+      values: cloneObj(initialValues),
+      errors: {},
+      visited: {},
+    });
+    return {
+      hook,
+      setState,
+      api,
+    };
+  }, []);
 
   const runValidations = async () => {
     if (validate) {

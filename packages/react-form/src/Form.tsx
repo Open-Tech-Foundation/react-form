@@ -1,8 +1,12 @@
+import { type Ref, forwardRef, useImperativeHandle } from 'react';
 import { FORM_CONTEXT } from './formContext';
-import type { FormCtxVal, FormProps } from './types';
+import type { FormActions, FormCtxVal, FormProps } from './types';
 import useForm from './useForm';
 
-export default function Form<Values>(props: FormProps<Values>) {
+const Form = forwardRef(function Form<Values>(
+  props: FormProps<Values>,
+  ref: Ref<{ actions: FormActions<Values> }>
+) {
   const { initialValues, children, validate, onSubmit, ...otherProps } = props;
 
   const { useFormState, setFormState, runValidations, handleSubmit, actions } =
@@ -12,16 +16,22 @@ export default function Form<Values>(props: FormProps<Values>) {
       validate,
     });
 
-  let ctxVal: FormCtxVal<Values> | null = null;
+  useImperativeHandle(
+    ref,
+    () => {
+      return {
+        actions,
+      };
+    },
+    []
+  );
 
-  if (useFormState && setFormState) {
-    ctxVal = {
-      useFormState,
-      setFormState,
-      runValidations,
-      actions,
-    };
-  }
+  const ctxVal: FormCtxVal<Values> = {
+    useFormState,
+    setFormState,
+    runValidations,
+    actions,
+  };
 
   return (
     <FORM_CONTEXT.Provider value={ctxVal}>
@@ -30,4 +40,6 @@ export default function Form<Values>(props: FormProps<Values>) {
       </form>
     </FORM_CONTEXT.Provider>
   );
-}
+});
+
+export default Form;

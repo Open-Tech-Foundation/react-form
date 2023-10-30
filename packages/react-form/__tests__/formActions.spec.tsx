@@ -1,5 +1,5 @@
-import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import React, { useRef } from 'react';
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 
@@ -86,5 +86,35 @@ describe('Form Actions', () => {
     await userEvent.click(screen.getByRole('button'));
     expect(formValues).toEqual({ name: 'React' });
     expect(screen.getByLabelText('Name')).toHaveValue('xxx');
+  });
+
+  test('Using form ref to reset the form initial values', async () => {
+    interface FormValues {
+      name: string;
+    }
+    let formValues: FormValues;
+
+    const App = () => {
+      const myFormRef = useRef(null);
+      return (
+        <Form
+          ref={myFormRef}
+          initialValues={{ name: 'a' }}
+          onSubmit={(values) => {
+            formValues = values;
+            myFormRef.current.actions.reset({ name: 'b' });
+          }}
+        >
+          <label htmlFor="name">Name</label>
+          <Field id="name" name="name" />
+          <button type="submit" />
+        </Form>
+      );
+    };
+    render(<App />);
+    expect(screen.getByRole('textbox').value).toBe('a');
+    await userEvent.click(screen.getByRole('button'));
+    expect(formValues).toEqual({ name: 'a' });
+    expect(screen.getByLabelText('Name')).toHaveValue('b');
   });
 });
