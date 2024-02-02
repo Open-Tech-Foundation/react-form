@@ -1,5 +1,11 @@
 # @opentf/react-form
 
+## 0.21.1
+
+### Patch Changes
+
+- bef2820: Updated readme.
+
 ## 0.21.0
 
 ### Minor Changes
