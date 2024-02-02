@@ -1,5 +1,11 @@
 # @opentf/react-form
 
+## 0.21.0
+
+### Minor Changes
+
+- 0254a7e: Added pkg provenance support.
+
 ## 0.20.0
 
 ### Minor Changes
