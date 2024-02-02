@@ -1,8 +1,10 @@
+<img align="left" src="https://open-tech-foundation.pages.dev/img/Logo.svg" width="50" height="50">
+
+&nbsp;[OPEN TECH FOUNDATION](https://open-tech-foundation.pages.dev/)
+
 <div align="center">
 
 # React Form
-
-⚡ by [OPEN TECH FOUNDATION](https://open-tech-foundation.pages.dev/)
 
 [![Build](https://github.com/open-tech-foundation/react-form/actions/workflows/build.yml/badge.svg)](https://github.com/open-tech-foundation/react-form/actions/workflows/build.yml)
 
@@ -10,7 +12,7 @@
 
 > A simple form state management for React.
 
-## [View Demo](https://react-form.pages.dev/#demo)
+# [View Demo](https://react-form.pages.dev/#demo) | [Documentation](https://react-form.pages.dev/) 
 
 ## Features
 
@@ -26,22 +28,20 @@
 
 ## Installation
 
-Using npm
-
 ```shell
 npm install @opentf/react-form
 ```
-
-Using Yarn
 
 ```shell
 yarn add @opentf/react-form
 ```
 
-Using pnpm
-
 ```shell
 pnpm add @opentf/react-form
+```
+
+```shell
+bun add @opentf/react-form
 ```
 
 ## Usage
@@ -100,10 +100,6 @@ export default function App() {
 - [Yup Validations](https://react-form.pages.dev/Examples/yup-validations)
 
 - [Zod Validations](https://react-form.pages.dev/Examples/zod-validations)
-
-## Documentation
-
-Please visit [https://react-form.pages.dev/](https://react-form.pages.dev/) to get started.
 
 ## License
 
