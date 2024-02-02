@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 importers:
 
   .:
@@ -91,11 +95,11 @@ importers:
   packages/react-form:
     dependencies:
       '@opentf/react-state':
-        specifier: ^0.13.0
-        version: 0.13.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^0.14.0
+        version: 0.14.0(react-dom@18.2.0)(react@18.2.0)
       '@opentf/utils':
-        specifier: ^0.16.0
-        version: 0.16.0
+        specifier: ^0.22.0
+        version: 0.22.0
     devDependencies:
       '@jest/globals':
         specifier: ^29.5.0
@@ -5107,9 +5111,8 @@ packages:
       - jquery
     dev: false
 
-  /@opentf/react-state@0.13.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-8MkV3R60b6rBJXlEZp3EHslRotqERADpCg2DS5LVM1aDpcbX5AX7wkDYdGyBiuOsVsjc3kVB3S8zp8UanQ67bQ==}
-    engines: {node: '>=14.0.0'}
+  /@opentf/react-state@0.14.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-22bn36GDbyzazMitbC0uK6aLtlPeV5M5FyY911qz07tIc4Ff/Cb6RyNgNK0gSXCGtbo7YLsv873cyoZClNTQ8w==}
     peerDependencies:
       react: '*'
       react-dom: '*'
@@ -5119,9 +5122,8 @@ packages:
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
 
-  /@opentf/utils@0.16.0:
-    resolution: {integrity: sha512-//rD8EDEu21x5ulXD/vdmWBNgt7WUb8yFAN/gAADuxJ8Tdittom9ZFmt7ucentbvZC8G70JjX57/7zCZWto3Pg==}
-    engines: {node: ^14.17.0 || >=16.0.0}
+  /@opentf/utils@0.22.0:
+    resolution: {integrity: sha512-cnPkpZXQ6w5SefFipcRDyb4viYL6ISdYnMisUgu23gj0fSkCSoOGh5MrnSugmO3sOH31RKz3Ple6gthtnvMrsA==}
     dev: false
 
   /@polka/url@1.0.0-next.21:

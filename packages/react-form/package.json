@@ -27,9 +27,6 @@
   "files": [
     "dist"
   ],
-  "engines": {
-    "node": ">=18.0.0"
-  },
   "scripts": {
     "build": "tsup",
     "test": "jest",
@@ -38,12 +35,12 @@
     "ci": "turbo run build test lint check-types"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
-  "repository": "git@github.com:open-tech-foundation/react-form.git",
+  "repository": "git@github.com:Open-Tech-Foundation/react-form.git",
   "author": "Thanga Ganapathy",
   "license": "MIT",
-  "packageManager": "yarn@3.2.0",
   "devDependencies": {
     "@jest/globals": "^29.5.0",
     "@opentf/eslint-config-base": "^0.1.0",
@@ -71,7 +68,7 @@
     "react-dom": "*"
   },
   "dependencies": {
-    "@opentf/react-state": "^0.13.0",
-    "@opentf/utils": "^0.16.0"
+    "@opentf/react-state": "^0.14.0",
+    "@opentf/utils": "^0.22.0"
   }
 }
