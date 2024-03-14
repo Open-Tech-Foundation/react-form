@@ -13,19 +13,19 @@ import MUI from '!!raw-loader!@site/src/Demo/MUI';
 
 # React Form
 
-> A simple form state management for React.
+> A simple form state manager for React.
 
 ## Features
 
-- Simple API
+- Simple APIs to use
 
-- It supports nested & array fields
+- Supports nested & array fields
 
-- It supports form validation
-
-- TypeScript support
+- Supports form validation (Works with any schema validation lib)
 
 - Render optimized
+
+- TypeScript support
 
 - <a href="https://bundlephobia.com/package/@opentf/react-form">Minified + GZip Size ~3KB</a>
 

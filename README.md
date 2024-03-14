@@ -10,17 +10,17 @@
 
 </div>
 
-> A simple form state management for React.
+> A simple form state manager for React.
 
-# [View Demo](https://react-form.pages.dev/#demo) | [Documentation](https://react-form.pages.dev/) 
+# [Live Demo](https://react-form.pages.dev/#demo) | [Documentation](https://react-form.pages.dev/)
 
 ## Features
 
 - Simple APIs to use
 
-- It supports nested & array fields
+- Supports nested & array fields
 
-- It supports form validation
+- Supports form validation (Works with any schema validation lib)
 
 - Render optimized
 
@@ -52,37 +52,13 @@ import { Form, Field } from '@opentf/react-form';
 export default function App() {
   return (
     <Form
+      initialValues={{ field1: '', field2: '' }}
       onSubmit={(values) => {
         console.log(values);
       }}
     >
       <Field name="field1" />
-      <button type="submit">Submit</button>
-    </Form>
-  );
-}
-```
-
-## Usage (TypeScript)
-
-```tsx
-import { Form, Field } from '@opentf/react-form';
-
-interface FormValues {
-  field1: string;
-}
-
-export default function App() {
-  const initialValues: FormValues = { field1: '' };
-
-  return (
-    <Form
-      initialValues={initialValues}
-      onSubmit={(values) => {
-        console.log(values);
-      }}
-    >
-      <Field name="field1" />
+      <Field name="field2" type="number" />
       <button type="submit">Submit</button>
     </Form>
   );

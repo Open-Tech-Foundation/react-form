@@ -1,7 +1,7 @@
 {
   "name": "@opentf/react-form",
   "version": "0.21.1",
-  "description": "A simple form state management for React.",
+  "description": "A simple form state manager for React.",
   "homepage": "https://react-form.pages.dev/",
   "keywords": [
     "react",
@@ -13,7 +13,9 @@
     "zod",
     "material-ui",
     "mui",
-    "chakra-ui"
+    "chakra-ui",
+    "schema",
+    "json"
   ],
   "type": "module",
   "main": "dist/index.cjs",
