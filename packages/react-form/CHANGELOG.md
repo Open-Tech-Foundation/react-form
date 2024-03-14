@@ -1,5 +1,11 @@
 # @opentf/react-form
 
+## 0.22.0
+
+### Minor Changes
+
+- e7fbc22: Updated docs
+
 ## 0.21.1
 
 ### Patch Changes
