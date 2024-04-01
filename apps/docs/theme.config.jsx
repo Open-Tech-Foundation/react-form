@@ -7,6 +7,12 @@ export default {
       titleTemplate: '%s – React Form',
     };
   },
+  banner: {
+    key: 'new-site-wip',
+    text: (
+      '🚧: This new docs site is WIP!'
+    )
+  },
   logo: (
     <>
       <img src="/assets/Logo.svg" width={35} height={35} />
