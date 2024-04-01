@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: 'https://react-app-state.pages.dev',
+  siteUrl: 'https://react-form.pages.dev',
   generateIndexSitemap: false,
   priority: false,
   changefreq: false,
