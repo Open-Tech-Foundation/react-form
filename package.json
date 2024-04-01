@@ -2,13 +2,13 @@
   "private": true,
   "scripts": {
     "dev": "turbo run build --filter=react-form -- --watch",
-    "dev:web": "turbo run start --filter=website",
+    "dev:docs": "turbo run start --filter=docs",
     "play": "turbo run dev --filter=playground",
     "test": "turbo run test --filter=react-form",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "turbo run lint --filter=@opentf/react-form",
     "build": "turbo run build --filter=react-form",
-    "build:website": "turbo run build --filter=website",
+    "build:docs": "turbo run build --filter=docs",
     "ci": "turbo run ci --filter=react-form",
     "prepare": "husky install",
     "publish-packages": "turbo run build lint test --filter=react-form && changeset version && changeset publish"
@@ -27,11 +27,11 @@
     ]
   },
   "devDependencies": {
-    "@changesets/cli": "^2.26.0",
-    "@commitlint/cli": "^18.2.0",
-    "@commitlint/config-conventional": "^18.1.0",
-    "husky": "^8.0.0",
-    "lint-staged": "^15.0.2",
-    "turbo": "^1.10.16"
+    "@changesets/cli": "^2.27.1",
+    "@commitlint/cli": "^19.2.1",
+    "@commitlint/config-conventional": "^19.1.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "turbo": "^1.13.0"
   }
 }

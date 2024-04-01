@@ -1,0 +1,87 @@
+import { Tabs, Callout } from "nextra/components";
+import ReactSandBox from '../components/ReactSandbox';
+import demo from '!!raw-loader!../examples/Demo/index.js';
+import FormContext from '!!raw-loader!../examples/Demo/FormContext.js';
+import ErrorMsg from '!!raw-loader!../examples/Demo/ErrorMsg.js';
+import styles from '!!raw-loader!../examples/Demo/styles.css';
+
+# Introduction
+
+> A simple form state manager for React.
+
+## Features
+
+- Simple APIs to use
+
+- Supports nested & array fields
+
+- Supports form validation (Works with any schema validation lib)
+
+- Render optimized
+
+- TypeScript Support
+
+## Installation
+
+<Tabs items={["pnpm", "npm", "yarn", "bun"]}>
+  <Tabs.Tab>
+  ```sh copy 
+  pnpm add @opentf/react-form 
+  ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+      ```sh copy 
+  npm install @opentf/react-form 
+  ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+  ```sh copy 
+  yarn add @opentf/react-form 
+  ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+  ```sh copy 
+  bun add @opentf/react-form 
+  ```
+  </Tabs.Tab>
+</Tabs>
+
+## Usage
+
+```jsx copy
+import { Form, Field } from '@opentf/react-form';
+
+export default function App() {
+  const initialValues = {name: ''}
+
+  return (
+    <Form initialValues={initialValues} onSubmit={(values) => console.log(values)}>
+      <div>
+        <label>Label: </label>
+        <Field name="name" />
+      </div>
+      <button type="submit">Submit</button>
+    </Form>
+  );
+}
+```
+
+## Demo
+<ReactSandBox
+  template="vite-react"
+  layout="Tabs"
+  deps={["@opentf/react-form", "@mui/material", "@emotion/react", "@emotion/styled"]}
+  code={demo}
+  files={{'/FormContext.js': FormContext, 'ErrorMsg.js': ErrorMsg, '/styles.css': styles}}
+  style={{height: '500px'}}
+/>
+
+## Related
+
+- [@opentf/react-state](https://react-app-state.pages.dev/) - A global state manager for React.
+
+- [@opentf/react-sandbox](https://github.com/Open-Tech-Foundation/react-sandbox) - The CodeSandbox sandpack wrapper with additional features.
+
+- [@opentf/react-node-repl](https://node-repl.pages.dev/) - The Node.js REPL in a React component.
+
+- [@opentf/std](https://js-std.pages.dev/) - An Extensive JavaScript Standard Library.

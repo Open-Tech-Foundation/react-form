@@ -9,7 +9,7 @@ import FormContext from '!!raw-loader!@site/src/Demo/FormContext';
 
 <SandBox
 consoleType="Advanced"
-deps={["@opentf/react-form", "yup", "@opentf/utils"]}
+deps={["@opentf/react-form", "yup", "@opentf/std"]}
 code={YupValidationsSource}
 files={{'/FormContext.jsx': FormContext}}
 style={{height: '500px'}}

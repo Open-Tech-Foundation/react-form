@@ -1,0 +1,11 @@
+.App {
+  padding: 50px;
+}
+
+label {
+  display: block;
+}
+
+label, input, select, button {
+  margin-top: 15px;
+}

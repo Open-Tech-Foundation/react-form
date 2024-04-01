@@ -1,5 +1,5 @@
 import { Form, Field, useFieldError } from '@opentf/react-form';
-import { capitalize } from '@opentf/utils';
+import { capitalize } from '@opentf/std';
 import * as yup from 'yup';
 import FormContext from './FormContext';
 

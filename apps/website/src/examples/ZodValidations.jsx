@@ -1,5 +1,5 @@
 import { Form, Field, useFieldError } from '@opentf/react-form';
-import { setInObj } from '@opentf/utils';
+import { set } from '@opentf/std';
 import { z } from 'zod';
 import FormContext from './FormContext';
 
@@ -12,7 +12,7 @@ function zodErrors(schema, values) {
   const errors = {};
   const result = schema.safeParse(values);
   if (!result.success) {
-    result.error.issues.forEach((i) => setInObj(errors, i.path.join('.'), i.message));
+    result.error.issues.forEach((i) => set(errors, i.path.join('.'), i.message));
   }
 
   return errors;
